@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: LMS
+# Runs the Nginx daemon
+# ==============================================================================
+
+# Wait for lms to become available
+bashio::net.wait_for 9000 localhost 900
+
+bashio::log.info "Starting NGinx..."
+
+exec nginx

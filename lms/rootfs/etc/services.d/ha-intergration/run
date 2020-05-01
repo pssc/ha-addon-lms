@@ -1,0 +1,141 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Add-on: lms
+# Starts the home assisant intergration
+# ==============================================================================
+
+. /opt/${HAA_NAME}-support/lib/lib${HAA_NAME}.sh
+
+function ha-event() {
+  local EVENTNAME="${HAA_NAME}.${1}"
+  local EVENTDATA=${2}
+
+  bashio::log.info "Event ${EVENTNAME}"
+  curl -sS -X "POST" \
+    -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" \
+    --data-binary "${EVENTDATA}" \
+    "http://supervisor/core/api/events/${EVENTNAME}"
+  echo
+}
+
+
+function setup() {
+	bashio::net.wait_for 9000 localhost 900
+}
+
+
+function service_loop() {
+  PAYLOAD="{ }"
+  ha-event "service" "${PAYLOAD}"
+  bashio::log.info "Starting the Home Assistant STDIN service for ${HAA_NAME}..."
+  # shellcheck disable=SC2162
+  while read msg; do
+    bashio::log.debug "> ${msg}"
+    msg="${msg%\"}"
+    msg="${msg#\"}"
+    cmd="$(echo "$msg" | jq -r '.command|values' || true)"
+    bashio::log.info 'Received message command to execute:'
+    bashio::log.info "> ${cmd}"
+    case "${cmd}" in
+      ping) ha-event "ping" "{ }" ;;
+      restart) exit 0 ;;
+      service) ha-event "service" "${PAYLOAD}" ;;
+      shutdown) 
+        ha-event "shutdown" "{ }"
+        s6-svscanctl -t /var/run/s6/services
+        exit 0 
+      ;;
+      dump)
+        dump_mariadb "${DDATAL}"
+        ha-event "dump" "{ }"
+      ;;
+      backup) 
+        dump_mariadb
+        ha-event "backup" "{ }"
+      ;;
+      restore)
+        restore_mariadb
+        ha-event "restored" "{ }"
+      ;;
+      size)
+        mysql -e 'SELECT table_schema AS "Database", ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)" FROM information_schema.TABLES GROUP BY table_schema;' 2> /dev/null || true
+      ;;
+      check)
+        local result
+        if mysqlcheck --all-databases | tee /tmpfs/mariadb_check_results; then
+          bashio::log.info "Command completed successfully."
+          result="true"
+        else
+          bashio::log.error "Check Command exited with a failure status."
+          result="false"
+        fi
+        ha-event "checked" '{ "ok" : "'"${result}"'", "output" : "'"$(</tmpfs/mariadb_check_results.txt)"'"'
+      ;;
+      *) bashio::log.error "Command not found: ${cmd}" ;;
+    esac
+  done < /proc/1/fd/0
+  bashio::log.info 'Finished the Home Assistant STDIN service...'
+  exit 1
+}
+
+function parked() {
+  # Generate service user 
+  # FIXME move to ssl?
+  if ! bashio::fs.file_exists "${SECF}"; then
+    bashio::log.info "Generating service password for Home Assistant"
+    pwgen 64 1 > "${SECF}"
+  fi
+  #readonly 
+  SECRET=$(<"${SECF}")
+
+  bashio::log.info "Waiting for mariadb..."
+  while [[ ! -r "${MDRF}" ]];do
+    sleep 1
+  done
+  MARIADB_PID=$(<"${MDRF}")
+  wait_mariadb
+
+  #FXIME Private?
+  bashio::log.info "Creating service user and permissions for Home Assistant"
+  mysql -e "CREATE USER 'service'@'172.30.32.%' IDENTIFIED BY '${SECRET}';" 2> /dev/null || true
+  mysql -e "CREATE USER 'service'@'172.30.33.%' IDENTIFIED BY '${SECRET}';" 2> /dev/null || true
+  mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'service'@'172.30.32.%' WITH GRANT OPTION;" 2> /dev/null || true
+  mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'service'@'172.30.33.%' WITH GRANT OPTION;" 2> /dev/null || true
+  mysql -e "FLUSH PRIVILEGES;" 2> /dev/null || true
+
+  # Send service information to the Supervisor
+  #local PAYLOAD
+  #readonly?
+  PAYLOAD=$(bashio::var.json \
+        host "$(hostname)" \
+        port "^3306" \
+        username "service" \
+        password "${SECRET}")
+  SERVICE="mysql"
+  bashio::log.debug "Service Publish ${SERVICE} DATA: ${PAYLOAD}"
+  if [ "${REGISTER}" = "true" ];then
+    if bashio::services.publish "${SERVICE}" "${PAYLOAD}"; then
+      bashio::log.info "Successfully send service information to Home Assistant."
+      # FIXME check
+    else
+      bashio::log.warning "Service message to Home Assistant failed!"
+    fi
+  else
+    if bashio::services.available "${SERVICE}";then
+      bashio::var.json \
+        host "$(bashio::services "mysql" host)" \
+        port "^$(bashio::services "mysql" port)" \
+        username "$(bashio::services "mysql" username)" \
+        password "$(bashio::services "mysql" host password)" > "${SERVICEF}"
+      bashio::log.info "Service ${SERVICE} $(cat ${SERVICEF})"
+    fi
+  fi
+}
+
+function main() {
+  setup
+  service_loop
+}
+
+main
+# vim: ft=sh

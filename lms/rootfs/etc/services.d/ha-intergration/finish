@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: mariadb+
+# Restarts the STDIN service
+# Unregisters Service
+# ==============================================================================
+
+if [ "${1}" -gt 0 ]; then
+  s6-svscanctl -t /var/run/s6/services
+else
+  bashio::log.info 'ha intergartion was stopped, restarting...'
+fi
+# vim: ft=sh

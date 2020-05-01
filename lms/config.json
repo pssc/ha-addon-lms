@@ -1,0 +1,57 @@
+{
+  "name": "Logitech Media Server",
+  "version": "0.0.16",
+  "slug": "lms",
+  "description": "Logitech Media Server / SqueezeBox Server",
+  "url": "https://github.com/pssc/ha-addons-lms/",
+  "webui": "http://[HOST]:[PORT:9000]",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "services",
+  "boot": "auto",
+  "stdin": true,
+  "ports": {
+    "9000/tcp": 9000,
+    "9090/tcp": 9090,
+    "3483/tcp": 3483,
+    "3483/udp": 3483
+  },
+  "ports_description": {
+    "9000/tcp": "Web and json API Access",
+    "9090/tcp": "CLI Access",
+    "3483/tcp": "Slimserver Protocol for players",
+    "3483/udp": "Slimserver Protocol for players"
+  },
+  "options": {
+  },
+  "schema": {
+    "ssl": "bool?",
+    "certfile": "str?",
+    "keyfile": "str?",
+    "tmpfs": "bool?",
+    "mount": "str?",
+    "options":"str?",
+    "logdir":"str?",
+    "logfile":"str?",
+    "prefs":"str?",
+    "cache":"str?",
+    "plugs":"str?"
+  },
+  "stage": "experimental",
+  "timeout": 60,
+  "map": [
+      "config:rw",
+      "ssl",
+      "share:rw",
+      "backup:rw"
+  ],
+  "tmpfs":"size=4g,rw",
+  "hassio_api": true,
+  "homeassistant_api": true,
+  "privileged": [ "SYS_ADMIN" ],
+  "host_network": true,
+  "snapshot_exclude": [ "/data/music", "/data/mount" ],
+  "ingress": true,
+  "ingress_port": 0,
+  "panel_icon": "mdi:music-box",
+  "panel_title": "lms"
+}

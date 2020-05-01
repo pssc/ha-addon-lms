@@ -1,0 +1,14 @@
+#!/bin/bash
+# ==============================================================================
+# Home Assistant Community Add-on: 
+# Event script
+# ==============================================================================
+set -e 
+set -x 
+readonly EVENTNAME=${1}
+readonly EVENTDATA=${2}
+
+curl -sS -X "POST" \
+    -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" \
+    --data-binary "{\"ups_name\":\"${UPSNAME}\",\"notify_type\":\"${NOTIFYTYPE}\",\"notify_msg\":\"${NOTIFYMSG}\"}" \
+    "http://supervisor/core/api/events/nut.ups_event"
