@@ -1,10 +1,10 @@
 {
   "name": "Logitech Media Server",
-  "version": "0.0.17",
+  "version": "0.0.21",
   "slug": "lms",
   "description": "Logitech Media Server / SqueezeBox Server",
-  "url": "https://github.com/pssc/ha-addons-lms/",
-  "webui": "http://[HOST]:[PORT:9000]",
+  "url": "https://github.com/pssc/ha-addon-lms/",
+  "webui": "http://[HOST]:[PORT:9000]/",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "services",
   "boot": "auto",
@@ -21,22 +21,6 @@
     "3483/tcp": "Slimserver Protocol for players",
     "3483/udp": "Slimserver Protocol for players"
   },
-  "options": {
-  },
-  "schema": {
-    "ssl": "bool?",
-    "certfile": "str?",
-    "keyfile": "str?",
-    "tmpfs": "bool?",
-    "mount": "str?",
-    "options":"str?",
-    "logdir":"str?",
-    "logfile":"str?",
-    "prefs":"str?",
-    "cache":"str?",
-    "plugs":"str?"
-  },
-  "stage": "experimental",
   "timeout": 60,
   "map": [
       "config:rw",
@@ -53,5 +37,22 @@
   "ingress": true,
   "ingress_port": 0,
   "panel_icon": "mdi:music-box",
-  "panel_title": "lms"
+  "panel_title": "lms",
+  "stage": "experimental",
+  "options": {
+  },
+  "schema": {
+    "ssl": "bool?",
+    "certfile": "str?",
+    "keyfile": "str?",
+    "tmpfs": "bool?",
+    "mount": "str?",
+    "options":"str?",
+    "logdir":"str?",
+    "logfile":"str?",
+    "prefs":"str?",
+    "cache":"str?",
+    "plugs":"str?",
+    "saved":"bool?"
+  }
 }
