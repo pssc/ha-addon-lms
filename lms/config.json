@@ -1,6 +1,6 @@
 {
   "name": "Logitech Media Server",
-  "version": "0.0.22",
+  "version": "0.0.33",
   "slug": "lms",
   "description": "Logitech Media Server / SqueezeBox Server",
   "url": "https://github.com/pssc/ha-addon-lms/",
@@ -33,7 +33,7 @@
   "homeassistant_api": true,
   "privileged": [ "SYS_ADMIN" ],
   "host_network": true,
-  "snapshot_exclude": [ "/data/music", "/data/mount" ],
+  "snapshot_exclude": [ "/data/music", "/data/mount", "/data/mnt" ],
   "ingress": true,
   "ingress_port": 0,
   "panel_icon": "mdi:music-box",
@@ -53,6 +53,9 @@
     "prefs":"str?",
     "cache":"str?",
     "plugs":"str?",
-    "saved":"bool?"
+    "saved":"bool?",
+    "links": [ { "link": "str", "dest": "str" } ],
+    "mounts": ["str?"],
+    "dirs": ["str?"]
   }
 }
