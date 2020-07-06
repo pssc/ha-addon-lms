@@ -98,12 +98,12 @@ ARG BUILD_VERSION
 # Labels
 LABEL \
     io.hass.name="lms" \
-    io.hass.description="logitech media server" \
+    io.hass.description="Logitech Media Server / SqueezeBox Server / UPNP Media Server" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
     maintainer="Phillip Camp <phillip.camp+ha<removeme>@gmail.com>" \
-    org.label-schema.description="Logitech Media Server" \
+    org.label-schema.description="Logitech Media Server / SqueezeBox Server / UPNP Media Server" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="lms" \
     org.label-schema.schema-version="1.0" \
