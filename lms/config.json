@@ -1,8 +1,8 @@
 {
   "name": "Logitech Media Server",
-  "version": "0.0.33",
+  "version": "0.0.36",
   "slug": "lms",
-  "description": "Logitech Media Server / SqueezeBox Server",
+  "description": "Logitech Media Server / SqueezeBox Server / UPNP Media Server",
   "url": "https://github.com/pssc/ha-addon-lms/",
   "webui": "http://[HOST]:[PORT:9000]/",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
@@ -21,7 +21,7 @@
     "3483/tcp": "Slimserver Protocol for players",
     "3483/udp": "Slimserver Protocol for players"
   },
-  "timeout": 60,
+  "timeout": 180,
   "map": [
       "config:rw",
       "ssl",
@@ -56,6 +56,8 @@
     "saved":"bool?",
     "links": [ { "link": "str", "dest": "str" } ],
     "mounts": ["str?"],
-    "dirs": ["str?"]
+    "dirs": ["str?"],
+    "init_commands": ["str?"],
+    "packages": ["str?"]
   }
 }
