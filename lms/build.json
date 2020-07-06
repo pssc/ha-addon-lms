@@ -1,11 +1,11 @@
 {
     "squash": false,
     "build_from": {
-        "aarch64": "hassioaddons/debian-base-aarch64:4.1.1",
-        "amd64": "hassioaddons/debian-base-amd64:4.1.1",
-        "armhf": "hassioaddons/debian-base-armhf:7.0.2",
-        "armv7": "hassioaddons/debian-base-armv7:3.1.0",
-        "i386": "hassioaddons/debian-base-i386:4.1.1"
+        "aarch64": "hassioaddons/debian-base-aarch64:3.2.0",
+        "amd64": "hassioaddons/debian-base-amd64:3.2.0",
+        "armhf": "hassioaddons/debian-base-armhf:3.2.0",
+        "armv7": "hassioaddons/debian-base-armv7:3.2.0",
+        "i386": "hassioaddons/debian-base-i386:3.2.0"
     },
     "args": {}
 }
