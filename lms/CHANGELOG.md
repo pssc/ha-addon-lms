@@ -1,3 +1,18 @@
+## [0.0.36] 2020-06-07
+### Added
+ - Allow for custom init scripts and packages
+
+### Changes
+ - Increase shutdown timeout to allow cleanup and run from ram
+ - Use better logos and icons 
+ - Make build image versions consistant
+ - Be more descriptive and indicate self build repo
+ - Better description to Docker image labels 
+
+### Fixes
+ - Ajax requests for ingress for trackstat
+ - Change log formatting 
+
 ## [0.0.34] 2020-06-18
 ### Added
  - README.md for addon interface desribing basic addional functions
