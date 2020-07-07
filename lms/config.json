@@ -2,7 +2,7 @@
   "name": "Logitech Media Server",
   "version": "0.0.36",
   "slug": "lms",
-  "description": "Logitech Media Server / SqueezeBox Server / UPNP Media Server",
+  "description": "Logitech Media Server, SqueezeBox Server & UPNP Media Server",
   "url": "https://github.com/pssc/ha-addon-lms/",
   "webui": "http://[HOST]:[PORT:9000]/",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
