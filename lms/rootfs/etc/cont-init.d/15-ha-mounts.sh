@@ -14,7 +14,7 @@ if [ -r "${CONFIG}" ];then
 
   for (( i=0; i < "${S}"; i++ )); do
     MOUNT=$(jq --raw-output "${OPTION}[$i]" ${CONFIG})
-
+    echo mount -v ${MOUNT}
     mount -v ${MOUNT}
   done
 fi
