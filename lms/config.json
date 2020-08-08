@@ -1,6 +1,6 @@
 {
   "name": "Logitech Media Server",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "slug": "lms",
   "description": "Logitech Media Server, SqueezeBox Server & UPNP Media Server",
   "url": "https://github.com/pssc/ha-addon-lms/",
@@ -30,6 +30,8 @@
   ],
   "tmpfs":"size=4g,rw",
   "hassio_api": true,
+  "udev":true,
+  "full_access": true,
   "homeassistant_api": true,
   "privileged": [ "SYS_ADMIN" ],
   "host_network": true,
@@ -40,6 +42,11 @@
   "panel_title": "lms",
   "stage": "experimental",
   "options": {
+	  "links": [],
+          "mounts": [],
+          "dirs": [],
+	  "init_commands": [],
+	  "packages": []
   },
   "schema": {
     "ssl": "bool?",
