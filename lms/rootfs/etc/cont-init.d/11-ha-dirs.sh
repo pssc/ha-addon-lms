@@ -1,18 +1,18 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# Community Hass.io Add-ons: lms
+# Community Hass.io Add-ons: generic cont-init
 # ==============================================================================
 
 CONFIG="/data/options.json"
 OPTION=".dirs"
-COMMAND="mklmsdir"
+COMMAND="mkhadir"
 
-function mklmsdir {
+function mkhadir {
   V=$1
   mkdir -p "${V}"
-  chown ${LMS_USER} "${V}"
+  chown ${HA_USER} "${V}"
   chmod g+rws "${V}"
-  echo mklmsdir "${V}"
+  echo mkhadir "${V}"
 }
 
 if [ -r "${CONFIG}" ];then
