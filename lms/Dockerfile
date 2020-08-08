@@ -29,6 +29,8 @@ ENV LMS_LOGDIR /config/lms/logs
 ENV LMS_OPTIONS " "
 ENV LMS_USER "squeezeboxserver"
 ENV LMS_GROUP "nogroup"
+ENV HA_USER "squeezeboxserver"
+ENV UDEV true
 
 COPY rootfs/ /
 
@@ -44,6 +46,9 @@ RUN apt-get update && \
 		libio-socket-ssl-perl \
 		git \
 		nfs-common \
+		udev \
+		awscli \
+		lvm2 \
 		tzdata 
 
 #FIXME DEV?
