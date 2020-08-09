@@ -1,3 +1,17 @@
+## [0.0.37] 2020-08-05
+
+### Added
+ - Documentation, split and updated
+ - udev supoort for direct mounting
+
+### Changes
+ - Better logging of mounts
+ - Auto set name from container name.
+ - Generic dir creation
+
+### Fixes
+ - package installation
+
 ## [0.0.36] 2020-06-07
 ### Added
  - Allow for custom init scripts and packages
@@ -8,6 +22,8 @@
  - Make build image versions consistant
  - Be more descriptive and indicate self build repo
  - Better description to Docker image labels 
+ - Better logging of mounts
+ - Auto set name from container name.
 
 ### Fixes
  - Ajax requests for ingress for trackstat
