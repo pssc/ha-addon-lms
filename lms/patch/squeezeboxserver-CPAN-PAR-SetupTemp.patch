@@ -1,0 +1,11 @@
+--- /usr/share/squeezeboxserver/CPAN/PAR/SetupTemp.pm.orig	2020-08-20 19:34:44.206305666 +0100
++++ /usr/share/squeezeboxserver/CPAN/PAR/SetupTemp.pm	2020-08-20 19:34:55.346125405 +0100
+@@ -116,7 +116,7 @@
+         }
+         warn "private subdirectory $st[4] $<";
+         if (!S_ISDIR($st[2])
+-            || $st[4] != $<
++            || $st[4] != $>
+             || ($st[2] & 0777) != 0700 ) {
+           warn "private subdirectory $temp_path is unsafe (please remove it and retry your operation)";
+           return;
