@@ -49,6 +49,7 @@ RUN apt-get update && \
 		udev \
 		awscli \
 		lvm2 \
+		patch \
 		tzdata 
 
 #FIXME DEV?
@@ -64,7 +65,7 @@ RUN echo "${url}" && \
 	dpkg -i $lms_deb && \
 	rm -rf /var/lib/squeezeboxserver && \
 	rm /usr/share/squeezeboxserver/Plugins && \
-	ln -s ${LMS_PLUG} /usr/share/squeezeboxserver/Plugins
+	ln -s ${LMS_PLUGS} /usr/share/squeezeboxserver/Plugins
 RUN if [[ $(id -u squeezeboxserver) != ${target_uid} ]];then usermod -u $target_uid squeezeboxserver ;fi
 
 # Nginx Ingress support
@@ -79,6 +80,10 @@ COPY rootfs-ingress/ /
 
 RUN cd /sources && git clone -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats
 
+COPY patch /sources/
+
+RUN for i in /sources/*.patch;do patch -d / -p1 -i $i;done
+
 #Cleanup
 RUN if [ -z "${debug}" -o "${debug}" = "false" ];then apt-get -y remove \
            git \
@@ -87,6 +92,9 @@ RUN if [ -z "${debug}" -o "${debug}" = "false" ];then apt-get -y remove \
 	apt-get -y autoremove && \
         rm -r /sources ;fi
 
+RUN rm -r /tmp && ln -s /tmpfs /tmp
+ENV TEMP /tmpfs/
+ENV TMP /tmpfs/
 
 VOLUME /data
 VOLUME /share
