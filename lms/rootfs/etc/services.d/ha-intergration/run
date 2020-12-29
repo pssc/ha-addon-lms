@@ -20,7 +20,16 @@ function ha-event() {
 
 
 function setup() {
+	# lms
 	bashio::net.wait_for 9000 localhost 900
+	# HA API
+	bashio::net.wait_for 8123 localhost 900
+	# Supervisor API
+	bashio::net.wait_for 80 supervisor 900
+	# Health report
+	hass-cli system health || true
+	# Start sensor loop for pugin
+	( while true;do lms-sensors; sleep ${POLL_INTERVAL:-60} ;done ) &
 }
 
 
