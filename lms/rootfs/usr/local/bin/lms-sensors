@@ -1,0 +1,12 @@
+#!/bin/bash
+ha-entity-state
+# Player activty
+ha-entity-state sensor.lms_players $(squeezy -json "player count ?"| jq -r ._count) count
+
+# Rescan
+ha-entity-state sensor.lms_albums $(squeezy -json "info total albums ?"| jq -r ._albums) count
+ha-entity-state sensor.lms_songs $(squeezy -json "info total songs ?"| jq -r ._songs) count
+ha-entity-state sensor.lms_genres $(squeezy -json "info total genres ?"| jq -r ._genres) count
+ha-entity-state sensor.lms_artists $(squeezy -json "info total artists ?"| jq -r ._artists) count
+ha-entity-state sensor.lms_duration $(squeezy -json "info total duration ?"| jq -r ._duration) seconds
+

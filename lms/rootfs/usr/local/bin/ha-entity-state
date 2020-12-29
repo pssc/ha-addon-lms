@@ -1,0 +1,18 @@
+#!/bin/sh
+ENTITY=${1:-binary_sensor.entity_state_cli_test}
+STATE=${2:-"on"}
+UOM=${3:-""}
+ATTR=${4:-""}
+# Other attrs problem type?
+
+if [ -z "${UOM}" ]; then
+    PAYLOAD='{"state": "'"${STATE}"'"}'
+else
+    PAYLOAD='{"state": "'"${STATE}"'", "attributes": {"unit_of_measurement": "'"${UOM}"'"}}'
+fi
+
+curl -X POST -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d "${PAYLOAD}" \
+  http://supervisor/core/api/states/${ENTITY}
+echo
