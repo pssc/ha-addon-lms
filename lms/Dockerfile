@@ -2,6 +2,7 @@ ARG BUILD_FROM=hassioaddons/debian-base:latest
 FROM ${BUILD_FROM}
 ARG target_uid=1000
 ARG url="http://www.mysqueezebox.com/update/?version=7.9&revision=1&geturl=1&os=deb" 
+ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v7.9.3/logitechmediaserver_7.9.3_all.deb"
 ARG debug=true
 
 ARG BUILD_ARCH
@@ -50,22 +51,38 @@ RUN apt-get update && \
 		awscli \
 		lvm2 \
 		patch \
+		exfat-fuse \
+		exfat-utils \
 		tzdata 
 
 #FIXME DEV?
 RUN if [[ ! -z "${debug}" ]];then apt-get -y install vim less procps strace;fi
 
-#FIXME user curl
+RUN mkdir -p /sources/lms/packages
+
+# Query for last version
 RUN echo "${url}" && \
         latest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/')'\.deb/') && \
-	mkdir -p /sources && \
 	cd /sources && \
 	wget $latest_lms && \
 	lms_deb=${latest_lms##*/} && \
-	dpkg -i $lms_deb && \
-	rm -rf /var/lib/squeezeboxserver && \
+	dpkg -i $lms_deb
+
+#eg. http://downloads.slimdevices.com/LogitechMediaServer_v7.9.3/logitechmediaserver_7.9.3_arm.deb
+# Copy script and run Script?
+#RUN echo "${purl}" && \
+#        latest_lms=$(echo $purl | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/')'\.deb/') && \
+#	cd /sources/lms/packages && \
+#	wget $latest_lms && \
+#	lms_deb=${latest_lms##*/} && \
+#	dpkg -i $lms_deb
+
+# Clean Up and repoint
+RUN rm -rf /var/lib/squeezeboxserver && \
 	rm /usr/share/squeezeboxserver/Plugins && \
 	ln -s ${LMS_PLUGS} /usr/share/squeezeboxserver/Plugins
+
+# Add user.
 RUN if [[ $(id -u squeezeboxserver) != ${target_uid} ]];then usermod -u $target_uid squeezeboxserver ;fi
 
 # Nginx Ingress support
@@ -75,10 +92,17 @@ RUN apt-get install -y --no-install-recommends \
         nginx \
     && luarocks install lua-resty-http 0.15-0 \
     && rm -r /etc/nginx
-
 COPY rootfs-ingress/ /
 
-RUN cd /sources && git clone -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats
+RUN cd /sources && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats
+
+RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc
+RUN apt-get install -y --no-install-recommends python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log
+#pip3 show homeassistant-cli | grep Requires | sed 's/.*: /python3-/' | sed 's/, / python3-/g'
+RUN pip3 install homeassistant-cli
+
+RUN apt-get install -y --no-install-recommends libjson-rpc-perl
+RUN cd /sources && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/
 
 COPY patch /sources/
 
@@ -86,8 +110,8 @@ RUN for i in /sources/*.patch;do patch -d / -p1 -i $i;done
 
 #Cleanup
 RUN if [ -z "${debug}" -o "${debug}" = "false" ];then apt-get -y remove \
-           git \
-           wget && \
+        git \
+        wget && \
 	apt-get clean -y && \
 	apt-get -y autoremove && \
         rm -r /sources ;fi
@@ -95,6 +119,8 @@ RUN if [ -z "${debug}" -o "${debug}" = "false" ];then apt-get -y remove \
 RUN rm -r /tmp && ln -s /tmpfs /tmp
 ENV TEMP /tmpfs/
 ENV TMP /tmpfs/
+ENV TMPDIR /tmpfs/
+ENV TEMPDIR /tmpfs/
 
 VOLUME /data
 VOLUME /share
@@ -102,6 +128,7 @@ VOLUME /backup
 VOLUME /config
 VOLUME /ssl
 VOLUME /tmpfs
+VOLUME /media
 
 # Build arguments
 ARG BUILD_DATE
