@@ -1,3 +1,13 @@
+## [0.0.38] 2020-12-29
+
+### Added
+ - Sensors
+ - Add extfat support
+ - Support for media dir
+
+### Fixes
+ - Setup reqirements
+
 ## [0.0.37] 2020-08-05
 
 ### Added

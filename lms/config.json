@@ -1,6 +1,6 @@
 {
   "name": "Logitech Media Server",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "slug": "lms",
   "description": "Logitech Media Server, SqueezeBox Server & UPNP Media Server",
   "url": "https://github.com/pssc/ha-addon-lms/",
@@ -26,7 +26,8 @@
       "config:rw",
       "ssl",
       "share:rw",
-      "backup:rw"
+      "backup:rw",
+      "media:rw"
   ],
   "tmpfs":"size=4g,rw",
   "hassio_api": true,
