@@ -1,3 +1,12 @@
+## [0.0.39] 2020-01-05
+
+### Fixes
+ - adm64 build
+ - squeezy config for sensors
+
+### Changes
+ - Tidy Dockerfile whitespace
+
 ## [0.0.38] 2020-12-29
 
 ### Added

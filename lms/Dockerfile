@@ -1,7 +1,7 @@
 ARG BUILD_FROM=hassioaddons/debian-base:latest
 FROM ${BUILD_FROM}
 ARG target_uid=1000
-ARG url="http://www.mysqueezebox.com/update/?version=7.9&revision=1&geturl=1&os=deb" 
+ARG url="http://www.mysqueezebox.com/update/?version=7.9&revision=1&geturl=1&os=deb"
 ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v7.9.3/logitechmediaserver_7.9.3_all.deb"
 ARG debug=true
 
@@ -14,13 +14,13 @@ ARG BUILD_ARCH
 # Allow longer shutdown
 ENV S6_SERVICES_GRACETIME 119000
 # Set for package install
-ENV DEBIAN_FRONTEND "noninteractive" 
+ENV DEBIAN_FRONTEND "noninteractive"
 # FIXME? locales
 #ENV LANG C.UTF-8
 # TZ config at runtime
 ENV DISABLE_HA_AUTHENTICATION true
 
-# LMS 
+# LMS
 # Debug?
 ENV LMS_PREFS /config/lms/prefs
 ENV LMS_PLUGS /config/lms/plugins
@@ -53,7 +53,7 @@ RUN apt-get update && \
 		patch \
 		exfat-fuse \
 		exfat-utils \
-		tzdata 
+		tzdata
 
 #FIXME DEV?
 RUN if [[ ! -z "${debug}" ]];then apt-get -y install vim less procps strace;fi
@@ -62,7 +62,7 @@ RUN mkdir -p /sources/lms/packages
 
 # Query for last version
 RUN echo "${url}" && \
-        latest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/')'\.deb/') && \
+        latest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/')'\.deb/') && \
 	cd /sources && \
 	wget $latest_lms && \
 	lms_deb=${latest_lms##*/} && \
