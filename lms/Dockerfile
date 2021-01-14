@@ -2,8 +2,9 @@ ARG BUILD_FROM=hassioaddons/debian-base:latest
 FROM ${BUILD_FROM}
 ARG target_uid=1000
 ARG url="http://www.mysqueezebox.com/update/?version=7.9&revision=1&geturl=1&os=deb"
+ARG surl="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=nocpan"
 ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v7.9.3/logitechmediaserver_7.9.3_all.deb"
-ARG debug=true
+ARG debug=false
 
 ARG BUILD_ARCH
 
@@ -33,6 +34,7 @@ ENV LMS_GROUP "nogroup"
 ENV HA_USER "squeezeboxserver"
 ENV UDEV true
 
+RUN mv /init /s6init
 COPY rootfs/ /
 
 RUN apt-get update && \
@@ -62,11 +64,22 @@ RUN mkdir -p /sources/lms/packages
 
 # Query for last version
 RUN echo "${url}" && \
-        latest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/')'\.deb/') && \
+        latest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
 	cd /sources && \
+	echo $latest_lms && \
 	wget $latest_lms && \
 	lms_deb=${latest_lms##*/} && \
-	dpkg -i $lms_deb
+	dpkg -i $lms_deb && \
+	apt-get -y install --no-install-recommends nasm make gcc rsync patch g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 && \
+	cd /sources && \
+	git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.0 && \
+	mkdir -p tmp && \
+	cd slimserver-vendor/CPAN && \
+	TMPDIR=/sources/tmp ./buildme.sh && \
+	rm -rf /usr/share/squeezeboxserver/CPAN/arch/* && \
+	cp -vr build/arch/*/*/ /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/ && \
+	apt-get -y remove nasm make gcc g++ zlib1g-dev libgd-dev libmodule-install-perl bzip2  && \
+        cd /tmp && rm -rf /sources/slimserver-vendor
 
 #eg. http://downloads.slimdevices.com/LogitechMediaServer_v7.9.3/logitechmediaserver_7.9.3_arm.deb
 # Copy script and run Script?
@@ -76,6 +89,10 @@ RUN echo "${url}" && \
 #	wget $latest_lms && \
 #	lms_deb=${latest_lms##*/} && \
 #	dpkg -i $lms_deb
+#        latest_lms=$(wget -q -O - "${surl}") && \
+#        echo $latest_lms && \
+#	cd /sources && \
+#        wget $latest_lms && \
 
 # Clean Up and repoint
 RUN rm -rf /var/lib/squeezeboxserver && \
@@ -94,18 +111,17 @@ RUN apt-get install -y --no-install-recommends \
     && rm -r /etc/nginx
 COPY rootfs-ingress/ /
 
-RUN cd /sources && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats
+RUN cd /sources && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats && cd /tmp && rm -r /sources/osync
 
-RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc
-RUN apt-get install -y --no-install-recommends python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log
+RUN apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc && \
+    apt-get install -y --no-install-recommends python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log && \
+   pip3 install homeassistant-cli
 #pip3 show homeassistant-cli | grep Requires | sed 's/.*: /python3-/' | sed 's/, / python3-/g'
-RUN pip3 install homeassistant-cli
 
-RUN apt-get install -y --no-install-recommends libjson-rpc-perl
-RUN cd /sources && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/
+RUN apt-get install -y --no-install-recommends libjson-rpc-perl && \
+    cd /sources && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /sources/squeezy
 
 COPY patch /sources/
-
 RUN for i in /sources/*.patch;do patch -d / -p1 -i $i;done
 
 #Cleanup
@@ -114,7 +130,8 @@ RUN if [ -z "${debug}" -o "${debug}" = "false" ];then apt-get -y remove \
         wget && \
 	apt-get clean -y && \
 	apt-get -y autoremove && \
-        rm -r /sources ;fi
+        rm -r /sources && \
+	rm -r /var/lib/apt/lists/*;fi
 
 RUN rm -r /tmp && ln -s /tmpfs /tmp
 ENV TEMP /tmpfs/

@@ -1,4 +1,12 @@
-## [0.0.39] 2020-01-05
+## [0.0.40] 2020-01-14
+
+### Changes
+ - Build CPAN modules from source
+ - Reduce image size
+ - Reduce layers
+ - turn of debug by default.
+
+## [0.0.40] 2020-01-05
 
 ### Fixes
  - adm64 build

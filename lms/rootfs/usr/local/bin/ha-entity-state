@@ -11,7 +11,7 @@ else
     PAYLOAD='{"state": "'"${STATE}"'", "attributes": {"unit_of_measurement": "'"${UOM}"'"}}'
 fi
 
-curl -X POST -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" \
+curl -s -X POST -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" \
   -H "Content-Type: application/json" \
   -d "${PAYLOAD}" \
   http://supervisor/core/api/states/${ENTITY}
