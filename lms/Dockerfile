@@ -58,7 +58,7 @@ RUN apt-get update && \
 		tzdata
 
 #FIXME DEV?
-RUN if [[ ! -z "${debug}" ]];then apt-get -y install vim less procps strace;fi
+RUN if [[ ! -z "${debug}" ]];then apt-get -y install --no-install-recommends vim less procps strace ;fi
 
 RUN mkdir -p /sources/lms/packages
 
