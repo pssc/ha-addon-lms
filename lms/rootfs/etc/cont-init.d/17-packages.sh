@@ -5,7 +5,7 @@
 if bashio::config.has_value 'packages'; then
    bashio::log.info " Installing user configured/requested packages"
    apt-get update \
-        || bashio::exit.nok 'Failed updating Alpine packages repository indexes'
+        || bashio::exit.nok 'Failed updating packages repository indexes'
 
     for package in $(bashio::config 'packages'); do
         apt-get install -y --no-install-suggests --no-install-recommends  "$package" \

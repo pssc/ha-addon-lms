@@ -133,18 +133,17 @@ RUN if [ -z "${debug}" -o "${debug}" = "false" ];then apt-get -y remove \
         rm -r /sources && \
 	rm -r /var/lib/apt/lists/*;fi
 
-RUN rm -r /tmp && ln -s /tmpfs /tmp
-ENV TEMP /tmpfs/
-ENV TMP /tmpfs/
-ENV TMPDIR /tmpfs/
-ENV TEMPDIR /tmpfs/
+#RUN rm -r /tmp && ln -s /tmpfs /tmp
+#ENV TEMP /tmpfs/
+#ENV TMP /tmpfs/
+#ENV TMPDIR /tmpfs/
+#ENV TEMPDIR /tmpfs/
 
 VOLUME /data
 VOLUME /share
 VOLUME /backup
 VOLUME /config
 VOLUME /ssl
-VOLUME /tmpfs
 VOLUME /media
 
 # Build arguments

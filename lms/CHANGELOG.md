@@ -1,13 +1,20 @@
+## [0.0.44] 2020-03-07
+
+### Fixes
+ - tmpfs chnages
+ - random volume creation
+ - Minor information message correction
+
 ## [0.0.41] 2020-01-14
 
 ### Fixes
  - build
 
 ### Changes
- - tidy debug buid package install
+ - tidy debug build package install
 
 ### Added
- - use init to mount tmpfs fort var/run if started with right perms
+ - use init to mount tmpfs for /var/run, if started with right perms
 
 ## [0.0.40] 2020-01-14
 
