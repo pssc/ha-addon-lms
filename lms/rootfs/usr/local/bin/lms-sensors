@@ -1,12 +1,22 @@
 #!/bin/bash
-ha-entity-state
+TMP=${TMP:="/tmp"}
+MARKER=${TMP}/sensor_hush
+if [ -r "${MARKER}" ];then
+	exec >/dev/null
+fi
+
+ha-entity-state | jq . -c
 # Player activty
-ha-entity-state sensor.lms_players $(squeezy -json "player count ?"| jq -r ._count) count
+ha-entity-state sensor.lms_players $(squeezy -json "player count ?"| jq -r ._count) count | jq . -c
 
 # Rescan
-ha-entity-state sensor.lms_albums $(squeezy -json "info total albums ?"| jq -r ._albums) count
-ha-entity-state sensor.lms_songs $(squeezy -json "info total songs ?"| jq -r ._songs) count
-ha-entity-state sensor.lms_genres $(squeezy -json "info total genres ?"| jq -r ._genres) count
-ha-entity-state sensor.lms_artists $(squeezy -json "info total artists ?"| jq -r ._artists) count
-ha-entity-state sensor.lms_duration $(squeezy -json "info total duration ?"| jq -r ._duration) seconds
+ha-entity-state sensor.lms_albums $(squeezy -json "info total albums ?"| jq -r ._albums) count | jq . -c
+ha-entity-state sensor.lms_songs $(squeezy -json "info total songs ?"| jq -r ._songs) count | jq . -c
+ha-entity-state sensor.lms_genres $(squeezy -json "info total genres ?"| jq -r ._genres) count | jq . -c
+ha-entity-state sensor.lms_artists $(squeezy -json "info total artists ?"| jq -r ._artists) count | jq . -c
+ha-entity-state sensor.lms_duration $(squeezy -json "info total duration ?"| jq -r ._duration) seconds | jq . -c
+
+if [ ! -r "${MARKER}" ];then
+  touch "${MARKER}"
+fi
 
