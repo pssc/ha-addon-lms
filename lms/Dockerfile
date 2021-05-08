@@ -77,6 +77,7 @@ RUN echo "${url}" && \
 	cd slimserver-vendor/CPAN && \
 	TMPDIR=/sources/tmp ./buildme.sh && \
 	rm -rf /usr/share/squeezeboxserver/CPAN/arch/* && \
+	mkdir -p /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/ && \
 	cp -vr build/arch/*/*/ /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/ && \
 	apt-get -y remove nasm make gcc g++ zlib1g-dev libgd-dev libmodule-install-perl bzip2  && \
         cd /tmp && rm -rf /sources/slimserver-vendor
