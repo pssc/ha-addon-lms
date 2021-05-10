@@ -29,6 +29,7 @@
       "backup:rw",
       "media:rw"
   ],
+  "image": "pssc/ha-addon-lms-{arch}",
   "tmpfs": true,
   "hassio_api": true,
   "udev": true,
