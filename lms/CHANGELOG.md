@@ -1,3 +1,14 @@
+## [0.0.45] 2021-06-05
+
+### Fixes
+ - Fix image build issues
+
+### Changes
+ - Change to pre built images
+
+### Added
+ - audio support in container
+
 ## [0.0.44] 2020-03-07
 
 ### Fixes
