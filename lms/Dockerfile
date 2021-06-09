@@ -55,6 +55,7 @@ RUN apt-get update && \
 		patch \
 		exfat-fuse \
 		exfat-utils \
+		libasound2-plugins \
 		tzdata
 
 #FIXME DEV?
