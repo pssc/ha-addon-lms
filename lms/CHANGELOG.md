@@ -2,12 +2,16 @@
 
 ### Fixes
  - Fix image build issues
+ - Fix memory based run mount
+ - Fix /proc/asound after enabling audio
 
 ### Changes
  - Change to pre built images
+ - Change /config to allow exec for plugins to work better
+ - Chnage output from lms to be line buffered for better logging 
 
 ### Added
- - audio support in container
+ - Audio support in container
 
 ## [0.0.44] 2020-03-07
 
