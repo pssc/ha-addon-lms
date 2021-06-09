@@ -1,3 +1,5 @@
 #!/bin/sh
-mount -t tmpfs tmpfs /run rw,nosuid,nodev,mode=755
+mount -t tmpfs -o rw,nosuid,nodev,mode=755 tmpfs /run
+mount -o remount,exec /config
+umount /proc/asound
 exec /s6init "$@"
