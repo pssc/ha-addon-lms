@@ -14,7 +14,8 @@ function stop() {
 
 function main() {
   echo "Start Logitech Media Server..."
-  squeezeboxserver ${LMS_OPTIONS} --user "${LMS_USER}" --group "${LMS_GROUP}" --prefsdir "${LMS_PREFS}" --logdir "${LMS_LOGDIR}" --cachedir "${LMS_CACHE}" </dev/null &
+  # chnage buffering to line based for stdout sterr
+  stdbuf -oL -eL squeezeboxserver ${LMS_OPTIONS} --user "${LMS_USER}" --group "${LMS_GROUP}" --prefsdir "${LMS_PREFS}" --logdir "${LMS_LOGDIR}" --cachedir "${LMS_CACHE}" </dev/null &
   PID=$!
   echo -n "$PID" > ${TMP:-"/tmp"}/.${NAME}_ready
   trap "stop" SIGTERM SIGINT
