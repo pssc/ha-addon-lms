@@ -55,7 +55,7 @@ RUN apt-get update && \
 		patch \
 		exfat-fuse \
 		exfat-utils \
-		libasound2-plugins \
+		libasound2-plugins libflac8 libvorbisfile3 libvorbisidec1 libfaad2 libmad0 \
 		tzdata
 
 #FIXME DEV?
