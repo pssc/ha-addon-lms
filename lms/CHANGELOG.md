@@ -4,6 +4,7 @@
  - Fix image build issues
  - Fix memory based run mount
  - Fix /proc/asound after enabling audio
+ - Fix for pulse audio permission issues with squeezebox running as an alternate user
 
 ### Changes
  - Change to pre built images
@@ -12,6 +13,7 @@
 
 ### Added
  - Audio support in container
+ - Packages for sqeezelite decoding possibly via localPlayer
 
 ## [0.0.44] 2020-03-07
 
