@@ -1,3 +1,12 @@
+## [0.0.46] 2021-07-05
+
+### Changes
+ - Multi part Docker build to reduce image size for perl modules build
+ - remove support of squeezelite/localplayer to its own addon https://github.com/pssc/ha-addon-squeezelite
+ - Refactor udev support.
+ - Update base to debian-addon 4.2.1
+ - LMS fixed to version 8.1.1
+
 ## [0.0.45] 2021-06-05
 
 ### Fixes
@@ -13,7 +22,7 @@
 
 ### Added
  - Audio support in container
- - Packages for sqeezelite decoding possibly via localPlayer
+ - Packages for sqeezelite decoding possibly via localPlayer addon
 
 ## [0.0.44] 2020-03-07
 
