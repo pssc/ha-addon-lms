@@ -11,13 +11,13 @@ ENV DEBIAN_FRONTEND "noninteractive"
 RUN mv /init /s6init
 
 # Upgrading the operating system inside the container
-RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get install wget git rsync patch && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 FROM base AS builder
 # Install Squeezelite
 RUN apt-get -qq -y update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
-    git nasm make gcc rsync patch g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 && \
+    nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
     git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.0 && \
@@ -54,21 +54,17 @@ COPY rootfs/ /
 RUN apt-get -qq -y update && \
         ls -la /tmp/ && \
 	apt-get -qq -y install --no-install-recommends --no-install-suggests \
-		wget \
 		faad \
 		flac \
 		lame \
 		sox \
-		rsync \
 		libio-socket-ssl-perl \
 		nfs-common \
 		awscli \
 		lvm2 \
-		patch \
 		exfat-fuse \
 		exfat-utils \
-		tzdata \
-		git && \
+		tzdata && \
 		apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN echo "Download url: ${url}" && \
