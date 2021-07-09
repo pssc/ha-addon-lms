@@ -6,6 +6,7 @@
  - Refactor udev support.
  - Update base to debian-addon 4.2.2
  - LMS fixed to version 8.1.1
+ - Disable appamour causes issues with vairous plugins
 
 ## [0.0.45] 2021-06-05
 

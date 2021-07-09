@@ -33,7 +33,7 @@
   "image": "pssc/ha-addon-lms-{arch}",
   "tmpfs": true,
   "hassio_api": true,
-  "xapparmor": false,
+  "apparmor": false,
   "udev": true,
   "full_access": true,
   "homeassistant_api": true,
