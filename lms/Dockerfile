@@ -86,6 +86,7 @@ RUN echo "Download url: ${url}" && \
         if [[ $(id -u squeezeboxserver) != ${target_uid} ]];then usermod -u $target_uid squeezeboxserver ;fi
 
 COPY --from=builder /usr/share/squeezeboxserver/CPAN/arch/ /usr/share/squeezeboxserver/CPAN/arch/
+RUN ls -la /usr/share/squeezeboxserver/CPAN/arch/*
 
 #eg. http://downloads.slimdevices.com/LogitechMediaServer_v7.9.3/logitechmediaserver_7.9.3_arm.deb
 # Copy script and run Script?
