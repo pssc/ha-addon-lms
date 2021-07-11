@@ -17,15 +17,15 @@ FROM base AS builder
 # Install Squeezelite
 RUN apt-get -qq -y update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
-    nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 && \
+    patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
     git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.0 && \
     mkdir -p tmp && \
     cd slimserver-vendor/CPAN && \
     TMPDIR=/tmp/sources/tmp ./buildme.sh && \
-    echo /tmp/sources/slimserver-vendor/CPAN/build/arch/*/*/ && \
-    ls /tmp/sources/slimserver-vendor/CPAN/build/arch/*/*/
+    mkdir -p /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/ && \
+    cp -vr build/arch/*/*/ /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/
 
 FROM base
 
@@ -65,6 +65,7 @@ RUN apt-get -qq -y update && \
 		exfat-fuse \
 		exfat-utils \
 		tzdata && \
+		apt-get install --no-install-recommends -qy wget curl perl tzdata libwww-perl libfont-freetype-perl liblinux-inotify2-perl libdata-dump-perl libio-socket-ssl-perl libnet-ssleay-perl libcrypt-ssleay-perl libcrypt-openssl-rsa-perl lame && \
 		apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN echo "Download url: ${url}" && \
@@ -82,11 +83,9 @@ RUN echo "Download url: ${url}" && \
 	rm /usr/share/squeezeboxserver/Plugins && \
 	ln -s ${LMS_PLUGS} /usr/share/squeezeboxserver/Plugins && \
 	rm $lms_deb && \
-	#mkdir -p /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/ && \
-	#cp -vr build/arch/*/*/ /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/ && \
         if [[ $(id -u squeezeboxserver) != ${target_uid} ]];then usermod -u $target_uid squeezeboxserver ;fi
 
-COPY --from=builder /tmp/sources/slimserver-vendor/CPAN/build/arch/ /usr/share/squeezeboxserver/CPAN/arch/
+COPY --from=builder /usr/share/squeezeboxserver/CPAN/arch/ /usr/share/squeezeboxserver/CPAN/arch/
 
 #eg. http://downloads.slimdevices.com/LogitechMediaServer_v7.9.3/logitechmediaserver_7.9.3_arm.deb
 # Copy script and run Script?
