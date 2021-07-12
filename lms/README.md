@@ -2,6 +2,9 @@
 
 A complete and easy way to run the Logitech Media Server.
 
+| :warning: Unfortunately the latest Squeezebox Radio firmware (7.7.3) comes with a bug which prevents it from connecting correctly to Logitech Media Server 8+. See https://github.com/Logitech/slimserver#sb-radio-and-logitech-media-server-8 for details and an easy mitigation. |
+| --- |
+
 ![Release][release-shield] ![Project Stage][project-stage-shield] ![Project Maintenance][maintenance-shield]<br>
 ![Supports i386 Architecture][i386-shield] ![Supports amd64 Architecture][amd64-shield] ![Supports armhf Architecture][armhf-shield] ![Supports armv7 Architecture][armv7-shield] ![Supports aarch64 Architecture][aarch64-shield]
 
