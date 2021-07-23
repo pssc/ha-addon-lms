@@ -13,8 +13,6 @@ RUN mv /init /s6init
 # Upgrading the operating system inside the container
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get --no-install-recommends --no-install-suggests -qq -y install wget git rsync patch && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-FROM base AS builder
-# Install Squeezelite
 RUN apt-get -qq -y update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
     patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential && \
@@ -68,6 +66,9 @@ RUN apt-get -qq -y update && \
 		apt-get install --no-install-recommends -qy wget curl perl tzdata libwww-perl libfont-freetype-perl liblinux-inotify2-perl libdata-dump-perl libio-socket-ssl-perl libnet-ssleay-perl libcrypt-ssleay-perl libcrypt-openssl-rsa-perl lame && \
 		apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Debug packages
+RUN if [ "${debug}" = "true " ];then apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get --no-install-recommends --no-install-suggests -qq -y install vim-tiny && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*;fi
+
 RUN echo "Download url: ${url}" && \
 	cd /tmp && \
         xlatest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
@@ -77,13 +78,15 @@ RUN echo "Download url: ${url}" && \
 	wget -nv $latest_lms && \
 	lms_deb=${latest_lms##*/} && \
 	dpkg -i $lms_deb && \
-	ls -la /usr/share/squeezeboxserver/CPAN/arch/* && \
-	rm -rf /usr/share/squeezeboxserver/CPAN/arch/* && \
+        if [[ $(id -u squeezeboxserver) != ${target_uid} ]];then usermod -u $target_uid squeezeboxserver ;fi && \
+	id squeezeboxserver && \
         rm -rf /var/lib/squeezeboxserver && \
 	rm /usr/share/squeezeboxserver/Plugins && \
 	ln -s ${LMS_PLUGS} /usr/share/squeezeboxserver/Plugins && \
 	rm $lms_deb && \
-        if [[ $(id -u squeezeboxserver) != ${target_uid} ]];then usermod -u $target_uid squeezeboxserver ;fi
+	ls -la /usr/share/squeezeboxserver/CPAN/arch/* && \
+	rm -rf /usr/share/squeezeboxserver/CPAN/arch/* && \
+	rm -r /usr/share/squeezeboxserver/Bin/$(ls -1 /usr/share/squeezeboxserver/Bin/| grep -v $(arch|sed 's/arm.*/arm/'))
 
 COPY --from=builder /usr/share/squeezeboxserver/CPAN/arch/ /usr/share/squeezeboxserver/CPAN/arch/
 RUN ls -la /usr/share/squeezeboxserver/CPAN/arch/*
