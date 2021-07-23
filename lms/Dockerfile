@@ -1,6 +1,5 @@
 ARG BUILD_FROM=hassioaddons/debian-base:latest
 
-ARG BUILD_ARCH
 
 # ARGS...
 
@@ -13,6 +12,7 @@ RUN mv /init /s6init
 # Upgrading the operating system inside the container
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get --no-install-recommends --no-install-suggests -qq -y install wget git rsync patch && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+FROM ${BUILD_FROM} AS builder
 RUN apt-get -qq -y update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
     patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential && \
@@ -157,7 +157,7 @@ RUN if [ -z "${debug}" -o "${debug}" = "false" ];then apt-get -y remove \
 #VOLUME /media
 
 # Build arguments
-#ARG BUILD_ARCH
+ARG BUILD_ARCH
 ARG BUILD_DATE
 ARG BUILD_REF
 ARG BUILD_VERSION
