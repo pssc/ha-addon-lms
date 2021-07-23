@@ -86,7 +86,7 @@ RUN echo "Download url: ${url}" && \
 	rm $lms_deb && \
 	ls -la /usr/share/squeezeboxserver/CPAN/arch/* && \
 	rm -rf /usr/share/squeezeboxserver/CPAN/arch/* && \
-	rm -r /usr/share/squeezeboxserver/Bin/$(ls -1 /usr/share/squeezeboxserver/Bin/| grep -v $(arch|sed 's/arm.*/arm/'))
+	cd /usr/share/squeezeboxserver/Bin/ && rm -r $(ls -1 /usr/share/squeezeboxserver/Bin/| grep -v $(arch|sed 's/arm.*/arm/'))
 
 COPY --from=builder /usr/share/squeezeboxserver/CPAN/arch/ /usr/share/squeezeboxserver/CPAN/arch/
 RUN ls -la /usr/share/squeezeboxserver/CPAN/arch/*
