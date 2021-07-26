@@ -1,4 +1,7 @@
-## [0.0.46] 2021-07-05
+## [0.0.46] 2021-07-26
+
+### Warning
+ - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
 
 ### Changes
  - Multi part Docker build to reduce image size for perl modules build
@@ -7,6 +10,12 @@
  - Update base to debian-addon 4.2.2
  - LMS fixed to version 8.1.1
  - Disable appamour causes issues with vairous plugins
+ - Pruing of installed binaries
+ - limit debug output (8 hours ago) <pssc>
+
+### Fixes
+ - Fixes for aarch64 multipart build inc wget for confiure scripts to update (3 weeks ago)
+ - Fixes module copy afer build, Fix add addional perl modules per lms community docker 
 
 ## [0.0.45] 2021-06-05
 
