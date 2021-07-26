@@ -5,6 +5,7 @@
 # ==============================================================================
 
 # Wait for lms to become available
+bashio::log.info "Waiting for lms before starting NGinx..."
 bashio::net.wait_for 9000 localhost 900
 
 bashio::log.info "Starting NGinx..."
