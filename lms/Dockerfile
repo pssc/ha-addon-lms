@@ -46,6 +46,7 @@ ENV LMS_OPTIONS " "
 ENV LMS_USER "squeezeboxserver"
 ENV LMS_GROUP "nogroup"
 ENV HA_USER "squeezeboxserver"
+ENV debug ${debug}
 
 COPY rootfs/ /
 
