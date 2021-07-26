@@ -22,9 +22,11 @@ function main() {
   trap "" SIGHUP
 
   wait "$PID"
-  #FIXME debug
-  sleep 7d
   exit $? 
+  ##FIXME
+  #su ${LMS_USER} -s /bin/sh -c 'stdbuf -oL -eL squeezeboxserver ${LMS_OPTIONS} --user "${LMS_USER}" --group "${LMS_GROUP}" --prefsdir "${LMS_PREFS}" --logdir "${LMS_LOGDIR}" --cachedir "${LMS_CACHE}"'
+  # --http-port? "${HTTP_PORT:-9000}"'
+  #sleep 7d
 }
 
 main
