@@ -1,7 +1,9 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
 # Community Hass.io Add-ons: lms
-# Set up env from ha
+# print env from ha
 # ==============================================================================
 
-env
+if [ "$debug" = "true" ];then
+   env
+fi
