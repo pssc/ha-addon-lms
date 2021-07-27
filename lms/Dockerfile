@@ -74,7 +74,7 @@ RUN echo "Download url: ${url}" && \
 	cd /tmp && \
         xlatest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
         latest_lms=$(echo "${purl}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
-	echo $latest_lms != i$xlatest_lms && \
+	echo $latest_lms != $xlatest_lms && \
 	[ $latest_lms = $xlatest_lms ] && \
 	wget -nv $latest_lms && \
 	lms_deb=${latest_lms##*/} && \
@@ -87,6 +87,7 @@ RUN echo "Download url: ${url}" && \
 	rm $lms_deb && \
 	ls -la /usr/share/squeezeboxserver/CPAN/arch/* && \
 	rm -rf /usr/share/squeezeboxserver/CPAN/arch/* && \
+	touch /usr/share/squeezeboxserver/Bin/deleteme && \
 	cd /usr/share/squeezeboxserver/Bin/ && rm -r $(ls -1 /usr/share/squeezeboxserver/Bin/| grep -v $(arch|sed 's/arm.*/arm/'))
 
 COPY --from=builder /usr/share/squeezeboxserver/CPAN/arch/ /usr/share/squeezeboxserver/CPAN/arch/
