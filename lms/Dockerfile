@@ -1,6 +1,5 @@
 ARG BUILD_FROM=hassioaddons/debian-base:latest
 
-
 # ARGS...
 
 FROM ${BUILD_FROM} AS base
@@ -13,6 +12,8 @@ RUN mv /init /s6init
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get --no-install-recommends --no-install-suggests -qq -y install wget git rsync patch && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 FROM base AS builder
+ARG BUILD_ARCH
+
 RUN apt-get -qq -y update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
     patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev && \
