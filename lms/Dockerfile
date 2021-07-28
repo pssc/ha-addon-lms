@@ -15,12 +15,18 @@ RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" &&
 FROM base AS builder
 RUN apt-get -qq -y update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
-    patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential && \
+    patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
     git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.0 && \
     mkdir -p tmp && \
     cd slimserver-vendor/CPAN && \
+    mkdir -p build/include build/lib && \
+    if [ "${BUILD_ARCH}" = "i386" ];then \
+    ln -s /usr/include/jpeglib.h build/include/jpeglib.h && \
+    ln -s /usr/include/*/jconfig.h build/include/jconfig.h && \
+    ln -s /usr/lib/*/libjpeg.a build/lib/libjpeg.a \
+    ; fi && \
     TMPDIR=/tmp/sources/tmp ./buildme.sh && \
     mkdir -p /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/ && \
     cp -vr build/arch/*/*/ /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/
