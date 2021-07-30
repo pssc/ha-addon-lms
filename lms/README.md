@@ -1,4 +1,4 @@
-# Home Assistant Community Add-on: lms
+# Home Assistant Community Add-on: lms (Logitech Media Server)
 
 A complete and easy way to run the Logitech Media Server.
 
@@ -18,7 +18,7 @@ An addional related addon is available a [squeezelite player](https://github.com
 * tmpfs options (planned)
 * *Most certainly* doesn't mine bitcoin on your home automation server.  Definitely no.
 
-See the [readme on GitHub](https://github.com/pssc/ha-addon-lms) for all the details, or just install the add-on and open the Web UI.
+See the [Docs on GitHub](https://github.com/pssc/ha-addon-lms/tree/master/lms/DOCS.md) for all the details, or just install the add-on and open the Web UI.
 
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2021.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-beta-yellow.svg
