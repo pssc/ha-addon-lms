@@ -8,8 +8,8 @@ A complete and easy way to run the Logitech Media Server.
 ![Release][release-shield] ![Project Stage][project-stage-shield] ![Project Maintenance][maintenance-shield]<br>
 ![Supports i386 Architecture][i386-shield] ![Supports amd64 Architecture][amd64-shield] ![Supports armhf Architecture][armhf-shield] ![Supports armv7 Architecture][armv7-shield] ![Supports aarch64 Architecture][aarch64-shield]
 
-Flexible disk layout options, addional customisation of packages and startup to allow migration of existing setups.  As well as the installation of plugins.
-An addional related addon is available a [squeezelite player](https://github.com/pssc/ha-addon-squeezelite) for the Logitech Media Server.
+This addon provides flexible disk layout options, addional customisation of packages and startup to allow migration of existing setups.  As well as the installation of plugins and dependancies.
+An additonal related addon is available a [squeezelite player](https://github.com/pssc/ha-addon-squeezelite) for the Logitech Media Server.
 
 * Flexible disk layout options (WIP, NFS, dirs, links are available)
 * Migration from existing installs (WIP)
