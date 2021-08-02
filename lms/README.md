@@ -2,6 +2,8 @@
 
 A complete and easy way to run the Logitech Media Server.
 
+[![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fpssc%2Fha-addon-lms%2F)
+
 | :warning: Unfortunately the latest Squeezebox Radio firmware (7.7.3) comes with a bug which prevents it from connecting correctly to Logitech Media Server 8+. See https://github.com/Logitech/slimserver#sb-radio-and-logitech-media-server-8 for details and an easy mitigation. |
 | --- |
 
