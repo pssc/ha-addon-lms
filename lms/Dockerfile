@@ -35,7 +35,7 @@ RUN apt-get -qq -y update && \
 FROM base
 
 ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
-ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v8.1.1/logitechmediaserver_8.1.1_all.deb"
+ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v8.2.0/logitechmediaserver_8.2.0_all.deb"
 ARG debug=false
 ARG target_uid=1000
 
@@ -70,6 +70,7 @@ RUN apt-get -qq -y update && \
 		lvm2 \
 		exfat-fuse \
 		exfat-utils \
+		sshfs \
 		tzdata && \
 		apt-get install --no-install-recommends -qy wget curl perl tzdata libwww-perl libfont-freetype-perl liblinux-inotify2-perl libdata-dump-perl libio-socket-ssl-perl libnet-ssleay-perl libcrypt-ssleay-perl libcrypt-openssl-rsa-perl lame && \
 		apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -81,8 +82,7 @@ RUN echo "Download url: ${url}" && \
 	cd /tmp && \
         xlatest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
         latest_lms=$(echo "${purl}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
-	echo $latest_lms != $xlatest_lms && \
-	[ $latest_lms = $xlatest_lms ] && \
+	if [ $latest_lms = $latest_lms ];then  echo $latest_lms != $latest_lms ;sleep 600;fi && \
 	wget -nv $latest_lms && \
 	lms_deb=${latest_lms##*/} && \
 	dpkg -i $lms_deb && \
