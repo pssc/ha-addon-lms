@@ -1,6 +1,6 @@
 {
   "name": "Logitech Media Server",
-  "version": "0.0.46",
+  "version": "0.0.47",
   "slug": "lms",
   "description": "Logitech Media Server, SqueezeBox Server & UPNP Media Server",
   "url": "https://github.com/pssc/ha-addon-lms/",
@@ -40,7 +40,7 @@
   "privileged": [ "SYS_ADMIN" ],
   "xprivileged": [ "NET_ADMIN", "SYS_ADMIN", "SYS_RAWIO", "SYS_TIME", "SYS_NICE", "SYS_RESOURCE", "SYS_PTRACE", "SYS_MODULE" , "DAC_READ_SEARCH" ],
   "host_network": true,
-  "snapshot_exclude": [ "/data/music", "/data/mount", "/data/mnt" ],
+  "backup_exclude": [ "/data/music", "/data/mount", "/data/mnt" ],
   "ingress": true,
   "ingress_port": 0,
   "panel_icon": "mdi:music-box",
@@ -54,6 +54,7 @@
 	  "packages": []
   },
   "schema": {
+    "skin": "str?",
     "ssl": "bool?",
     "certfile": "str?",
     "keyfile": "str?",
