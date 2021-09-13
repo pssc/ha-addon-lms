@@ -130,7 +130,7 @@ In case you've found a bug, please [open an issue on GitHub][issues].
 
 [debian-packages]: https://packages.debian.org/
 
-lms]: https://forums.slimdevices.com/
+[lms]: https://forums.slimdevices.com/
 [forum]: https://community.home-assistant.io/t/home-assistant-community-addon-logitech-media-server-lms/338137
 [issues]: https://github.com/pssc/ha-addon-lms/issues
 [repository]: https://github.com/pssc/ha-addon-lms
