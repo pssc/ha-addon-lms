@@ -122,8 +122,8 @@ Got questions?
 
 You have several options to get them answered:
 
+- The Home Assistant [Community Forum LMS and Squeezelite addon topic][forum].
 - The [Home Assistant Discord Chat Server][discord].
-- The Home Assistant [Community Forum][forum].
 - Join the [Reddit subreddit][reddit] in [/r/homeassistant][reddit]
 
 In case you've found a bug, please [open an issue on GitHub][issues].
