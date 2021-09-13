@@ -12,6 +12,16 @@ declare ingress_entry
 declare keyfile
 
 port=$(bashio::addon.port 80)
+loc="donotmacthmestringhalmsingress"
+skin=""
+
+if bashio::config.has_value 'skin'; then
+        skin=$(bashio::config 'skin')
+	loc=""
+fi
+sed -i "s#%%skin%%#${skin}#g" /etc/nginx/servers/ingress.conf
+sed -i "s#%%loc%%#${loc}#g" /etc/nginx/servers/ingress.conf
+
 ingress_entry=$(bashio::addon.ingress_entry)
 if bashio::var.has_value "${port}"; then
     bashio::config.require.ssl
@@ -39,3 +49,4 @@ sed -i "s#%%ingress_entry%%#${ingress_entry}#g" /etc/nginx/servers/ingress.conf
 
 dns_host=$(bashio::dns.host)
 sed -i "s/%%dns_host%%/${dns_host}/g" /etc/nginx/includes/resolver.conf
+
