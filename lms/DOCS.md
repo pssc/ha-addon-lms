@@ -43,6 +43,14 @@ Flexible disk layout options, additional customisation of packages and startup t
 
 ---
 
+### Option: `skin` (optional)
+
+Name of skin to use for ingress interface.
+
+```yaml
+skin: material
+```
+
 ### Option: `mounts` (required may be empty)
 
 Note these paths are not backed up ```[ "/data/music", "/data/mount", "/data/mnt" ]```,
@@ -56,7 +64,7 @@ mounts:
 
 Directories to create.
 
-```yanml
+```yaml
 dirs:
   - /data/mnt/music
 ```
@@ -65,7 +73,7 @@ dirs:
 
 Links to create.
 
-```yanml
+```yaml
 links:
   - dest: /data/mnt/music
     link: /var/music
@@ -118,11 +126,14 @@ You have several options to get them answered:
 - The Home Assistant [Community Forum][forum].
 - Join the [Reddit subreddit][reddit] in [/r/homeassistant][reddit]
 
-In case you've found a bug, please [open an issue on our GitHub][issue].
+In case you've found a bug, please [open an issue on GitHub][issues].
+
+[debian-packages]: https://packages.debian.org/
+
+lms]: https://forums.slimdevices.com/
+[forum]: https://community.home-assistant.io/t/home-assistant-community-addon-logitech-media-server-lms/338137
+[issues]: https://github.com/pssc/ha-addon-lms/issues
+[repository]: https://github.com/pssc/ha-addon-lms
 
 [discord]: https://discord.gg/c5DvZ4e
-[forum]: https://community.home-assistant.io
-[issue]: https://github.com/pssc/ha-addon-lms/issues
 [reddit]: https://reddit.com/r/homeassistant
-[repository]: https://github.com/pssc/ha-addon-lms
-[debian-packages]: https://packages.debian.org/
