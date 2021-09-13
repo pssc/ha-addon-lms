@@ -1,7 +1,23 @@
-## [0.0.46] 2021-07-26
+## [0.0.47] 2021-09-12
 
 ### Warning
  - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Added
+ - Support for skins add "skin: material" to default to that skin for ingress
+ - sshfs
+ - Discussion forum
+ - Supprot for home assistant container as a LMS "Custom OS" for updates and inital wizard
+
+### Changes
+ - Update base to debian-addon 4.2.3
+ - Update LMS to version 8.2.0
+ - Fix typos in readme.
+
+### Fixes
+ - Change from snapshot to backup to remove depriation warnings
+
+## [0.0.46] 2021-07-26
 
 ### Changes
  - Multi part Docker build to reduce image size for perl modules build
