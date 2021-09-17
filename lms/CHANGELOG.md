@@ -1,7 +1,13 @@
-## [0.0.47] 2021-09-12
+## [0.0.48] 2021-09-17
 
 ### Warning
  - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Added
+ - Support for CIFS mounts
+
+## [0.0.47] 2021-09-12
+
 
 ### Added
  - Support for skins add "skin: material" to default to that skin for ingress

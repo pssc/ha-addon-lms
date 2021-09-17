@@ -16,7 +16,7 @@ A complete and easy way to run the [Logitech Media Server][lms].
 This addon provides flexible disk layout options, additional customisation of packages and start-up to allow migration of existing setups.  As well as the installation of plugins and dependencies.
 An additional related addon is available a [squeezelite player](https://github.com/pssc/ha-addon-squeezelite) for the Logitech Media Server.
 
-* Flexible disk layout options (WIP, NFS, dirs, links are available)
+* Flexible disk layout options (WIP, NFS, CIFS, dirs, links, /Media are available)
 * Migration from existing installs (WIP)
 * rsync support (WIP)
 * osync support (WIP)
