@@ -11,7 +11,7 @@ function path {
 
 path "${LMS_PREFS}"
 path "${LMS_PREFS}/plugin"
-path "${LMS_CACHE}"
+path "${LMS_CACHE}/tmp"
 path "${LMS_PLUGS}"
 path "${LMS_LOGDIR}"
 
