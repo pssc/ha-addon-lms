@@ -1,7 +1,16 @@
-## [0.0.48] 2021-09-17
+## [0.0.49] 2021-10-24
 
 ### Warning
  - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Fixes
+ - pemissions on /config/lms/cache/tmp
+ - url(X mapping in ingress
+
+### Added
+ - Examples for NAS mounts cifs/nfs.
+
+## [0.0.48] 2021-09-17
 
 ### Added
  - Support for CIFS mounts
