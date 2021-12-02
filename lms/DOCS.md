@@ -17,6 +17,8 @@ Navigate to the web UI via ingress or directly on port 9000 and configure.
 The LMS server add-on can be tweaked to your liking. This section
 describes each of the add-on configuration options.
 
+### Basic
+
 default locations
  - /config/lms
 
@@ -35,6 +37,31 @@ Example basic config:-
           "packages": []
 ```
 
+### NAS
+
+NAS mounting in the addon via the settings. So for nfs and cifs example:-
+
+```
+mounts:
+  - 'thepi4.lan:/srv/store/music/ /data/mnt/nfs'
+  - '-t cifs -o user=ha,pass=xxxx //testpi.lan/share /data/mnt/cifs'
+  - '--bind /media/music /data/mnt/music'
+dirs:
+ - /data/mnt/cifs
+ - /data/mnt/nfs
+
+links:
+  - dest: /data/mnt/music/collection
+    link: /var/music
+  - link: /srv/storage/incomming/new-music
+    dest: /data/mnt/music/new-music
+  - link: /srv/storage/music/playlists
+    dest: /data/mnt/music/playlists
+```
+This is all to make sure the mount point exists in an unbacked-up area and the mount options. The  use of links to give more friendly paths,
+So in my setup I have mounted media in the underlying OS and then substituted a bind mount for the raw nfs and also used links to make it look like my previous Linux install remain the same so all the paths for trackstat remain the same as I migrated that database.
+
+## AddonOtpions
 ---
 
 ### Option group `Environment`
