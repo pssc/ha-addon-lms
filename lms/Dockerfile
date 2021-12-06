@@ -38,6 +38,7 @@ ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=
 ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v8.2.0/logitechmediaserver_8.2.0_all.deb"
 ARG debug=false
 ARG target_uid=1000
+ARG BUILD_ARCH
 
 ENV S6_SERVICES_GRACETIME 119000
 ENV DISABLE_HA_AUTHENTICATION true
@@ -82,7 +83,7 @@ RUN if [ "${debug}" = "true " ];then apt-get update && apt-get upgrade -y -o Dpk
 RUN echo "Download url: ${url}" && \
 	cd /tmp && \
         xlatest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
-        latest_lms=$(echo "${purl}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
+        latest_lms=$(echo "${purl}" | sed 's/_all\.deb/_'$(echo ${BUILD_ARCH} | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
 	if [ $latest_lms = $latest_lms ];then  echo $latest_lms != $latest_lms ;sleep 600;fi && \
 	wget -nv $latest_lms && \
 	lms_deb=${latest_lms##*/} && \
