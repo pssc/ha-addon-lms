@@ -6,6 +6,7 @@
 ### Fixes
  - pemissions on /config/lms/cache/tmp
  - url(X mapping in ingress
+ - Fix arch of debian package pulled
 
 ### Added
  - Examples for NAS mounts cifs/nfs.
