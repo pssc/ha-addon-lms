@@ -1,7 +1,13 @@
-## [0.0.49] 2021-10-24
+## [0.0.50] 2021-12-11
 
 ### Warning
  - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Fixes
+ - pemissions on /config/lms/cache
+
+
+## [0.0.49] 2021-10-24
 
 ### Fixes
  - pemissions on /config/lms/cache/tmp
