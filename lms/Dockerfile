@@ -49,6 +49,7 @@ ENV LMS_PREFS /config/lms/prefs
 ENV LMS_PLUGS /config/lms/plugins
 ENV LMS_CACHE /config/lms/cache
 ENV LMS_LOGDIR /config/lms/logs
+ENV LMS_HACFGDIR /config/lms/addon
 #ENV LMS_LOGFILE stdout
 ENV LMS_OPTIONS " "
 ENV LMS_USER "squeezeboxserver"

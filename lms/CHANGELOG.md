@@ -5,6 +5,7 @@
 
 ### Fixes
  - pemissions on /config/lms/cache
+ - Fix ownership of key paths
 
 
 ## [0.0.49] 2021-10-24
