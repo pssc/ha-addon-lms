@@ -7,7 +7,8 @@ function path {
 	mkdir -p ${path}
         chown ${LMS_USER} ${path}
   fi
-  if [ ! -r "${LMS_HACFGDIR}/fixed_owner" ];then
+  # option?
+  if [ ! -r "${LMS_HACFGDIR}/no_fix_owner" ];then
       chown ${LMS_USER} ${path}
   fi
 }
@@ -19,7 +20,7 @@ path "${LMS_CACHE}"
 path "${LMS_CACHE}/tmp"
 path "${LMS_PLUGS}"
 path "${LMS_LOGDIR}"
-touch "${LMS_HACFGDIR}/fixed_owner"
+rm -f  "${LMS_HACFGDIR}/fixed_owner"
 
 : > ${LMS_LOGDIR}/${LMS_LOGFIlE:-"server.log"}
 chown ${LMS_USER} ${LMS_LOGDIR}/${LMS_LOGFIlE:-"server.log"}
