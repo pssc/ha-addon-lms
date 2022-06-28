@@ -40,7 +40,7 @@
   "privileged": [ "SYS_ADMIN", "DAC_READ_SEARCH" ],
   "xprivileged": [ "NET_ADMIN", "SYS_ADMIN", "SYS_RAWIO", "SYS_TIME", "SYS_NICE", "SYS_RESOURCE", "SYS_PTRACE", "SYS_MODULE" , "DAC_READ_SEARCH" ],
   "host_network": true,
-  "backup_exclude": [ "/data/music", "/data/mount", "/data/mnt" ],
+  "backup_exclude": [ "*/*/" ],
   "ingress": true,
   "ingress_port": 0,
   "panel_icon": "mdi:music-box",
