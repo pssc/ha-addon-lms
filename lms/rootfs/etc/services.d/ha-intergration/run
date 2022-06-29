@@ -29,7 +29,7 @@ function setup() {
 	# Health report
 	hass-cli system health || true
 	# Start sensor loop for pugin
-	( while true;do lms-sensors; sleep ${POLL_INTERVAL:-60} ;done ) &
+	( while true;do lms-sensors; sleep ${POLL_INTERVAL:-600} ;done ) &
 }
 
 

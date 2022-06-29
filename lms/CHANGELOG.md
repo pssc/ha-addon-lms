@@ -1,3 +1,15 @@
+## [0.0.51] 2021-01-11
+
+### Warning
+ - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Fixes
+ - ingress imageporxy mapping (issues with favorites and radio station art in material skin)
+
+### Changes
+ - Sensors update evey 10 mins.
+
+
 ## [0.0.50] 2021-12-11
 
 ### Warning

@@ -12,6 +12,19 @@ Follow these steps to get the add-on installed on your system:
 
 Navigate to the web UI via ingress or directly on port 9000 and configure.
 
+### iFrame
+
+Sub hassio.local for you network ip or hostname
+
+```
+panel_iframe:
+
+  music:
+    title: LMS
+    url: http://hassio.local:9000/
+    icon: mdi:music-circle-outline
+```
+
 ## Add-on Configuration
 
 The LMS server add-on can be tweaked to your liking. This section

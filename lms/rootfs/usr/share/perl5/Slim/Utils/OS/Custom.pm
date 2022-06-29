@@ -19,12 +19,13 @@ sub initDetails {
 sub initPrefs {
 	my ($class, $prefs) = @_;
 
-	$prefs->{wizardDone} = 1;
-	$prefs->{libraryname} = Slim::Utils::Strings::string('SQUEEZEBOX_SERVER');
-
 	if (-d MUSIC_DIR) {
 		$prefs->{mediadirs} = $prefs->{ignoreInImageScan} = $prefs->{ignoreInVideoScan} = [ MUSIC_DIR ];
 	}
+
+	$prefs->{wizardDone} = 1;
+	# no strings so  Take Hostname from Env from container setup scripts
+	$prefs->{libraryname} = $ENV{HAA_HOST}." - LMS HA Addon";
 }
 
 sub dirsFor {
