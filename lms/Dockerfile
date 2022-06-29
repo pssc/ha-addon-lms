@@ -16,7 +16,7 @@ ARG BUILD_ARCH
 
 RUN apt-get -qq -y update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
-    patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev && \
+    patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev libavformat-dev && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
     git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.0 && \
@@ -26,6 +26,7 @@ RUN apt-get -qq -y update && \
     if [ "${BUILD_ARCH}" = "i386" ];then \
     ln -s /usr/include/jpeglib.h build/include/jpeglib.h && \
     ln -s /usr/include/*/jconfig.h build/include/jconfig.h && \
+    ln -s /usr/include/libavformat.h build/include/libavformat.h && \
     ln -s /usr/lib/*/libjpeg.a build/lib/libjpeg.a \
     ; fi && \
     TMPDIR=/tmp/sources/tmp ./buildme.sh && \
