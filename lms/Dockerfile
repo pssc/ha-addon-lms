@@ -29,6 +29,7 @@ RUN apt-get -qq -y update && \
     ln -s /usr/include/*/jconfig.h build/include/jconfig.h && \
     ln -s /usr/lib/*/libjpeg.a build/lib/libjpeg.a \
     ; fi && \
+    TMPDIR=/tmp/sources/tmp ./buildme.sh Media::Scan && \
     TMPDIR=/tmp/sources/tmp ./buildme.sh && \
     mkdir -p /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/ && \
     cp -vr build/arch/*/*/ /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/
