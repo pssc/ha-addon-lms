@@ -10,7 +10,7 @@ Follow these steps to get the add-on installed on your system:
 
 ## How to use
 
-Navigate to the web UI via ingress or directly on port 9000 and configure.
+Navigate to the web UI via ingress or directly on port 9000 on your ha server and configure.
 
 ### iFrame
 
