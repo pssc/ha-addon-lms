@@ -30,7 +30,7 @@
       "backup:rw",
       "media:rw"
   ],
-  "image": "pssc/ha-addon-lms-{arch}",
+  "image": "ghcr.io/pssc/ha-addon-lms-{arch}",
   "tmpfs": true,
   "hassio_api": true,
   "apparmor": false,
@@ -47,11 +47,11 @@
   "panel_title": "lms",
   "stage": "experimental",
   "options": {
-	  "links": [],
+    "links": [],
           "mounts": [],
           "dirs": [],
-	  "init_commands": [],
-	  "packages": []
+   "init_commands": [],
+   "packages": []
   },
   "schema": {
     "skin": "str?",
