@@ -5,12 +5,12 @@
 
 ### Fixes
  - ingress imageporxy mapping (issues with favorites and radio station art in material skin)
- - libavformat CPAN build for mediascan
 
 ### Changes
  - Sensors update evey 10 mins.
  - use ghcr
  - Use lint and builder workflows for build
+ - Use 8.2 CPAN build repo
 
 
 ## [0.0.50] 2021-12-11

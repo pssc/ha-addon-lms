@@ -14,27 +14,29 @@ RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" &&
 FROM base AS builder
 ARG BUILD_ARCH
 
+#patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev libavformat-dev && \
 RUN apt-get -qq -y update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
-    patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev libavformat-dev && \
+    patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
-    git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.0 && \
+    git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.2 && \
     mkdir -p tmp && \
     cd slimserver-vendor/CPAN && \
     mkdir -p build/include build/lib && \
     if [ "${BUILD_ARCH}" = "i386" ];then \
     ln -s /usr/include/jpeglib.h build/include/jpeglib.h && \
     ln -s /usr/include/*/jconfig.h build/include/jconfig.h && \
-    ln -s /usr/include/libavformat.h build/include/libavformat.h && \
     ln -s /usr/lib/*/libjpeg.a build/lib/libjpeg.a \
     ; fi && \
     TMPDIR=/tmp/sources/tmp ./buildme.sh && \
     mkdir -p /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/ && \
     cp -vr build/arch/*/*/ /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/
 
+#ln -s /usr/include/libavformat.h build/include/libavformat.h && \
 FROM base
 
+# Bump cpan build to same version if possible
 ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
 ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v8.2.0/logitechmediaserver_8.2.0_all.deb"
 ARG debug=false
