@@ -1,17 +1,27 @@
-## [0.0.51] 2021-06-29
+## [0.0.52] 2021-07-13
 
 ### Warning
  - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Fixes
+ - User older base for i386 build
+
+### Changes
+ - use ghcr
+
+
+## [0.0.51] 2021-06-29
+
+### Changes
+ - Sensors update evey 10 mins.
 
 ### Fixes
  - ingress imageporxy mapping (issues with favorites and radio station art in material skin)
 
 ### Changes
  - Sensors update evey 10 mins.
- - use ghcr
  - Use lint and builder workflows for build
  - Use 8.2 CPAN build repo
-
 
 ## [0.0.50] 2021-12-11
 
