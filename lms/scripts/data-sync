@@ -1,0 +1,11 @@
+#!/bin/bash
+
+OPTS='--delete-during -atvrPHAX --exclude=lost+found'
+
+HOST=${1:-testpi}
+
+rsync ${OPTS} --exclude='new-music' --exclude='music' /srv/storage/music/ ${HOST}:/srv/store/music/ &
+rsync ${OPTS} /srv/storage/incomming/new-music /srv/storage/incomming/music ${HOST}:/srv/store/music/ &
+
+wait
+exit
