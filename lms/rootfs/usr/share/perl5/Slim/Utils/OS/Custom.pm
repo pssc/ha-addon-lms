@@ -24,7 +24,7 @@ sub initPrefs {
 	}
 
 	$prefs->{wizardDone} = 1;
-	# no strings so  Take Hostname from Env from container setup scripts
+	# no strings so Take Hostname from Env from container setup scripts
 	$prefs->{libraryname} = $ENV{HAA_HOST}." - LMS HA Addon";
 }
 
@@ -84,6 +84,8 @@ sub aclFiletest {
 
 sub installerOS { 'src' };
 
+#FIXME as config opt in env.. as we do want this silent
+#
 # we don't really support auto-update, but we need to make the update checker believe so, or it wouldn't check for us
 sub canAutoUpdate {
 	# make sure auto download is always enabled - we don't really auto-update, but this way we're called when we have update info

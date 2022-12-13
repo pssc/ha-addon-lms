@@ -14,7 +14,7 @@ Navigate to the web UI via ingress or directly on port 9000 on your ha server an
 
 ### iFrame
 
-Sub hassio.local for you network ip or hostname
+substitute hassio.local for you network ip or hostname for home assitant.
 
 ```
 panel_iframe:

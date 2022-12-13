@@ -1,3 +1,11 @@
+## [0.0.53] 2022-11-13
+
+### Chnages
+ - lms 5.3.0
+
+### Fixes
+ - Documenation spelling and clarifiaction
+
 ## [0.0.52] 2021-07-13
 
 ### Warning
