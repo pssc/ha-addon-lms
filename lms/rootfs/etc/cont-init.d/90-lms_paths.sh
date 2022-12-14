@@ -26,3 +26,19 @@ rm -f  "${LMS_HACFGDIR}/fixed_owner"
 chown ${LMS_USER} ${LMS_LOGDIR}/${LMS_LOGFIlE:-"server.log"}
 : > ${LMS_LOGDIR}/"perfmon.log"
 chown ${LMS_USER} ${LMS_LOGDIR}/"perfmon.log"
+
+
+if [ -r "${LMS_HACFGDIR}/restore_perms_fix" ];then
+	if [ -r "${LMS_PREFS}/server.prefs" ];then
+	   if [ ! -r "/data/notbackedup/do_no_restore_perms" ];then
+	      # we have run howerver we have been restored form backup so own the files
+              chown -Rh ${LMS_USER} ${LMS_HACFGDIR}
+              path "/data/notbackedup/"
+              touch "/data/notbackedup/do_no_restore_perms"
+	   fi
+	fi
+else
+    touch "${LMS_HACFGDIR}/restore_perms_fix"
+    path "/data/notbackedup/"
+    touch "/data/notbackedup/do_no_restore_perms"
+fi

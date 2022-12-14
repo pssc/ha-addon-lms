@@ -1,16 +1,19 @@
 ## [0.0.53] 2022-11-13
+### Warning
+ - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
 
 ### Changes
  - lms 8.3.0
  - lms panel available to non admin users
 
+### Added
+ - change perms on restore logic
+
 ### Fixes
  - Documenation spelling and clarifiaction
 
-## [0.0.52] 2021-07-13
 
-### Warning
- - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+## [0.0.52] 2021-07-13
 
 ### Fixes
  - User older base for i386 build
@@ -33,9 +36,6 @@
  - Use 8.2 CPAN build repo
 
 ## [0.0.50] 2021-12-11
-
-### Warning
- - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
 
 ### Fixes
  - pemissions on /config/lms/cache

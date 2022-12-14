@@ -37,7 +37,7 @@
   "homeassistant_api": true,
   "privileged": [ "SYS_ADMIN", "DAC_READ_SEARCH" ],
   "host_network": true,
-  "backup_exclude": [ "/data/music", "/data/mount", "/data/mnt" ],
+  "backup_exclude": [ "/data/music", "/data/mount", "/data/mnt", "/data/notbackedup" ],
   "ingress": true,
   "ingress_port": 0,
   "panel_icon": "mdi:music-box",
