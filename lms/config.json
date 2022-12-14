@@ -42,6 +42,7 @@
   "ingress_port": 0,
   "panel_icon": "mdi:music-box",
   "panel_title": "lms",
+  "panel_admin": false,
   "stage": "experimental",
   "options": {
     "links": [],

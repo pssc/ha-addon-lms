@@ -1,7 +1,8 @@
 ## [0.0.53] 2022-11-13
 
-### Chnages
- - lms 5.3.0
+### Changes
+ - lms 8.3.0
+ - lms panel available to non admin users
 
 ### Fixes
  - Documenation spelling and clarifiaction
