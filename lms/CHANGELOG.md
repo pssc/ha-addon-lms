@@ -8,6 +8,7 @@
 
 ### Added
  - change perms on restore logic
+ - change perms on configuration option
 
 ### Fixes
  - Documenation spelling and clarifiaction

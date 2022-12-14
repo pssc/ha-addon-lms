@@ -69,6 +69,7 @@
     "mounts": ["str?"],
     "dirs": ["str?"],
     "init_commands": ["str?"],
-    "packages": ["str?"]
+    "packages": ["str?"],
+    "set_permissions": ["bool?"]
   }
 }

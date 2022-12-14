@@ -22,4 +22,5 @@ ha_to_env OPTIONS ${PF}
 ha_to_env LOGFILE ${PF}
 ha_to_env LOGDIR ${PF}
 ha_to_env NX ${PF}
+ha_to_env set_permissions ${PF}
 exit
