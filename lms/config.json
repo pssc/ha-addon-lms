@@ -71,5 +71,6 @@
     "init_commands": ["str?"],
     "packages": ["str?"],
     "set_permissions": ["bool?"]
+    "upgrade_packages": ["bool?"]
   }
 }

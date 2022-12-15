@@ -3,12 +3,19 @@
 # Install user configured/requested packages
 # ==============================================================================
 if bashio::config.has_value 'packages'; then
-   bashio::log.info " Installing user configured/requested packages"
+   bashio::log.info " Updating package lists"
    apt-get update \
         || bashio::exit.nok 'Failed updating packages repository indexes'
 
-    for package in $(bashio::config 'packages'); do
+   if [ "$(bashio::config 'upgrade_packages')" = "true" ];then
+        apt-get dist-upgrade \
+            || bashio::log.error 'Failed updating packages'
+   fi
+
+   for package in $(bashio::config 'packages'); do
+        bashio::log.info " Installing package ${package}"
         apt-get install -y --no-install-suggests --no-install-recommends  "$package" \
-            || bashio::exit.nok "Failed installing package ${package}"
-    done
+		|| ( bashio::log.error "Failed installing package ${package}" ;bashio::exit.nok "Failed installing package ${package}" )
+   done
+   bashio::log.info " Installing user configured/requested packages"
 fi
