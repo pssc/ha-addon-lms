@@ -4,7 +4,7 @@
 # Set up config from saved
 # ==============================================================================
 
-CF="/config/lms/options.json"
+CF="/config/lms/addon/options.json"
 CD="/data/options.json"
 CS="${CD}.orig"
 
