@@ -43,6 +43,6 @@ else
     touch "/data/notbackedup/do_no_restore_perms"
 fi
 
-if [ "${LMS_set_permissions}" = "true" ];then
+if [ "${LMS_set_permissions:-""}" = "true" ];then
     chown -Rh "${LMS_USER}" "${LMS_HACFGDIR}"
 fi
