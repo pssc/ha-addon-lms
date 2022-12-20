@@ -12,6 +12,7 @@
 
 ### Fixes
  - Documenation spelling and clarifiaction
+ - Remove broken heathcheck and hass-cli
 
 
 ## [0.0.52] 2021-07-13
