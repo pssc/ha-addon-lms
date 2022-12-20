@@ -26,8 +26,9 @@ function setup() {
 	bashio::net.wait_for 8123 localhost 900
 	# Supervisor API
 	bashio::net.wait_for 80 supervisor 900
+        bashio::log.info "Services up or timeout"
 	# Health report
-	hass-cli system health || true
+	#hass-cli system health || true
 	# Start sensor loop for pugin
 	( while true;do lms-sensors; sleep ${POLL_INTERVAL:-600} ;done ) &
 }

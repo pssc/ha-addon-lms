@@ -136,12 +136,13 @@ COPY rootfs-ingress/ /
 RUN cd /tmp && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats && cd /tmp && rm -r /tmp/osync
 
 # hass-cli
-RUN apt-get -qq -y update && \
-    apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc && \
-    apt-get install -y --no-install-recommends python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log && \
-    pip3 install homeassistant-cli && \
-    apt-get autoremove && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#RUN apt-get -qq -y update && \
+#    apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc && \
+#    apt-get install -y --no-install-recommends python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log && \
+#    pip3 install click==8.0.4 && \
+#    pip3 install homeassistant-cli && \
+#    apt-get autoremove && \
+#    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 #pip3 show homeassistant-cli | grep Requires | sed 's/.*: /python3-/' | sed 's/, / python3-/g'
 # apt-get remove python3-dev gcc \
 
