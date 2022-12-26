@@ -20,7 +20,7 @@ RUN apt-get -qq -y update && \
     patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
-    git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.2 && \
+    git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.3 && \
     mkdir -p tmp && \
     cd slimserver-vendor/CPAN && \
     mkdir -p build/include build/lib && \
