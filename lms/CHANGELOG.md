@@ -3,7 +3,7 @@
  - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
 
 ### Changes
- - lms 8.3.0
+ - lms and CPAN support bumped to 8.3
  - lms panel available to non admin users
 
 ### Added
@@ -13,6 +13,7 @@
 ### Fixes
  - Documenation spelling and clarifiaction
  - Remove broken heathcheck and hass-cli
+ - Notification of updates users can't do anthing about
 
 
 ## [0.0.52] 2021-07-13

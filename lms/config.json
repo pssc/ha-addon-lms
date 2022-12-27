@@ -71,6 +71,7 @@
     "init_commands": ["str?"],
     "packages": ["str?"],
     "set_permissions": ["bool?"],
-    "upgrade_packages": ["bool?"]
+    "upgrade_packages": ["bool?"],
+    "autoupdate_notify": ["bool?"]
   }
 }
