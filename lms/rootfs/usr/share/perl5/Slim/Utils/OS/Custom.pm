@@ -88,11 +88,14 @@ sub installerOS { 'src' };
 #
 # we don't really support auto-update, but we need to make the update checker believe so, or it wouldn't check for us
 sub canAutoUpdate {
+        my $log = Slim::Utils::Log::logger('server.update');
+
         my $variable = $ENV{'LMS_autoupdate_notify'};
 	if ($varible ne 'true') {
 	        Slim::Utils::Prefs::preferences('server')  ->set('autoDownloadUpdate', 0);
 		return 0;
 	}
+        $log->warn("Logitech Media Server can't be upgraded automatically in a home assisant addon, update info provided for information only");
 	# make sure auto download is always enabled - we don't really auto-update, but this way we're called when we have update info
 	Slim::Utils::Prefs::preferences('server')  ->set('autoDownloadUpdate', 1);
 	# dirty hack to only return true when called from the update checker...
