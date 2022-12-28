@@ -90,6 +90,7 @@ sub installerOS { 'src' };
 sub canAutoUpdate {
         my $variable = $ENV{'LMS_autoupdate_notify'};
 	if ($varible ne 'true') {
+	        Slim::Utils::Prefs::preferences('server')  ->set('autoDownloadUpdate', 0);
 		return 0;
 	}
 	# make sure auto download is always enabled - we don't really auto-update, but this way we're called when we have update info
