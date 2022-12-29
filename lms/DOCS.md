@@ -53,12 +53,12 @@ Example basic config:-
 
 ### NAS
 
-NAS mounting in the addon via the settings. So for nfs and cifs example:-
+NAS mounting in the addon via the settings. So for nfs and cifs/smb3 example:-
 
 ```
 mounts:
   - 'thepi4.lan:/srv/store/music/ /data/mnt/nfs'
-  - '-t cifs -o user=ha,pass=xxxx //testpi.lan/share /data/mnt/cifs'
+  - '-t smb3 -o user=ha,pass=xxxx //testpi.lan/share /data/mnt/cifs'
   - '--bind /media/music /data/mnt/music'
 dirs:
  - /data/mnt/cifs

@@ -14,6 +14,7 @@
  - Documenation spelling and clarifiaction
  - Remove broken heathcheck and hass-cli
  - Notification of updates users can't do anthing about
+ - Fix docs exmaple to use better smb dialect
 
 
 ## [0.0.52] 2021-07-13
