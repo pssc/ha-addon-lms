@@ -37,7 +37,7 @@
   "homeassistant_api": true,
   "privileged": [ "SYS_ADMIN", "DAC_READ_SEARCH" ],
   "host_network": true,
-  "backup_exclude": [ "/data/music", "/data/mount", "/data/mnt", "/data/notbackedup" ],
+  "backup_exclude": [ "./lms/music/**", "./lms/mnt/**", "./lms/notbackedup/**", "./lms/test/*", "*/nobackup/*" ],
   "ingress": true,
   "ingress_port": 0,
   "panel_icon": "mdi:music-box",
@@ -70,8 +70,8 @@
     "dirs": ["str?"],
     "init_commands": ["str?"],
     "packages": ["str?"],
-    "set_permissions": ["bool?"],
-    "upgrade_packages": ["bool?"],
-    "autoupdate_notify": ["bool?"]
+    "set_permissions": "bool?",
+    "upgrade_packages": "bool?",
+    "autoupdate_notify": "bool?"
   }
 }
