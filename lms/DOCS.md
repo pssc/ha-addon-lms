@@ -10,7 +10,20 @@ Follow these steps to get the add-on installed on your system:
 
 ## How to use
 
-Navigate to the web UI via ingress or directly on port 9000 and configure.
+Navigate to the web UI via ingress or directly on port 9000 on your ha server and configure.
+
+### iFrame
+
+substitute hassio.local for you network ip or hostname for home assitant.
+
+```
+panel_iframe:
+
+  music:
+    title: LMS
+    url: http://hassio.local:9000/
+    icon: mdi:music-circle-outline
+```
 
 ## Add-on Configuration
 
@@ -21,6 +34,7 @@ describes each of the add-on configuration options.
 
 default locations
  - /config/lms
+This can get quite big due to the chache directory unformiantuly the cahce directory isnt just a cache and contains state, so does need to be backed up if you want to restore correctly. For 20k songs somting around the ~650MB is not unexpected. WIP on a cache clean service so this can be done before backup, through this will incease ware on an SD card.
 
 Addional software over lms.
  - osync
@@ -39,12 +53,12 @@ Example basic config:-
 
 ### NAS
 
-NAS mounting in the addon via the settings. So for nfs and cifs example:-
+NAS mounting in the addon via the settings. So for nfs and cifs/smb3 example:-
 
 ```
 mounts:
   - 'thepi4.lan:/srv/store/music/ /data/mnt/nfs'
-  - '-t cifs -o user=ha,pass=xxxx //testpi.lan/share /data/mnt/cifs'
+  - '-t smb3 -o user=ha,pass=xxxx //testpi.lan/share /data/mnt/cifs'
   - '--bind /media/music /data/mnt/music'
 dirs:
  - /data/mnt/cifs
@@ -72,7 +86,7 @@ Flexible disk layout options, additional customisation of packages and startup t
 
 ### Option: `skin` (optional)
 
-Name of skin to use for ingress interface.  In this case the material skin is an extra skin installable through lms pelkase do this before enabling this option and restartig the HA addon.  Each skin may require custom support for ingress use currently only material has been tested over the default.
+Name of skin to use for ingress interface.  In this case the material skin is an extra skin installable through lms.  Please do this before enabling this option and restartig the HA addon.  Each skin requires custom support for ingress, currently only material has been tested over the default.
 
 ```yaml
 skin: material

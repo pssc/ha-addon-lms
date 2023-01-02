@@ -1,0 +1,33 @@
+#!/bin/bash
+HALMS=/usr/share/hassio/homeassistant/lms
+LMSH=$1
+LMST=$2
+LMSP=/var/lib/squeezeboxserver
+SLMS=${LMSH}:${LMSP}
+HALMS=/usr/share/hassio/homeassistant/lms
+
+
+#rsync /etc/squeezeboxserver?
+ssh $LMSH sudo /etc/init.d/logitechmediaserver stop
+with-contenv ha addons stop local_lms
+OPTS='--delete-during -atvrP'
+#plugins
+rsync ${OPTS} ${SLMS}/Plugins/ ${HALMS}/plugins/
+#cache
+#exlcude?
+sudo find /var/lib/squeezeboxserver/cache -type d \! -perm /o=rx -exec chmod o+rx {} \;
+sudo find /var/lib/squeezeboxserver/cache -type f \! -perm /o=r -exec chmod o+r {} \;
+ssh erebor.lan find . -type d \! -perm /o=rx
+
+rsync ${OPTS} ${SLMS}/cache/ ${HALMS}/cache/
+#prefs
+rsync ${OPTS} ${SLMS}/prefs/ ${HALMS}/prefs/
+ssh $LMSH sudo /etc/init.d/logitechmediaserver start
+
+vi $HALMS/prefs/server.prefs
+#uuid
+#libname
+#rm cache.db
+#rm PluginCache-*
+# Fixme dump db's and reinmort
+with-contenv ha addons start local_lms

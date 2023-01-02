@@ -1,13 +1,11 @@
 {
   "name": "Logitech Media Server",
-  "version": "0.0.50",
+  "version": "0.0.53",
   "slug": "lms",
   "description": "Logitech Media Server, SqueezeBox Server & UPNP Media Server",
   "url": "https://github.com/pssc/ha-addon-lms/",
-  "webui": "http://[HOST]:[PORT:9000]/",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "services",
-  "boot": "auto",
   "audio": true,
   "stdin": true,
   "ports": {
@@ -30,7 +28,7 @@
       "backup:rw",
       "media:rw"
   ],
-  "image": "pssc/ha-addon-lms-{arch}",
+  "image": "ghcr.io/pssc/ha-addon-lms-{arch}",
   "tmpfs": true,
   "hassio_api": true,
   "apparmor": false,
@@ -38,20 +36,20 @@
   "full_access": true,
   "homeassistant_api": true,
   "privileged": [ "SYS_ADMIN", "DAC_READ_SEARCH" ],
-  "xprivileged": [ "NET_ADMIN", "SYS_ADMIN", "SYS_RAWIO", "SYS_TIME", "SYS_NICE", "SYS_RESOURCE", "SYS_PTRACE", "SYS_MODULE" , "DAC_READ_SEARCH" ],
   "host_network": true,
-  "backup_exclude": [ "/data/music", "/data/mount", "/data/mnt" ],
+  "backup_exclude": [ "./lms/music/**", "./lms/mnt/**", "./lms/notbackedup/**", "./lms/test/*", "*/nobackup/*" ],
   "ingress": true,
   "ingress_port": 0,
   "panel_icon": "mdi:music-box",
   "panel_title": "lms",
+  "panel_admin": false,
   "stage": "experimental",
   "options": {
-	  "links": [],
+    "links": [],
           "mounts": [],
           "dirs": [],
-	  "init_commands": [],
-	  "packages": []
+   "init_commands": [],
+   "packages": []
   },
   "schema": {
     "skin": "str?",
@@ -71,6 +69,9 @@
     "mounts": ["str?"],
     "dirs": ["str?"],
     "init_commands": ["str?"],
-    "packages": ["str?"]
+    "packages": ["str?"],
+    "set_permissions": "bool?",
+    "upgrade_packages": "bool?",
+    "autoupdate_notify": "bool?"
   }
 }

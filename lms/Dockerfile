@@ -9,17 +9,18 @@ ENV DEBIAN_FRONTEND "noninteractive"
 RUN mv /init /s6init
 
 # Upgrading the operating system inside the container
-RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get --no-install-recommends --no-install-suggests -qq -y install wget git rsync patch && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update && apt-get dist-upgrade -y -o Dpkg::Options::="--force-confold" && apt-get --no-install-recommends --no-install-suggests -qq -y install wget git rsync patch && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 FROM base AS builder
 ARG BUILD_ARCH
 
+#patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev libavformat-dev && \
 RUN apt-get -qq -y update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
     patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
-    git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.0 && \
+    git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.3 && \
     mkdir -p tmp && \
     cd slimserver-vendor/CPAN && \
     mkdir -p build/include build/lib && \
@@ -28,14 +29,17 @@ RUN apt-get -qq -y update && \
     ln -s /usr/include/*/jconfig.h build/include/jconfig.h && \
     ln -s /usr/lib/*/libjpeg.a build/lib/libjpeg.a \
     ; fi && \
+    TMPDIR=/tmp/sources/tmp ./buildme.sh Media::Scan && \
     TMPDIR=/tmp/sources/tmp ./buildme.sh && \
     mkdir -p /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/ && \
     cp -vr build/arch/*/*/ /usr/share/squeezeboxserver/CPAN/arch/$(basename build/arch/*)/
 
+#ln -s /usr/include/libavformat.h build/include/libavformat.h && \
 FROM base
 
+# Bump cpan build to same version if possible
 ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
-ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v8.2.0/logitechmediaserver_8.2.0_all.deb"
+ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v8.3.0/logitechmediaserver_8.3.0_all.deb"
 ARG debug=false
 ARG target_uid=1000
 ARG BUILD_ARCH
@@ -132,12 +136,13 @@ COPY rootfs-ingress/ /
 RUN cd /tmp && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats && cd /tmp && rm -r /tmp/osync
 
 # hass-cli
-RUN apt-get -qq -y update && \
-    apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc && \
-    apt-get install -y --no-install-recommends python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log && \
-    pip3 install homeassistant-cli && \
-    apt-get autoremove && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#RUN apt-get -qq -y update && \
+#    apt-get install -y --no-install-recommends python3-pip python3-setuptools python3-dev python3-wheel gcc && \
+#    apt-get install -y --no-install-recommends python3-jsonpath-rw python3-regex python3-requests python3-aiohttp python3-tabulate python3-netdisco python3-jinja2 python3-dateparser python3-ruamel.yaml python3-click python3-click-log && \
+#    pip3 install click==8.0.4 && \
+#    pip3 install homeassistant-cli && \
+#    apt-get autoremove && \
+#    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 #pip3 show homeassistant-cli | grep Requires | sed 's/.*: /python3-/' | sed 's/, / python3-/g'
 # apt-get remove python3-dev gcc \
 

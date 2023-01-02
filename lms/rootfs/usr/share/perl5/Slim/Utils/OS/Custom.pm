@@ -19,12 +19,13 @@ sub initDetails {
 sub initPrefs {
 	my ($class, $prefs) = @_;
 
-	$prefs->{wizardDone} = 1;
-	$prefs->{libraryname} = Slim::Utils::Strings::string('SQUEEZEBOX_SERVER');
-
 	if (-d MUSIC_DIR) {
 		$prefs->{mediadirs} = $prefs->{ignoreInImageScan} = $prefs->{ignoreInVideoScan} = [ MUSIC_DIR ];
 	}
+
+	$prefs->{wizardDone} = 1;
+	# no strings so Take Hostname from Env from container setup scripts
+	$prefs->{libraryname} = $ENV{HAA_HOST}." - LMS HA Addon";
 }
 
 sub dirsFor {
@@ -83,11 +84,20 @@ sub aclFiletest {
 
 sub installerOS { 'src' };
 
+#FIXME as config opt in env.. as we do want this silent
+#
 # we don't really support auto-update, but we need to make the update checker believe so, or it wouldn't check for us
 sub canAutoUpdate {
-	# make sure auto download is always enabled - we don't really auto-update, but this way we're called when we have update info
-	Slim::Utils::Prefs::preferences('server')->set('autoDownloadUpdate', 1);
+        my $log = Slim::Utils::Log::logger('server.update');
 
+        my $auto = $ENV{'LMS_autoupdate_notify'};
+	if ($auto ne 'true') {
+	        Slim::Utils::Prefs::preferences('server')  ->set('autoDownloadUpdate', 0);
+		return 0;
+	}
+        $log->warn("Logitech Media Server can't be upgraded automatically in a home assisant addon, update info provided for information only");
+	# make sure auto download is always enabled - we don't really auto-update, but this way we're called when we have update info
+	Slim::Utils::Prefs::preferences('server')  ->set('autoDownloadUpdate', 1);
 	# dirty hack to only return true when called from the update checker...
 	my ($subr) = (caller(1))[3];
 	return $subr eq 'Slim::Utils::Update::checkVersion' ? 1 : 0;
