@@ -5,6 +5,7 @@
 ### Changes
  - lms and CPAN support bumped to 8.3
  - lms panel available to non admin users
+ - low container OS updates without package installs
 
 ### Added
  - change perms on restore logic
@@ -14,7 +15,8 @@
  - Documenation spelling and clarifiaction
  - Remove broken heathcheck and hass-cli
  - Notification of updates users can't do anthing about
- - Fix docs exmaple to use better smb dialect
+ - Fix docs example to use better smb dialect
+ - Backup exlusions updated
 
 
 ## [0.0.52] 2021-07-13
