@@ -30,7 +30,7 @@ See the [Docs on GitHub](https://github.com/pssc/ha-addon-lms/tree/master/lms/DO
 Create an [issue on github][issues], or if its a general query ask on the [home assistant thread][forum]
 
 
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2022.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-beta-yellow.svg
 [release-shield]: https://img.shields.io/badge/version-v0.53-blue.svg
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
