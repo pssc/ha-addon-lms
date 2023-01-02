@@ -1,3 +1,6 @@
+## [0.0.54] 2023-01-02
+
+
 ## [0.0.53] 2023-01-02
 ### Warning
  - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
