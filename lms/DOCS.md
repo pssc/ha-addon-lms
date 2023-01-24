@@ -34,7 +34,7 @@ describes each of the add-on configuration options.
 
 default locations
  - /config/lms
-This can get quite big due to the chache directory unformiantuly the cahce directory isnt just a cache and contains state, so does need to be backed up if you want to restore correctly. For 20k songs somting around the ~650MB is not unexpected. WIP on a cache clean service so this can be done before backup, through this will incease ware on an SD card.
+This can get quite big due to the chache directory unformiantuly the cache directory isnt just a cache and contains state, so does need to be backed up if you want to restore correctly. For 20k songs somting around the ~650MB is not unexpected. WIP on a cache clean service so this can be done before backup, through this will incease ware on an SD card.
 
 Addional software over lms.
  - osync
