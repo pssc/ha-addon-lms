@@ -101,15 +101,18 @@ Note these paths are not backed up ```[ "/data/music", "/data/mount", "/data/mnt
 mounts:
   - '-t nfs storage-music.lan:/srv/store/music /data/mnt/music'
   - /device/path/name /mount/point/path/location
-  - /dev/disk/by-id/dm-name-storage-music /var/music
+  - /dev/disk/by-id/dm-name-storage-music /mnt
 ```
-Operation is a describled for debian mount command, best try it out in the terminal addon first to see if it works then just remove the mount command prefix and add to the config as above.
+
 These mounted filesystems are only available in there own container lms's one in the case.
+
+You may need to turn protection mode off, for some devie access for example local disks.
+
+Operation is a describled for debian mount command, best try it out in the terminal addon first to see if it works then just remove the mount command prefix and add to the config as above.
 
 ```
 mount [-fnrsvw] [-t vfstype] [-o options] device dir
 ```
-You may need to turn protection mode off.
 
 ### Option: `dirs` (required may be empty)
 
