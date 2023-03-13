@@ -21,7 +21,7 @@ jobs:
       changed: ${{ steps.changed_addons.outputs.changed }}
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@v3.3.0
 
       - name: Get changed files
         id: changed_files
@@ -68,7 +68,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3.2.0
+        uses: actions/checkout@v3.3.0
 
       - name: Get information
         id: info
@@ -100,7 +100,7 @@ jobs:
 
       - name: Build ${{ matrix.addon }} add-on
         if: steps.check.outputs.build_arch == 'true'
-        uses: home-assistant/builder@2022.11.0
+        uses: home-assistant/builder@2023.03.0
         with:
           args: |
             ${{ env.BUILD_ARGS }} \

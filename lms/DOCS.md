@@ -75,6 +75,7 @@ links:
 This is all to make sure the mount point exists in an unbacked-up area and the mount options. The  use of links to give more friendly paths,
 So in my setup I have mounted media in the underlying OS and then substituted a bind mount for the raw nfs and also used links to make it look like my previous Linux install remain the same so all the paths for trackstat remain the same as I migrated that database.
 
+
 ## AddonOtpions
 ---
 
@@ -99,6 +100,18 @@ Note these paths are not backed up ```[ "/data/music", "/data/mount", "/data/mnt
 ```yaml
 mounts:
   - '-t nfs storage-music.lan:/srv/store/music /data/mnt/music'
+  - /device/path/name /mount/point/path/location
+  - /dev/disk/by-id/dm-name-storage-music /mnt
+```
+
+These mounted filesystems are only available in there own container lms's one in the case.
+
+You may need to turn protection mode off, for some devie access for example local disks.
+
+Operation is a describled for debian mount command, best try it out in the terminal addon first to see if it works then just remove the mount command prefix and add to the config as above.
+
+```
+mount [-fnrsvw] [-t vfstype] [-o options] device dir
 ```
 
 ### Option: `dirs` (required may be empty)
