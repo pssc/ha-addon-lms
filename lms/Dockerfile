@@ -134,7 +134,7 @@ RUN apt-get -qq -y update && \
 COPY rootfs-ingress/ /
 
 # osync
-RUN cd /tmp && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats && cd /tmp && rm -r /tmp/osync
+RUN cd /tmp && git clone --depth 1 -b "stable" https://github.com/deajan/osync && cd osync && bash install.sh --no-stats ; cd /tmp && rm -r /tmp/osync
 
 # hass-cli
 #RUN apt-get -qq -y update && \
