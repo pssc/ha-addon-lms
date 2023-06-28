@@ -31,6 +31,7 @@ chown ${LMS_USER} ${LMS_LOGDIR}/"perfmon.log"
 if [ -r "${LMS_HACFGDIR}/restore_perms_fix" ];then
 	if [ -r "${LMS_PREFS}/server.prefs" ];then
 	   if [ ! -r "/data/lms/notbackedup/do_no_restore_perms" ];then
+              bashio::log.info " Restore perms"
 	      # we have run howerver we have been restored form backup so own the files
               chown -Rh "${LMS_USER}" "${LMS_CFG}"
               path "/data/lms/notbackedup/"
@@ -44,5 +45,6 @@ else
 fi
 
 if [ "${LMS_set_permissions:-""}" = "true" ];then
+    bashio::log.info " set perms"
     chown -Rh "${LMS_USER}" "${LMS_CFG}"
 fi
