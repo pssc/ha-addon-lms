@@ -39,7 +39,7 @@ FROM base
 
 # Bump cpan build to same version if possible
 ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
-ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v8.3.0/logitechmediaserver_8.3.0_all.deb"
+ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v8.3.1/logitechmediaserver_8.3.1_all.deb"
 ARG debug=false
 ARG target_uid=1000
 ARG BUILD_ARCH
@@ -49,6 +49,7 @@ ENV DISABLE_HA_AUTHENTICATION true
 
 # Debug?
 # LMS
+ENV LMS_CFG   /config/lms
 ENV LMS_PREFS /config/lms/prefs
 ENV LMS_PLUGS /config/lms/plugins
 ENV LMS_CACHE /config/lms/cache
