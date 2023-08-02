@@ -1,6 +1,12 @@
-## [0.0.54] 2023-01-02
+## [0.0.55] 2023-08-02
+
 ### Warning
  - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Changes
+ - Debian base to 0.7.1
+
+## [0.0.54] 2023-01-02
 
 ### Changes
  - lms and CPAN support bumped to 8.3.1
