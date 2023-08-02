@@ -5,6 +5,11 @@
 
 ### Changes
  - Debian base to 0.7.1
+ - DavFS2 included for nextcloud support.
+
+### Fixes
+ - extfat-utils -> extfatprogs
+ - HA init is now false
 
 ## [0.0.54] 2023-01-02
 
