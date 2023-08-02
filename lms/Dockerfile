@@ -40,7 +40,7 @@ FROM base
 # Bump cpan build to same version if possible
 ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
 ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v8.3.1/logitechmediaserver_8.3.1_all.deb"
-ARG debug=false
+ARG debug=true
 ARG target_uid=1000
 ARG BUILD_ARCH
 

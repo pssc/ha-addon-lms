@@ -29,6 +29,7 @@ See the [Docs on GitHub](https://github.com/pssc/ha-addon-lms/tree/master/lms/DO
 ## Support
 Create an [issue on github][issues], or if its a general query ask on the [home assistant thread][forum]
 
+The i386 build is becomming increasing hard and is currently use an older debian base version...
 
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-beta-yellow.svg
@@ -37,7 +38,7 @@ Create an [issue on github][issues], or if its a general query ask on the [home 
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
 
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
+[i386-shield]: https://img.shields.io/badge/i386-yes-yellow.svg
 [armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
