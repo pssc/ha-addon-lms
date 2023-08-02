@@ -1,5 +1,9 @@
 #!/bin/sh
+echo lms init "$$" "$@"
+#clone std in
+exec 10<&1
 mount -t tmpfs -o rw,nosuid,nodev,mode=755 tmpfs /run
 mount -o remount,exec /config
 umount /proc/asound
+echo s6init next
 exec /s6init "$@"
