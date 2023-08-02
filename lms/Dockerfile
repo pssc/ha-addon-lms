@@ -76,7 +76,8 @@ RUN apt-get -qq -y update && \
 		awscli \
 		lvm2 \
 		exfat-fuse \
-		exfat-utils \
+		exfatprogs \
+		davfs2 \
 		sshfs \
 		cifs-utils \
 		tzdata && \
