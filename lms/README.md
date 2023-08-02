@@ -32,7 +32,7 @@ Create an [issue on github][issues], or if its a general query ask on the [home 
 
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-beta-yellow.svg
-[release-shield]: https://img.shields.io/badge/version-v0.54-blue.svg
+[release-shield]: https://img.shields.io/badge/version-v0.55-blue.svg
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
 
