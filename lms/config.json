@@ -6,7 +6,6 @@
   "url": "https://github.com/pssc/ha-addon-lms/",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "services",
-  "init": true,
   "audio": true,
   "stdin": true,
   "ports": {
