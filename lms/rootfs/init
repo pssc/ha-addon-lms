@@ -1,7 +1,7 @@
 #!/bin/sh
 echo lms init "$$" "$@"
 #clone std in
-exec 10<&1
+exec 10<&0
 mount -t tmpfs -o rw,nosuid,nodev,mode=755 tmpfs /run
 mount -o remount,exec /config
 umount /proc/asound
