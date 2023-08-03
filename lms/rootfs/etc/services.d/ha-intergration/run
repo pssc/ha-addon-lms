@@ -42,7 +42,6 @@ function service_loop() {
   ha-event "service" "${PAYLOAD}"
   bashio::log.info "Starting the Home Assistant STDIN service for ${HAA_NAME}..."
   # shellcheck disable=SC2162
-  sleep -1
   while read msg; do
     bashio::log.debug "> ${msg}"
     msg="${msg%\"}"
@@ -87,7 +86,7 @@ function service_loop() {
       ;;
       *) bashio::log.error "Command not found: ${cmd}" ;;
     esac
-  done < /proc/1/fd/10
+  done < /proc/1/fd/10 || true
   bashio::log.info 'Finished the Home Assistant STDIN service...'
   kill ${SPID}
   sleep ${POLL_INTERVAL:-3600}
