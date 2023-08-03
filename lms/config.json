@@ -1,6 +1,6 @@
 {
   "name": "Logitech Media Server",
-  "version": "0.0.56",
+  "version": "0.0.55",
   "slug": "lms",
   "description": "Logitech Media Server, SqueezeBox Server & UPNP Media Server",
   "url": "https://github.com/pssc/ha-addon-lms/",
@@ -8,6 +8,7 @@
   "startup": "services",
   "audio": true,
   "stdin": true,
+  "init": false,
   "ports": {
     "9000/tcp": 9000,
     "9090/tcp": 9090,
