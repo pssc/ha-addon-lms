@@ -29,7 +29,7 @@ See the [Docs on GitHub](https://github.com/pssc/ha-addon-lms/tree/master/lms/DO
 ## Support
 Create an [issue on github][issues], or if its a general query ask on the [home assistant thread][forum]
 
-The i386 build is becomming increasing hard and is currently use an older debian base version...
+The i386 build is becomming increasingly difficult should be considered at risk.
 
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-beta-yellow.svg
