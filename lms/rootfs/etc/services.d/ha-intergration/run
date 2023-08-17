@@ -23,15 +23,16 @@ function ha-event() {
 
 function setup() {
 	# lms
-	bashio::net.wait_for 9000 localhost 900
+        bashio::log.info "Waiting for Logitech Media Server"
+	bashio::net.wait_for 9000 localhost
 	# HA API
 	bashio::net.wait_for 8123 localhost 900
 	# Supervisor API
 	bashio::net.wait_for 80 supervisor 900
-        bashio::log.info "Services up or timeout"
+        bashio::log.debug "HA Services up or timed out"
 	# Health report
-	#hass-cli system health || true
-	# Start sensor loop for pugin
+	# hass-cli system health || true
+        bashio::log.info "Start sensor loop for pugin"
 	( while true;do lms-sensors; sleep ${POLL_INTERVAL:-600} ;done ) &
         SPID=$!
 }
