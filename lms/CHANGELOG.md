@@ -1,7 +1,11 @@
-## [8.3.1.56] 2023-08-17
+## [8.3.1.57] 2023-08-18
 
 ### Fixes
- - add libssl-dev to fix chromecast plugin.
+ - add libssl-dev to fix chromecast,airplay plugins.
+
+## [0.0.0.56] 2023-08-16
+
+### Fixes
  - improve ha-intergrationstartup messages
  - Wait indefinitely for LMS to start, for intergration services to start
 

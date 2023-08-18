@@ -80,6 +80,7 @@ RUN apt-get -qq -y update && \
 		davfs2 \
 		sshfs \
 		cifs-utils \
+                libssl-dev \
 		tzdata && \
 		apt-get install --no-install-recommends -qy wget curl perl tzdata libwww-perl libfont-freetype-perl liblinux-inotify2-perl libdata-dump-perl libio-socket-ssl-perl libnet-ssleay-perl libcrypt-ssleay-perl libcrypt-openssl-rsa-perl lame && \
 		apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
