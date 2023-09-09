@@ -12,6 +12,9 @@ Follow these steps to get the add-on installed on your system:
 
 I only support it running on 9k you can run it on other ports its untested and unproven.
 
+## Kown Issues
+ - Permssions somtimes get nuked and reset to root, known to be an issue with restores from backup, lms doesn't run as root, try toggiling the `'set_permissions` option to correct this.
+
 ## How to use
 
 Navigate to the web UI via ingress or directly on port 9000 on your ha server and configure.
