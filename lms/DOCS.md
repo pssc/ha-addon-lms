@@ -8,6 +8,10 @@ Follow these steps to get the add-on installed on your system:
 2. Find the "Logitech Media Server" add-on and click it.
 3. Click on the "INSTALL" button.
 
+## Support Notes
+
+I only support it running on 9k you can run it on other ports its untested and unproven.
+
 ## How to use
 
 Navigate to the web UI via ingress or directly on port 9000 on your ha server and configure.
