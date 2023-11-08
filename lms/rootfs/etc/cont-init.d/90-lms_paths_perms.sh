@@ -47,4 +47,10 @@ fi
 if [ "${LMS_set_permissions:-""}" = "true" ];then
     bashio::log.info " set perms"
     chown -Rh "${LMS_USER}" "${LMS_CFG}"
+    chmod +x /config "${LMS_CFG}"
+fi
+
+# Copy package file for sensors
+if [ ! -r "${LMS_HACFGDIR}/lms_pkg.yaml" ];then
+   cp /usr/local/lib/lms_pkg.yaml ${LMS_HACFGDIR}/lms_pkg.yaml
 fi

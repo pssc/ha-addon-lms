@@ -1,6 +1,6 @@
 {
   "name": "Logitech Media Server",
-  "version": "8.3.1.57",
+  "version": "8.3.1.58",
   "slug": "lms",
   "description": "Logitech Media Server, SqueezeBox Server & UPNP Media Server",
   "url": "https://github.com/pssc/ha-addon-lms/",
@@ -42,7 +42,7 @@
   "ingress": true,
   "ingress_port": 0,
   "panel_icon": "mdi:music-box",
-  "panel_title": "lms",
+  "panel_title": "LMS",
   "panel_admin": false,
   "stage": "experimental",
   "options": {

@@ -1,3 +1,16 @@
+## [8.3.1.58] 2023-11-08
+
+### Added
+ - provide package file for sensors id's ```/config/lms/addon/lms_pkg.yaml```
+
+### Fixes
+ - Fix panel caps for abriviation
+
+### Changes
+ - Update to latest debian base 7.2 and Debian 12.2
+ - Set Permissions options documented and tweak to fix root /config folder issues
+ - Set Permissions options tweak to fix root /config/lms folder issues
+
 ## [8.3.1.57] 2023-08-18
 
 ### Fixes
