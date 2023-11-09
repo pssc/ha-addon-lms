@@ -67,6 +67,7 @@ COPY rootfs/ /
 RUN apt-get -qq -y update && \
         ls -la /tmp/ && \
 	apt-get -qq -y install --no-install-recommends --no-install-suggests \
+                icedax \
 		faad \
 		flac \
 		lame \

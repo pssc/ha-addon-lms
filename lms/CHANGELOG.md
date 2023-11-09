@@ -1,7 +1,11 @@
 ## [8.3.1.58] 2023-11-08
 
+### Warning
+ - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
 ### Added
  - provide package file for sensors id's ```/config/lms/addon/lms_pkg.yaml```
+ - icedax for cdplayer support.
 
 ### Fixes
  - Fix panel caps for abriviation
@@ -11,10 +15,12 @@
  - Set Permissions options documented and tweak to fix root /config folder issues
  - Set Permissions options tweak to fix root /config/lms folder issues
 
+
 ## [8.3.1.57] 2023-08-18
 
 ### Fixes
- - add libssl-dev to fix chromecast,airplay plugins.
+ - add libssl-dev to fix chromecast and airplay plugins.
+
 
 ## [0.0.0.56] 2023-08-16
 
@@ -22,10 +28,8 @@
  - improve ha-intergrationstartup messages
  - Wait indefinitely for LMS to start, for intergration services to start
 
-## [0.0.55] 2023-08-02
 
-### Warning
- - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+## [0.0.55] 2023-08-02
 
 ### Changes
  - Debian base to 0.7.1
