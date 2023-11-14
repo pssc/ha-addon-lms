@@ -1,6 +1,6 @@
 {
   "name": "Logitech Media Server",
-  "version": "8.3.1.58",
+  "version": "8.3.1.59",
   "slug": "lms",
   "description": "Logitech Media Server, SqueezeBox Server & UPNP Music Server",
   "url": "https://github.com/pssc/ha-addon-lms/",
