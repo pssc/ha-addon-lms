@@ -12,11 +12,13 @@ declare ingress_entry
 declare keyfile
 
 port=$(bashio::addon.port 80)
-loc="donotmacthmestringhalmsingress"
+skinmatch="donotmacthmestringhalmsingress"
+noskinmatch=""
 skin=""
 
 if bashio::config.has_value 'skin'; then
         skin=$(bashio::config 'skin')
+	nsm=$loc
 	loc=""
 fi
 sed -i "s#%%skin%%#${skin}#g" /etc/nginx/servers/ingress.conf
