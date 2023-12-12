@@ -8,7 +8,7 @@ if bashio::config.true 'upgrade_packages'; then
         || bashio::.log.error 'Failed updating packages repository indexes'
 
    if [ "$(bashio::config 'upgrade_packages')" = "true" ];then
-        apt-get dist-upgrade \
+        apt-get -y -o Dpkg::Options::="--force-confold" dist-upgrade \
             || bashio::log.error 'Failed updating packages'
    fi
 fi
