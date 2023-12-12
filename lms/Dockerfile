@@ -87,7 +87,7 @@ RUN apt-get -qq -y update && \
 		apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Debug packages
-RUN if [ "${debug}" = "true " ];then apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get --no-install-recommends --no-install-suggests -qq -y install vim-tiny procps && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*;fi
+RUN if [ "${debug}" = "true " ];then touch /debug && apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get --no-install-recommends --no-install-suggests -qq -y install vim-tiny procps && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*;fi
 
 RUN echo "Download url: ${url}" && \
 	cd /tmp && \
