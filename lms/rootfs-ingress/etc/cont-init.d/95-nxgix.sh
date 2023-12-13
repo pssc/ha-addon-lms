@@ -18,11 +18,13 @@ skin=""
 
 if bashio::config.has_value 'skin'; then
         skin=$(bashio::config 'skin')
-	nsm=$loc
-	loc=""
+	noskinmatch=${skinmtach}
+	skinmatch=""
 fi
+
 sed -i "s#%%skin%%#${skin}#g" /etc/nginx/servers/ingress.conf
-sed -i "s#%%loc%%#${loc}#g" /etc/nginx/servers/ingress.conf
+sed -i "s#%%noskinmatch%%#${noskinmatch}#g" /etc/nginx/servers/ingress.conf
+sed -i "s#%%skinmatch%%#${skinmatch}#g" /etc/nginx/servers/ingress.conf
 
 ingress_entry=$(bashio::addon.ingress_entry)
 if bashio::var.has_value "${port}"; then
