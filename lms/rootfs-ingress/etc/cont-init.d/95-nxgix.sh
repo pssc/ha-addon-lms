@@ -18,7 +18,7 @@ skin=""
 
 if bashio::config.has_value 'skin'; then
         skin=$(bashio::config 'skin')
-	noskinmatch=${skinmtach}
+	noskinmatch=${skinmatch}
 	skinmatch=""
 fi
 
