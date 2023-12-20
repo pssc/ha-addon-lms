@@ -6,6 +6,7 @@ use File::Spec::Functions qw(catdir);
 use base qw(Slim::Utils::OS::Debian);
 
 use constant MUSIC_DIR => '/media';
+use constant PLAYLIST_DIR => '/config/lms/content/playlists';
 
 sub initDetails {
 	my $class = shift;
@@ -21,6 +22,10 @@ sub initPrefs {
 
 	if (-d MUSIC_DIR) {
 		$prefs->{mediadirs} = $prefs->{ignoreInImageScan} = $prefs->{ignoreInVideoScan} = [ MUSIC_DIR ];
+	}
+
+	if (-d PLAYLIST_DIR) {
+	        $prefs->{playlistsdir} = PLAYLIST_DIR;
 	}
 
 	$prefs->{wizardDone} = 1;

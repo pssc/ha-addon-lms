@@ -20,6 +20,8 @@ path "${LMS_CACHE}"
 path "${LMS_CACHE}/tmp"
 path "${LMS_PLUGS}"
 path "${LMS_LOGDIR}"
+path "${LMS_LOGDIR}/content"
+path "${LMS_LOGDIR}/content/playlists"
 rm -f  "${LMS_HACFGDIR}/fixed_owner"
 
 : > ${LMS_LOGDIR}/${LMS_LOGFIlE:-"server.log"}

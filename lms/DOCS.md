@@ -18,8 +18,11 @@ I only support it running on 9k you can run it on other ports its untested and u
 ## How to use
 
 Navigate to the web UI via ingress or directly on port 9000 on your ha server and configure.
+LMS doesnt run as root so /config/content/ is provided for your own content that is wrtiable by the LMS server
 
 ### iFrame
+
+In case you have issues with ingress you can embed an IFRAME but you milage will vary with VPN's or other forwarding off ther local network.
 
 substitute hassio.local for you network ip or hostname for home assitant.
 
@@ -41,6 +44,8 @@ describes each of the add-on configuration options.
 
 default locations
  - /config/lms
+ - /config/lms/content
+ - /config/lms/content/playlists
 This can get quite big due to the chache directory unformiantuly the cache directory isnt just a cache and contains state, so does need to be backed up if you want to restore correctly. For 20k songs somting around the ~650MB is not unexpected. WIP on a cache clean service so this can be done before backup, through this will incease ware on an SD card.
 
 Addional software over lms.
