@@ -6,7 +6,7 @@ use File::Spec::Functions qw(catdir);
 use base qw(Slim::Utils::OS::Debian);
 
 use constant MUSIC_DIR => '/media';
-use constant PLAYLIST_DIR => '/config/lms/content/playlists';
+use constant PLAYLISTS_DIR => '/config/lms/content/playlists';
 
 sub initDetails {
 	my $class = shift;
@@ -46,7 +46,7 @@ sub dirsFor {
 		push @INC, $::cachedir;
 	}
 	elsif ($dir eq 'playlists') {
-		push @dirs, PLAYLIST_DIR;
+		push @dirs, PLAYLISTS_DIR;
 	}
 
 	return wantarray() ? @dirs : $dirs[0];
