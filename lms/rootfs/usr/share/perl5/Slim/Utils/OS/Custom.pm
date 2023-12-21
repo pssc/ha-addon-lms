@@ -24,9 +24,9 @@ sub initPrefs {
 		$prefs->{mediadirs} = $prefs->{ignoreInImageScan} = $prefs->{ignoreInVideoScan} = [ MUSIC_DIR ];
 	}
 
-	if (-d PLAYLIST_DIR) {
-	        $prefs->{playlistsdir} = PLAYLIST_DIR;
-	}
+	#if (-d PLAYLIST_DIR) {
+	#        $prefs->{playlistsdir} = PLAYLIST_DIR;
+	#}
 
 	$prefs->{wizardDone} = 1;
 	# no strings so Take Hostname from Env from container setup scripts
@@ -44,6 +44,9 @@ sub dirsFor {
 	elsif ($dir eq 'Plugins') {
 		push @dirs, catdir($::cachedir, 'Plugins');
 		push @INC, $::cachedir;
+	}
+	elsif ($dir eq 'playlists') {
+		push @dirs, PLAYLIST_DIR;
 	}
 
 	return wantarray() ? @dirs : $dirs[0];
