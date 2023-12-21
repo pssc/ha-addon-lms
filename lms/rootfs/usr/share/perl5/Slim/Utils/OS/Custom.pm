@@ -57,10 +57,12 @@ sub ignoredItems {
 		# system paths in the fs root which will not contain any music
 		'bin'          => '/',
 		'boot'         => '/',
-		'config'       => '/',
 		'dev'          => '/',
 		'etc'          => '/',
 		'lib'          => '/',
+		'lib32'         => '/',
+		'lib64'         => '/',
+		'libx32'         => '/',
 		'libexec'      => '/',
 		'opt'          => '/',
 		'proc'         => '/',
@@ -71,8 +73,10 @@ sub ignoredItems {
 		'tmp'          => '/',
 		'usr'          => '/',
 		'var'          => '/',
-		'boot'          => '/',
+		'boot'         => '/',
 		# add some of the HA specific exceptions:
+		'package'      => '/',
+		'command'      => '/',
 		'ssl'          => '/',
 		'@spool'       => 1,   # mail/print/.. spool
 		'@tmp'         => 1,   # system temporary files
