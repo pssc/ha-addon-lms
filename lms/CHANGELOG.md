@@ -1,7 +1,22 @@
-## [8.3.1.58] 2023-11-08
+## [8.3.1.59] 2023-12-19
 
 ### Warning
  - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Added
+ - "/config/lms/content/playlists" for user writeable LMS relayted content such as playlists etc...
+
+### Fixes
+ - ingress help page access Fixes #14
+ - ingress player managment in Material skin Fixes #13
+ - ingress remote servers cover art Fixes #62
+ - package upgrade Fixes #59
+
+### Changes
+ - add debug build marker
+ - configure playlistdir by default
+
+## [8.3.1.58] 2023-11-08
 
 ### Added
  - provide package file for sensors id's ```/config/lms/addon/lms_pkg.yaml```
