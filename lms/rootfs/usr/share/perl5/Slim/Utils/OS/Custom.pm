@@ -24,9 +24,9 @@ sub initPrefs {
 		$prefs->{mediadirs} = $prefs->{ignoreInImageScan} = $prefs->{ignoreInVideoScan} = [ MUSIC_DIR ];
 	}
 
-	#if (-d PLAYLIST_DIR) {
-	#        $prefs->{playlistsdir} = PLAYLIST_DIR;
-	#}
+	if (-d PLAYLISTS_DIR) {
+	        $prefs->{playlistdir} = PLAYLISTS_DIR;
+	}
 
 	$prefs->{wizardDone} = 1;
 	# no strings so Take Hostname from Env from container setup scripts
