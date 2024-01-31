@@ -1,7 +1,17 @@
-## [8.3.1.59] 2023-12-19
+## [8.3.1.60] 2023-01-02
 
 ### Warning
  - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Fixes
+ - default playlist dir
+ - ingress for 3rd party plugins
+ - prompt during package install #68
+
+### Changes
+ - tidy path filtering
+
+## [8.3.1.59] 2023-12-19
 
 ### Added
  - "/config/lms/content/playlists" for user writeable LMS relayted content such as playlists etc...
