@@ -1,7 +1,13 @@
-## [8.3.1.59] 2023-12-19
+## [8.3.1.60] 2023-02-06
 
 ### Warning
  - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Fixes
+ - for package install prompting #68
+ - partial fix for pulgins access via ingress #65
+
+## [8.3.1.59] 2023-12-19
 
 ### Added
  - "/config/lms/content/playlists" for user writeable LMS relayted content such as playlists etc...

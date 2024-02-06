@@ -24,9 +24,9 @@ sub initPrefs {
 		$prefs->{mediadirs} = $prefs->{ignoreInImageScan} = $prefs->{ignoreInVideoScan} = [ MUSIC_DIR ];
 	}
 
-	#if (-d PLAYLIST_DIR) {
-	#        $prefs->{playlistsdir} = PLAYLIST_DIR;
-	#}
+	if (-d PLAYLISTS_DIR) {
+	        $prefs->{playlistdir} = PLAYLISTS_DIR;
+	}
 
 	$prefs->{wizardDone} = 1;
 	# no strings so Take Hostname from Env from container setup scripts
@@ -48,21 +48,28 @@ sub dirsFor {
 	elsif ($dir eq 'playlists') {
 		push @dirs, PLAYLISTS_DIR;
 	}
+	elsif ($dir eq 'playlistdir') {
+		push @dirs, PLAYLISTS_DIR;
+	}
 
 	return wantarray() ? @dirs : $dirs[0];
 }
 
 sub ignoredItems {
 	return (
+		# add some of the HA specific exceptions:
+		'package'      => '/',
+		'command'      => '/',
+		'ssl'          => '/',
 		# system paths in the fs root which will not contain any music
 		'bin'          => '/',
 		'boot'         => '/',
 		'dev'          => '/',
 		'etc'          => '/',
 		'lib'          => '/',
-		'lib32'         => '/',
-		'lib64'         => '/',
-		'libx32'         => '/',
+		'lib32'        => '/',
+		'lib64'        => '/',
+		'libx32'       => '/',
 		'libexec'      => '/',
 		'opt'          => '/',
 		'proc'         => '/',
@@ -74,10 +81,6 @@ sub ignoredItems {
 		'usr'          => '/',
 		'var'          => '/',
 		'boot'         => '/',
-		# add some of the HA specific exceptions:
-		'package'      => '/',
-		'command'      => '/',
-		'ssl'          => '/',
 		'@spool'       => 1,   # mail/print/.. spool
 		'@tmp'         => 1,   # system temporary files
 	);

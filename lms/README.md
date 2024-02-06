@@ -31,9 +31,9 @@ Create an [issue on github][issues], or if its a general query ask on the [home 
 
 The i386 build is becomming increasingly difficult and should be considered at risk.
 
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-beta-yellow.svg
-[release-shield]: https://img.shields.io/badge/version-v8.3.1.59-blue.svg
+[release-shield]: https://img.shields.io/badge/version-v8.3.1.60-blue.svg
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
 

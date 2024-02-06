@@ -21,7 +21,7 @@ if bashio::config.has_value 'packages'; then
 
    for package in $(bashio::config 'packages'); do
         bashio::log.info " Installing package ${package}"
-        apt-get install -y --no-install-suggests --no-install-recommends  "$package" \
+        apt-get install -y --no-install-suggests --no-install-recommends -o Dpkg::Options::="--force-confold" "$package" \
 		|| ( bashio::log.error "Failed installing package ${package}" ;bashio::exit.nok "Failed installing package ${package}" )
    done
    bashio::log.info " Installing user configured/requested packages"
