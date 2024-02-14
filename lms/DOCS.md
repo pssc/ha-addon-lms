@@ -102,6 +102,8 @@ Flexible disk layout options, additional customisation of packages and startup t
 
 Name of skin to use for ingress interface.  In this case the material skin is an extra skin installable through lms.  Please do this before enabling this option and restartig the HA addon.  Each skin requires custom support for ingress, currently only material has been tested over the default.
 
+Other skins are currenty untested and unsupported for ingress
+
 ```yaml
 skin: material
 ```
