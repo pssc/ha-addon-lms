@@ -1,11 +1,18 @@
+## [8.4.0.0] 2023-03-04
+
+### Warning
+ - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Changes
+ - Update to LMS 8.4.0
+
 ## [8.3.1.61] 2023-02-14
+
 ### Changes
  - Update to debian base 7.3.1
 
 ## [8.3.1.60] 2023-02-06
 
-### Warning
- - For 8.x series realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
 
 ### Fixes
  - for package install prompting #68
