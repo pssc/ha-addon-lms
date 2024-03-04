@@ -5,6 +5,7 @@
 
 ### Changes
  - Update to LMS 8.4.0
+ - LMS formerly the Logitech Media Server
 
 ## [8.3.1.61] 2023-02-14
 
