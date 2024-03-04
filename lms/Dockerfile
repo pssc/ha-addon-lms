@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:7.2.0
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:7.3.1
 
 # ARGS...
 
@@ -20,7 +20,7 @@ RUN apt-get -qq -y update && \
     patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
-    git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.3 && \
+    git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.4 && \
     mkdir -p tmp && \
     cd slimserver-vendor/CPAN && \
     mkdir -p build/include build/lib && \
@@ -39,7 +39,7 @@ FROM base
 
 # Bump cpan build to same version if possible
 ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
-ARG purl="http://downloads.slimdevices.com/LogitechMediaServer_v8.3.1/logitechmediaserver_8.3.1_all.deb"
+ARG purl="https://downloads.slimdevices.com/LogitechMediaServer_v8.4.0/logitechmediaserver_8.4.0_all.deb"
 ARG debug=true
 ARG target_uid=1000
 ARG BUILD_ARCH
