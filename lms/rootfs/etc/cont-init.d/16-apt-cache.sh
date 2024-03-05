@@ -9,9 +9,9 @@
 
 if [ -r "${LMS_HACFGDIR}/apt" ];then
         bashio::log.info " Using addon cachedir ${LMS_HACFGDIR}/apt for /var/cache/apt"
+
 	rm -rf /var/cache/apt
 	ln -s "${LMS_HACFGDIR}/apt" /var/cache/apt
-	apt-get autoclean || true
 fi
 
 exit 0
