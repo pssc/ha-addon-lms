@@ -1,6 +1,6 @@
 # Home Assistant Community Add-on: LMS (formerly the Logitech Media Server)
 
-A complete and easy way to run LMS formerly the [Logitech Media Server][lms].
+A complete and easy way to run LMS Lyrion Music Server, formerly the [Logitech Media Server][lms].
 
 LMS formerly the [Logitech Media Server][lms] is a cross-platform streaming media server that supports a wide range
  of formats, including AAC, AIFF, FLAC, Ogg Vorbis, MP3, WAV, and WMA.
