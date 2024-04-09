@@ -1,7 +1,12 @@
-## [8.4.0.1] 2023-03-05
+## [8.5.0.0] 2023-04-09
 
 ### Warning
  - For 8.x series server realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+### Changes
+ - Update to LMS 8.5.0
+
+## [8.4.0.1] 2023-03-05
 
 ### Changes
  - add ability to cache lists and packages

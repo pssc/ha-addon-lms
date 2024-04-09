@@ -1,6 +1,6 @@
 {
   "name": "LMS (Formerly Logitech Media Server)",
-  "version": "8.4.0.1",
+  "version": "8.5.0.0",
   "slug": "lms",
   "description": "LMS Formerly the Logitech Media Server, SqueezeBox Server & UPNP Music Server",
   "url": "https://github.com/pssc/ha-addon-lms/",

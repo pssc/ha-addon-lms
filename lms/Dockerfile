@@ -14,13 +14,14 @@ RUN apt-get update && apt-get dist-upgrade -y -o Dpkg::Options::="--force-confol
 FROM base AS builder
 ARG BUILD_ARCH
 
+#    git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.4 && \
 #patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev libavformat-dev && \
 RUN apt-get -qq -y update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
     patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
-    git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.4 && \
+    git clone --depth 1 https://github.com/LMS-Community/slimserver-vendor -b public/8.4 && \
     mkdir -p tmp && \
     cd slimserver-vendor/CPAN && \
     mkdir -p build/include build/lib && \
@@ -38,8 +39,9 @@ RUN apt-get -qq -y update && \
 FROM base
 
 # Bump cpan build to same version if possible
-ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
-ARG purl="https://downloads.slimdevices.com/LogitechMediaServer_v8.4.0/logitechmediaserver_8.4.0_all.deb"
+#  ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
+# xlatest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
+ARG purl="https://downloads.lms-community.org/LogitechMediaServer_v8.5.0/logitechmediaserver_8.5.0_all.deb"
 ARG debug=true
 ARG target_uid=1000
 ARG BUILD_ARCH
@@ -89,9 +91,8 @@ RUN apt-get -qq -y update && \
 # Debug packages
 RUN if [ "${debug}" = "true " ];then touch /debug && apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get --no-install-recommends --no-install-suggests -qq -y install vim-tiny procps && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*;fi
 
-RUN echo "Download url: ${url}" && \
+RUN echo "Download url: ${purl}" && \
 	cd /tmp && \
-        xlatest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
         latest_lms=$(echo "${purl}" | sed 's/_all\.deb/_'$(echo ${BUILD_ARCH} | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
 	if [ $latest_lms = $latest_lms ];then  echo $latest_lms != $latest_lms ;sleep 600;fi && \
 	wget -nv $latest_lms && \

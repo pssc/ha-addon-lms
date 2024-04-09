@@ -64,6 +64,9 @@ Example basic config:-
           "packages": []
 ```
 
+### Package cache to reduce update and plugin depenancey install time
+  ```mkdir /config/lms/addon/apt```
+
 ### NAS
 
 NAS mounting in the addon via the settings. So for nfs and cifs/smb3 example:-
