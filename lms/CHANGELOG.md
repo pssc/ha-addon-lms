@@ -1,7 +1,13 @@
-## [8.5.0.0] 2023-04-09
+## [8.5.1.0] 2023-04-18
+
+### Changes
+ - Update to LMS 8.5.1
 
 ### Warning
  - For 8.x series server realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
+
+## [8.5.0.0] 2023-04-09
+
 
 ### Changes
  - Update to LMS 8.5.0
