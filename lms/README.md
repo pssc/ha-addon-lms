@@ -1,13 +1,13 @@
 # Home Assistant Community Add-on: LMS (formerly the Logitech Media Server)
 
-A complete and easy way to run LMS formerly the [Logitech Media Server][lms].
+A complete and easy way to run LMS Lyrion Music Server, formerly the [Logitech Media Server][lms].
 
 LMS formerly the [Logitech Media Server][lms] is a cross-platform streaming media server that supports a wide range
  of formats, including AAC, AIFF, FLAC, Ogg Vorbis, MP3, WAV, and WMA.
 
 [![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fpssc%2Fha-addon-lms%2F) or use the following addon repo manually https://github.com/pssc/ha-addon-lms/ in the supervisor addon tab following the stacked triple dots and selecting repositories.
 
-This addon is based on the debian package for version 8.4.0 from https://downloads.slimdevices.com/
+This addon is based on the debian package for version 8.5.1 from https://downloads.slimdevices.com/
 | :warning: Unfortunately the latest Squeezebox Radio firmware (7.7.3) comes with a bug which prevents it from connecting correctly to LMS formerly the Logitech Media Server 8+. See https://github.com/Logitech/slimserver#sb-radio-and-logitech-media-server-8 for details and an easy mitigation. |
 | --- |
 
@@ -33,7 +33,7 @@ The i386 build is becomming increasingly difficult and should be considered at r
 
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-beta-yellow.svg
-[release-shield]: https://img.shields.io/badge/version-v8.4.0.0-blue.svg
+[release-shield]: https://img.shields.io/badge/version-v8.5.0.0-blue.svg
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
 
