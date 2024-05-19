@@ -1,6 +1,6 @@
 {
   "name": "LMS (Formerly Logitech Media Server)",
-  "version": "8.5.1.1",
+  "version": "8.5.1.2",
   "slug": "lms",
   "description": "LMS Lyrion Music Server, Formerly the Logitech Media Server, SqueezeBox Server & UPNP Music Server",
   "url": "https://github.com/pssc/ha-addon-lms/",
@@ -39,6 +39,7 @@
   "privileged": [ "SYS_ADMIN", "DAC_READ_SEARCH" ],
   "host_network": true,
   "backup_exclude": [ "./lms/music/**", "./lms/mnt/**", "./lms/notbackedup/**", "./lms/test/*", "*/nobackup/*" ],
+  "services": [ "mqtt:want" ],
   "ingress": true,
   "ingress_port": 0,
   "panel_icon": "mdi:music-box",

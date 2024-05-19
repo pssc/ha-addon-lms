@@ -84,6 +84,7 @@ RUN apt-get -qq -y update && \
 		sshfs \
 		cifs-utils \
                 libssl-dev \
+                mosquitto-clients \
 		tzdata && \
 		apt-get install --no-install-recommends -qy wget curl perl tzdata libwww-perl libfont-freetype-perl liblinux-inotify2-perl libdata-dump-perl libio-socket-ssl-perl libnet-ssleay-perl libcrypt-ssleay-perl libcrypt-openssl-rsa-perl lame && \
 		apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
