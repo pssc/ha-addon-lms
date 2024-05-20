@@ -155,7 +155,7 @@ RUN cd /tmp && git clone --depth 1 -b "stable" https://github.com/deajan/osync &
 # squeezy
 RUN apt-get -qq -y update && \
     apt-get install -y --no-install-recommends libjson-rpc-perl && \
-    cd /tmp && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /tmp/squeezy && \
+    cd /tmp && git clone --depth 1 -b "0.28" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /tmp/squeezy && \
     apt-get autoremove && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
