@@ -1,5 +1,8 @@
-## [8.5.1.2] 2023-05-19
+## [8.5.1.1] 2023-05-28
 
+### Changes
+ - Update to latest debian base 7.3.3
+ - addon config to yaml
 
 ## [8.5.1.0] 2023-04-18
 
