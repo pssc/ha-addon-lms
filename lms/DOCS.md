@@ -8,32 +8,39 @@ Follow these steps to get the add-on installed on your system:
 2. Find the "Logitech Media Server" add-on and click it.
 3. Click on the "INSTALL" button.
 
-## Support Notes
+## Support
 
-I only support it running on 9k you can run it on other ports its untested and unproven.
+I only support the addon with LMS running on 9000 you can run it on other ports its untested and unproven.
 
 ## Kown Issues
  - Permssions somtimes get nuked and reset to root, known to be an issue with restores from backup, lms doesn't run as root, try toggiling the `'set_permissions` option to correct this.
+ - Ingress Plugin art work.
 
 ## How to use
 
 Navigate to the web UI via ingress or directly on port 9000 on your ha server and configure.
 LMS doesnt run as root so /config/content/ is provided for your own content that is wrtiable by the LMS server
 
-### iFrame
+### Acesss via ingress
 
-In case you have issues with ingress you can embed an IFRAME but you milage will vary with VPN's or other forwarding off ther local network.
+For this the addon rewriting the webinterface and proxying the web interafce on the fly this requires doezens of custom rules and is very much *best efforts* it is very very time consuming to figure out and not all things may be workable/fixable, using an iframe will work locally more reliably but probably will not work with alot of remote access options.
+
+This is why the skin support is limited.
+
+### iFrame / Dashboard
+
+In case you have issues with ingress you can embed an IFRAME /Dashboard but you milage will vary with VPN's or other forwarding off ther local network.
 
 substitute hassio.local for you network ip or hostname for home assitant.
 
-```
-panel_iframe:
+So use the url or IP if static of your hassio instanst on port 9000
 
-  music:
-    title: LMS
-    url: http://hassio.local:9000/
-    icon: mdi:music-circle-outline
+eg.
 ```
+    url: http://hassio.local:9000/
+```
+
+Go to ```Settings->Dashboard->Add Dashboard->Webpage->``` url outlined above.
 
 ## Add-on Configuration
 
