@@ -28,6 +28,7 @@ sub initPrefs {
 	        $prefs->{playlistdir} = PLAYLISTS_DIR;
 	}
 
+	$prefs->{useLocalImageproxy} = 2;
 	$prefs->{wizardDone} = 1;
 	# no strings so Take Hostname from Env from container setup scripts
 	$prefs->{libraryname} = $ENV{HAA_HOST}." - LMS HA Addon";
