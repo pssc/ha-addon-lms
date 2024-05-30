@@ -1,9 +1,9 @@
-name: LMS (Formerly Logitech Media Server)
+name: LMS Lyrion Music Server(Formerly Logitech Media Server)
 version: 8.5.2.0
 slug: lms
-description: LMS Lyrion Music Server, Formerly the Logitech Media Server, SqueezeBox
+description: LMS Lyrion Music Server, Formerly the Logitech Media Server & SqueezeBox Server
   Server & UPNP Music Server
-url: https://github.com/pssc/ha-addon-lms/
+url: https://github.com/pssc/ha-addon-lms/lms/
 arch:
   - armhf
   - armv7
