@@ -15,6 +15,8 @@ I only support the addon with LMS running on 9000 you can run it on other ports 
 ## Kown Issues
  - Permssions somtimes get nuked and reset to root, known to be an issue with restores from backup, lms doesn't run as root, try toggiling the `'set_permissions` option to correct this.
  - Ingress Plugin art work.
+ - Image reszier set to mysqueezebox.com gives inconsistant results for ingress
+ - Portainter addon web intewrface running on Port 9000 and alt port then burnt into /config/lms/prefs/server.prefs
 
 ## How to use
 
@@ -23,13 +25,13 @@ LMS doesnt run as root so /config/content/ is provided for your own content that
 
 ### Acesss via ingress
 
-For this the addon rewriting the webinterface and proxying the web interafce on the fly this requires doezens of custom rules and is very much *best efforts* it is very very time consuming to figure out and not all things may be workable/fixable, using an iframe will work locally more reliably but probably will not work with alot of remote access options.
+For this the addon rewriting the webinterface and proxying the web interafce on the fly this requires doezens of custom rules and is very much *best efforts* it is very very time consuming to figure out and not all things may be workable/fixable, using an iframe will work locally more reliably but probably will not work with alot of remote access options. Again your milage will vary with addional rewrites for external https acccess via e.g  nginx these may well break some of the rewrites for the ingress interfaces to work.
 
 This is why the skin support is limited.
 
 ### iFrame / Dashboard
 
-In case you have issues with ingress you can embed an IFRAME /Dashboard but you milage will vary with VPN's or other forwarding off ther local network.
+In case you have issues with ingress you can embed an IFRAME /Dashboard but you milage will vary with VPN's or other forwarding off ther local network, VPN's do work with the right configs.
 
 substitute hassio.local for you network ip or hostname for home assitant.
 
@@ -41,6 +43,15 @@ eg.
 ```
 
 Go to ```Settings->Dashboard->Add Dashboard->Webpage->``` url outlined above.
+
+## Artwork and Skins
+
+Within LMS: Settings > Interface > Web Interface: Default
+Within LMS: Settings > Advanced > Performance > Artwork resizing: Use Logitech Media Server resizing helper to resize artwork
+
+# Material Skin
+
+Download from LMS plgins and restart having set in the HA add-on settings: Configuration > Skin: material
 
 ## Add-on Configuration
 

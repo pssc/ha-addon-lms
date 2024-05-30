@@ -41,7 +41,7 @@ FROM base
 # Bump cpan build to same version if possible
 #  ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
 # xlatest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
-ARG purl="https://downloads.lms-community.org/LogitechMediaServer_v8.5.1/logitechmediaserver_8.5.1_all.deb"
+ARG purl="https://downloads.lms-community.org/LogitechMediaServer_v8.5.2/logitechmediaserver_8.5.2_all.deb"
 ARG debug=true
 ARG target_uid=1000
 ARG BUILD_ARCH
@@ -84,6 +84,7 @@ RUN apt-get -qq -y update && \
 		sshfs \
 		cifs-utils \
                 libssl-dev \
+                mosquitto-clients \
 		tzdata && \
 		apt-get install --no-install-recommends -qy wget curl perl tzdata libwww-perl libfont-freetype-perl liblinux-inotify2-perl libdata-dump-perl libio-socket-ssl-perl libnet-ssleay-perl libcrypt-ssleay-perl libcrypt-openssl-rsa-perl lame && \
 		apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -154,7 +155,7 @@ RUN cd /tmp && git clone --depth 1 -b "stable" https://github.com/deajan/osync &
 # squeezy
 RUN apt-get -qq -y update && \
     apt-get install -y --no-install-recommends libjson-rpc-perl && \
-    cd /tmp && git clone --depth 1 -b "master" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /tmp/squeezy && \
+    cd /tmp && git clone --depth 1 -b "0.28" https://github.com/pssc/squeezy && cd squeezy && cp squeezy /usr/local/bin/ && cd /tmp && rm -r /tmp/squeezy && \
     apt-get autoremove && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

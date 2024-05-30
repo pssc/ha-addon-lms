@@ -1,4 +1,11 @@
-## [8.5.1.0] 2023-04-18
+## [8.5.2.0] 2024-05-30
+
+### Changes
+ - Update to latest debian base 7.3.3
+ - addon config to yaml
+ - Update to LMS 8.5.2
+
+## [8.5.1.0] 2024-04-18
 
 ### Changes
  - Update to LMS 8.5.1
@@ -6,24 +13,24 @@
 ### Warning
  - For 8.x series server realted to baby(Radio) firmware see http://github.com/pssc/ha-addon-lms
 
-## [8.5.0.0] 2023-04-09
+## [8.5.0.0] 2024-04-09
 
 
 ### Changes
  - Update to LMS 8.5.0
 
-## [8.4.0.1] 2023-03-05
+## [8.4.0.1] 2024-03-05
 
 ### Changes
  - add ability to cache lists and packages
 
-## [8.4.0.0] 2023-03-04
+## [8.4.0.0] 2024-03-04
 
 ### Changes
  - Update to LMS 8.4.0
  - LMS formerly the Logitech Media Server
 
-## [8.3.1.61] 2023-02-14
+## [8.3.1.61] 2024-02-14
 
 ### Changes
  - Update to debian base 7.3.1
