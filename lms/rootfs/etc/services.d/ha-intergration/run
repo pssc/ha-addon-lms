@@ -34,7 +34,7 @@ function setup() {
         bashio::log.debug "HA Services up or timed out"
 	# Health report
 	# hass-cli system health || true
-	if [ "${LMS_nostats:-""}" = "true" ];then
+	if [ "${LMS_nostats:-''}" = "true" ];then
            bashio::log.info "Start sensor loop for plugin"
 	   ( while true;do lms-sensors; sleep ${POLL_INTERVAL:-600} ;done ) &
            SPID=$!
