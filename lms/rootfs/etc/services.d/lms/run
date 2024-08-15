@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/with-contenv bashio
 set -e
 set -u
 set -o pipefail
@@ -13,7 +13,10 @@ function stop() {
 }
 
 function main() {
-  echo "Start Logitech Media Server..."
+  # mmserver
+  bashio::log.info "Waiting for Music MagicIP"
+  bashio::net.wait_for 1000 localhost 9000
+  bashio::log.info "Starting LMS..."
   # chnage buffering to line based for stdout sterr
   stdbuf -oL -eL squeezeboxserver ${LMS_OPTIONS} --user "${LMS_USER}" --group "${LMS_GROUP}" --prefsdir "${LMS_PREFS}" --logdir "${LMS_LOGDIR}" --cachedir "${LMS_CACHE}" </dev/null &
   PID=$!

@@ -1,3 +1,7 @@
+## [8.5.2.2] 2024-08-15
+ - disable stats
+ - wair for mmserver (music magic IP)
+
 ## [8.5.2.0] 2024-05-30
 
 ### Changes
