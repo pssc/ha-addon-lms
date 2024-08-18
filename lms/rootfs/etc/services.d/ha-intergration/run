@@ -24,7 +24,7 @@ function ha-event() {
 function setup() {
         # mmserver
         bashio::log.info "Waiting for Music MagicIP"
-	bashio::net.wait_for 1000 localhost 9000
+	bashio::net.wait_for 10002 localhost 900
 	# lms
         bashio::log.info "Waiting for LMS"
 	bashio::net.wait_for 9000 localhost
