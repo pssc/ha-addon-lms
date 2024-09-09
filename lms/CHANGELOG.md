@@ -1,11 +1,12 @@
 ## [8.5.2.2] 2024-09-09
 
+### Fixes
+ - add subfilter type for json to fix ingress for plugins
+
 ### Changes
- - disable stats
+ - disable stats through nostats toggle.
  - wait for mmserver (music magic IP)
 
-### Fixes
- - add subfilter type for json to fix ingress
 
 ## [8.5.2.0] 2024-05-30
 
