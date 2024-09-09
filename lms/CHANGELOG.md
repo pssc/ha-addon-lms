@@ -5,7 +5,7 @@
 
 ### Changes
  - disable stats through nostats toggle.
- - wait for mmserver (music magic IP)
+ - wait for mmserver (music magic IP) mmserver toggle.
 
 
 ## [8.5.2.0] 2024-05-30

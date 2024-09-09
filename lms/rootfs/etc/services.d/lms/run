@@ -14,8 +14,10 @@ function stop() {
 
 function main() {
   # mmserver
-  bashio::log.info "Waiting for Music MagicIP"
-  bashio::net.wait_for 10002 localhost 900
+  if [ "${LMS_mmserver:-''}" = "true" ];then
+     bashio::log.info "Waiting for Music MagicIP"
+     bashio::net.wait_for 10002 localhost 900
+  fi
   bashio::log.info "Starting LMS..."
   # chnage buffering to line based for stdout sterr
   stdbuf -oL -eL squeezeboxserver ${LMS_OPTIONS} --user "${LMS_USER}" --group "${LMS_GROUP}" --prefsdir "${LMS_PREFS}" --logdir "${LMS_LOGDIR}" --cachedir "${LMS_CACHE}" </dev/null &
