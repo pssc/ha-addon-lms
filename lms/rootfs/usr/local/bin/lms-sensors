@@ -4,6 +4,9 @@ MARKER=${TMP}/sensor_hush
 if [ -r "${MARKER}" ];then
 	exec >/dev/null
 fi
+if [ -r "/config/lms/addon/nostats" ];then
+   exit 0
+fi
 
 ha-entity-state | jq . -c
 # Player activty

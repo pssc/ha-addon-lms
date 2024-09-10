@@ -22,19 +22,30 @@ function ha-event() {
 
 
 function setup() {
+        # mmserver
+        if [ "${LMS_mmserver:-''}" = "true" ];then
+          bashio::log.info "Waiting for Music MagicIP"
+          bashio::net.wait_for 10002 localhost 900
+        fi
 	# lms
-        bashio::log.info "Waiting for Logitech Media Server"
+        bashio::log.info "Waiting for LMS"
 	bashio::net.wait_for 9000 localhost
 	# HA API
+        bashio::log.info "Waiting for HA"
 	bashio::net.wait_for 8123 localhost 900
 	# Supervisor API
+        bashio::log.info "Waiting for Supervisor"
 	bashio::net.wait_for 80 supervisor 900
         bashio::log.debug "HA Services up or timed out"
 	# Health report
 	# hass-cli system health || true
-        bashio::log.info "Start sensor loop for pugin"
-	( while true;do lms-sensors; sleep ${POLL_INTERVAL:-600} ;done ) &
-        SPID=$!
+	if [ "${LMS_nostats:-''}" != "true" ];then
+           bashio::log.info "Start sensor loop for plugin"
+	   ( while true;do lms-sensors; sleep ${POLL_INTERVAL:-600} ;done ) &
+           SPID=$!
+       else
+           bashio::log.info "Skip sensor loop for plugin"
+       fi
 }
 
 
