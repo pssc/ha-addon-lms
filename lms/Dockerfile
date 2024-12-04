@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:7.3.1
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:7.6.1
 
 # ARGS...
 
@@ -21,7 +21,7 @@ RUN apt-get -qq -y update && \
     patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
-    git clone --depth 1 https://github.com/LMS-Community/slimserver-vendor -b public/8.4 && \
+    git clone --depth 1 https://github.com/LMS-Community/slimserver-vendor -b public/9.0 && \
     mkdir -p tmp && \
     cd slimserver-vendor/CPAN && \
     mkdir -p build/include build/lib && \
@@ -41,7 +41,7 @@ FROM base
 # Bump cpan build to same version if possible
 #  ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
 # xlatest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
-ARG purl="https://downloads.lms-community.org/LogitechMediaServer_v8.5.2/logitechmediaserver_8.5.2_all.deb"
+ARG purl="https://downloads.lms-community.org/LyrionMusicServer_v9.0.0/lyrionmusicserver_9.0.0_all.deb"
 ARG debug=true
 ARG target_uid=1000
 ARG BUILD_ARCH
