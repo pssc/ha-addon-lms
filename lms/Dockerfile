@@ -41,7 +41,7 @@ FROM base
 # Bump cpan build to same version if possible
 #  ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
 # xlatest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
-ARG purl="https://downloads.lms-community.org/LyrionMusicServer_v9.0.0/lyrionmusicserver_9.0.0_all.deb"
+ARG purl="https://downloads.lms-community.org/LyrionMusicServer_v9.0.1/lyrionmusicserver_9.0.1_all.deb"
 ARG debug=true
 ARG target_uid=1000
 ARG BUILD_ARCH
