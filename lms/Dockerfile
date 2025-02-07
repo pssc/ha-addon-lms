@@ -17,6 +17,7 @@ ARG BUILD_ARCH
 #    git clone --depth 1 https://github.com/Logitech/slimserver-vendor -b public/8.4 && \
 #patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev libavformat-dev && \
 RUN apt-get -qq -y update && \
+    apt-get -qq -y upgrade-update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
     patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev && \
     mkdir -p /tmp/sources && \
