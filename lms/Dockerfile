@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND "noninteractive"
 RUN mv /init /s6init
 
 RUN apt-get purge libpci3 || true
-RUN apt-mark hold libpci3
+RUN apt-get update && apt-mark hold libpci3
 # Upgrading the operating system inside the container
 RUN apt-get update && apt-get dist-upgrade -y -o Dpkg::Options::="--force-confold" && apt-get --no-install-recommends --no-install-suggests -qq -y install wget git rsync patch && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
