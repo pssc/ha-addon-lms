@@ -15,7 +15,8 @@ RUN apt-get update && apt-get dist-upgrade -y -o Dpkg::Options::="--force-confol
 
 FROM base AS builder
 ARG BUILD_ARCH
-ENV CFLAGS -02
+ENV CXXFLAGS -O2
+ENV CFLAGS -O2
 ENV MAKEFLAGS -j1
 
 RUN apt-get -qq -y update && \
