@@ -2,7 +2,7 @@
 
 ### Changes
  - LMS 9.0.1
- - Debian base 7.7.0
+ - Debian base 7.7.1
 
 ## [9.0.0.0] 2024-12-04
 
