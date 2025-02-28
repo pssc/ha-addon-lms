@@ -4,7 +4,7 @@
 # Set up env from ha
 # ==============================================================================
 
-function lms_to_env {
+function add_to_env {
   KEY=$1
   PRE=${2:-""}
   VAL="$3"
@@ -16,5 +16,5 @@ function lms_to_env {
 
 PF="LMS_"
 
-ha_to_env TEST ${PF} "${LMS_ACFG}"
+add_to_env TEST ${PF} "${LMS_ACFG}"
 exit
