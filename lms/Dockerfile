@@ -47,14 +47,15 @@ ARG BUILD_ARCH
 ENV S6_SERVICES_GRACETIME 119000
 ENV DISABLE_HA_AUTHENTICATION true
 
-# Debug?
 # LMS
-ENV LMS_CFG   /config/lms
-ENV LMS_PREFS /config/lms/prefs
-ENV LMS_PLUGS /config/lms/plugins
-ENV LMS_CACHE /config/lms/cache
-ENV LMS_LOGDIR /config/lms/logs
-ENV LMS_HACFGDIR /config/lms/addon
+ENV LMS_ACFG  /config
+ENV LMS_OCFG  /homeassistant/lms
+ENV LMS_CFG   ${LMS_OCFG}
+ENV LMS_PREFS ${LMS_CFG}/prefs
+ENV LMS_PLUGS ${LMS_CFG}/plugins
+ENV LMS_CACHE ${LMS_CFG}/cache
+ENV LMS_LOGDIR ${LMS_CFG}/logs
+ENV LMS_HACFGDIR ${LMS_CFG}/addon
 #ENV LMS_LOGFILE stdout
 ENV LMS_OPTIONS " "
 ENV LMS_USER "squeezeboxserver"
