@@ -2,7 +2,7 @@
 
 ### Changes
  - enable descrete addon config
-
+ - bump aarch64 back to 7.7.1 base
 
 ## [9.0.1.0] 2025-02-14
 
