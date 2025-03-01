@@ -14,8 +14,25 @@ function path {
 }
 
 if [ -x "${LMS_OCFG}" ]; then
-   if [ ! -x "${LMS_CFG}" ] ;then
-      ln -s ${LMS_OCFG} ${LMS_CFG}
+   if [ "${LMS_migrate_config:-""}" = "true" ];then
+        bashio::log.info " Config migration"
+	if [ -d "${LMS_OCFG}" -a -l "${LMS_CFG}" ];then
+		# Delete Link
+		rm -v "${LMS_CFG}"
+		# Move dir and error delete copy and abort
+		mv -v "${LMS_OCFG}" "${LMS_CFG}"
+		if [ $? -gt 0 ];then
+                        bashio::error.info " Migration Failed"
+			rm -rvf "${LMS_CFG}"
+			exit 1
+		fi
+	fi
+   else
+     # not migrating
+     if [ ! -x "${LMS_CFG}" ] ;then
+        bashio::log.info " Configiuring to use old config "
+        ln -s ${LMS_OCFG} ${LMS_CFG}
+     fi
    fi
 fi
 
