@@ -58,8 +58,3 @@ if [ "${LMS_set_permissions:-""}" = "true" ];then
     chmod +x /config "${LMS_CFG}"
 fi
 
-# Copy package file for sensors
-if [ ! -r "${LMS_HACFGDIR}/lms_pkg.yaml" ];then
-   cp /usr/local/lib/lms_pkg.yaml ${LMS_HACFGDIR}/lms_pkg.yaml
-fi
-
