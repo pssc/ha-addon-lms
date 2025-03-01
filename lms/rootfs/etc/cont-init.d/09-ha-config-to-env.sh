@@ -24,6 +24,6 @@ ha_to_env LOGDIR ${PF}
 ha_to_env NX ${PF}
 ha_to_env set_permissions ${PF}
 ha_to_env autoupdate_notify ${PF}
-ha_to_env nostats ${PF}
+ha_to_env migrate_config ${PF}
 ha_to_env mmserver ${PF}
 exit
