@@ -1,11 +1,11 @@
 ## [9.0.1.1] 2025-02-28
 
 ### Added
- - config / cache migration to descrete addon config space
+ - config / cache migration to descrete addon config space (via option)
 
 ### Changes
  - enable descrete addon config
- - new installs will be confiured in the addon config space and not homeassistants my default
+ - new installs will be configured in the addons config space and not homeassistants by default
  - remove sensors as the squeezebox intergration now does all of this
 
 ### Fixes

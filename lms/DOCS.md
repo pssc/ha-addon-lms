@@ -123,7 +123,7 @@ Flexible disk layout options, additional customisation of packages and startup t
 
 Warning make sure you have HA config area backup before proceeding you lms config is at risk.
 
-Migrates config from homeassaint config area /homeassisant/lms to descrete config addon area to /config/lms (/addons_confg/REPOHASH_lms/lms)
+Migrates config from homeassaint config area /homeassistant/lms to descrete config addon area to /config/lms (/homeassistant/addons_confg/REPOHASH_lms/lms)
 
 This will mean your addonbackups will now have the LMS state included note this can be several GB.
 
