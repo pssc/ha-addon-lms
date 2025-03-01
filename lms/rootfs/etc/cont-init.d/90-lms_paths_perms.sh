@@ -13,6 +13,12 @@ function path {
   fi
 }
 
+if [ -x "${LMS_OCFG}" ]; then
+   if [ ! -x "${LMS_CFG}" ] ;then
+      ln -s ${LMS_OCFG} ${LMS_CFG}
+   fi
+fi
+
 path "${LMS_HACFGDIR}"
 path "${LMS_PREFS}"
 path "${LMS_PREFS}/plugin"
@@ -57,6 +63,3 @@ if [ ! -r "${LMS_HACFGDIR}/lms_pkg.yaml" ];then
    cp /usr/local/lib/lms_pkg.yaml ${LMS_HACFGDIR}/lms_pkg.yaml
 fi
 
-if [ ! -x "${LMS_CFG}" ] ;then
-   ln -s ${LMS_OCFG} ${LMS_CFG}
-fi
