@@ -23,7 +23,7 @@ if [ -x "${LMS_OCFG}" ]; then
 		# Move dir and error delete copy and abort
 		mv -v "${LMS_OCFG}" "${LMS_CFG}"
 		if [ $? -gt 0 ];then
-                        bashio::error.info " Migration Failed error during mv command tidying up..."
+                        bashio::error.info " Migration Failed error during mv command tidying up deleting copy in config space."
 			rm -rvf "${LMS_CFG}"
 			exit 1
 		fi
