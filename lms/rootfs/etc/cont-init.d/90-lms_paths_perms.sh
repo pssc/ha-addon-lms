@@ -57,6 +57,6 @@ if [ ! -r "${LMS_HACFGDIR}/lms_pkg.yaml" ];then
    cp /usr/local/lib/lms_pkg.yaml ${LMS_HACFGDIR}/lms_pkg.yaml
 fi
 
-if [ ! -x "/config/lms" ] ;then
-   ln -s /homeassistant/lms /config/lms
+if [ ! -x "${LMS_CFG}" ] ;then
+   ln -s ${LMS_OCFG} ${LMS_CFG}
 fi
