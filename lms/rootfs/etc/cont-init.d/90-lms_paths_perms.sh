@@ -16,19 +16,19 @@ function path {
 if [ -x "${LMS_OCFG}" ]; then
    if [ "${LMS_migrate_config:-""}" = "true" ];then
         bashio::log.info " Config migration"
-	if [ -d "${LMS_OCFG}" -a -l "${LMS_CFG}" ];then
+	if [ -d "${LMS_OCFG}" -a -L "${LMS_CFG}" ];then
                 bashio::log.info " Trying Config migration"
 		# Delete Link
 		rm -v "${LMS_CFG}"
 		# Move dir and error delete copy and abort
 		mv -v "${LMS_OCFG}" "${LMS_CFG}"
 		if [ $? -gt 0 ];then
-                        bashio::error.info " Migration Failed error during mv command tidying up deleting copy in config space."
+                        bashio::log.error " Migration Failed error during mv command tidying up deleting copy in config space."
 			rm -rvf "${LMS_CFG}"
 			exit 1
 		fi
 	else
-           bashio::log.warn " Config migration skiped source not dir or dest not link"
+           bashio::log.info " Config migration skiped source not dir or dest not link"
 	fi
    else
      # not migrating
