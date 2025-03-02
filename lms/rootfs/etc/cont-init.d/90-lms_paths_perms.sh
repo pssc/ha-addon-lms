@@ -39,6 +39,8 @@ if [ -x "${LMS_OCFG}" ]; then
         bashio::log.info " /config/lms exists"
      fi
    fi
+else
+   bashio::log.info " No HA lms config exists at ${LMS_OCFG}"
 fi
 
 path "${LMS_HACFGDIR}"
