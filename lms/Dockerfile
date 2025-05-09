@@ -44,24 +44,24 @@ ARG debug=true
 ARG target_uid=1000
 ARG BUILD_ARCH
 
-ENV S6_SERVICES_GRACETIME 119000
-ENV DISABLE_HA_AUTHENTICATION true
+ENV S6_SERVICES_GRACETIME=119000
+ENV DISABLE_HA_AUTHENTICATION=true
 
 # LMS
-ENV LMS_ACFG  /config/lms
-ENV LMS_OCFG  /homeassistant/lms
-ENV LMS_CFG   ${LMS_ACFG}
-ENV LMS_PREFS ${LMS_CFG}/prefs
-ENV LMS_PLUGS ${LMS_CFG}/plugins
-ENV LMS_CACHE ${LMS_CFG}/cache
-ENV LMS_LOGDIR ${LMS_CFG}/logs
-ENV LMS_HACFGDIR ${LMS_CFG}/addon
+ENV LMS_ACFG=/config/lms
+ENV LMS_OCFG=/homeassistant/lms
+ENV LMS_CFG=${LMS_ACFG}
+ENV LMS_PREFS=${LMS_CFG}/prefs
+ENV LMS_PLUGS=${LMS_CFG}/plugins
+ENV LMS_CACHE=${LMS_CFG}/cache
+ENV LMS_LOGDIR=${LMS_CFG}/logs
+ENV LMS_HACFGDIR=${LMS_CFG}/addon
 #ENV LMS_LOGFILE stdout
-ENV LMS_OPTIONS " "
-ENV LMS_USER "squeezeboxserver"
-ENV LMS_GROUP "nogroup"
-ENV HA_USER "squeezeboxserver"
-ENV debug ${debug}
+ENV LMS_OPTIONS=" "
+ENV LMS_USER="squeezeboxserver"
+ENV LMS_GROUP="nogroup"
+ENV HA_USER="squeezeboxserver"
+ENV debug=${debug}
 
 COPY rootfs/ /
 
