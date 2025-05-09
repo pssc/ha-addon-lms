@@ -4,7 +4,7 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:7.7.1
 
 FROM ${BUILD_FROM} AS base
 
-ENV DEBIAN_FRONTEND "noninteractive"
+ENV DEBIAN_FRONTEND="noninteractive"
 
 RUN mv /init /s6init
 
