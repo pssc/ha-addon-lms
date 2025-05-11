@@ -119,6 +119,15 @@ Flexible disk layout options, additional customisation of packages and startup t
 
 ---
 
+### Option: `migrate config` (optional)
+
+Warning make sure you have HA config area backup before proceeding you lms config is at risk.
+
+Migrates config from homeassaint config area /homeassistant/lms to descrete config addon area to /config/lms (/homeassistant/addons_confg/REPOHASH_lms/lms)
+
+This will mean your addonbackups will now have the LMS state included note this can be several GB.
+
+
 ### Option: `skin` (optional)
 
 Name of skin to use for ingress interface.  In this case the material skin is an extra skin installable through lms.  Please do this before enabling this option and restartig the HA addon.  Each skin requires custom support for ingress, currently only material has been tested over the default.

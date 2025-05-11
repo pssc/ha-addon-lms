@@ -4,11 +4,11 @@
 # Set up env from ha
 # ==============================================================================
 
-function ha_to_env {
+function add_to_env {
   KEY=$1
   PRE=${2:-""}
-  VAL=$(bashio::config "${KEY,,}")
-  bashio::log.info "Option ${KEY} to ${PRE}${KEY}""=""${VAL}"
+  VAL="$3"
+  bashio::log.info "Add to cont ENV ${KEY} to ${PRE}${KEY}""=""${VAL}"
   if [[ "${VAL}" != "null" ]];then
     echo -n ${VAL} >/run/s6/container_environment/${PRE}${KEY}
   fi
@@ -16,14 +16,5 @@ function ha_to_env {
 
 PF="LMS_"
 
-ha_to_env MOUNT
-ha_to_env TMPFS
-ha_to_env OPTIONS ${PF}
-ha_to_env LOGFILE ${PF}
-ha_to_env LOGDIR ${PF}
-ha_to_env NX ${PF}
-ha_to_env set_permissions ${PF}
-ha_to_env autoupdate_notify ${PF}
-ha_to_env migrate_config ${PF}
-ha_to_env mmserver ${PF}
+add_to_env TEST ${PF} "${LMS_ACFG}"
 exit

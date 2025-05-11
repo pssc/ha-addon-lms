@@ -1,4 +1,23 @@
-## [9.0.1.0] 2024-12-04
+## [9.0.2.0] 2025-05-09
+
+### Changes
+ - LMS 9.0.2
+ - Debian base 7.8.3
+
+## [9.0.1.1] 2025-02-28
+
+### Added
+ - config / cache migration to descrete addon config space (via option)
+
+### Changes
+ - enable descrete addon config
+ - new installs will be configured in the addons config space and not homeassistants by default
+ - remove sensors as the squeezebox intergration now does all of this
+
+### Fixes
+ - bump aarch64 back to 7.7.1 base
+
+## [9.0.1.0] 2025-02-14
 
 ### Changes
  - LMS 9.0.1

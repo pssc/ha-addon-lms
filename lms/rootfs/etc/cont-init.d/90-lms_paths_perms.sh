@@ -13,6 +13,36 @@ function path {
   fi
 }
 
+if [ -x "${LMS_OCFG}" ]; then
+   if [ "${LMS_migrate_config:-""}" = "true" ];then
+        bashio::log.info " Config migration"
+	if [ -d "${LMS_OCFG}" -a -L "${LMS_CFG}" ];then
+                bashio::log.info " Trying Config migration"
+		# Delete Link
+		rm -v "${LMS_CFG}"
+		# Move dir and error delete copy and abort
+		mv -v "${LMS_OCFG}" "${LMS_CFG}"
+		if [ $? -gt 0 ];then
+                        bashio::log.error " Migration Failed error during mv command tidying up deleting copy in config space."
+			rm -rvf "${LMS_CFG}"
+			exit 1
+		fi
+	else
+           bashio::log.info " Config migration skiped source not dir or dest not link"
+	fi
+   else
+     # not migrating
+     if [ ! -x "${LMS_CFG}" ] ;then
+        bashio::log.info " Configiuring to use old config inlinking to ${LMS_OCFG}"
+        ln -s ${LMS_OCFG} ${LMS_CFG}
+     else
+        bashio::log.info " /config/lms exists"
+     fi
+   fi
+else
+   bashio::log.info " No HA lms config exists at ${LMS_OCFG}"
+fi
+
 path "${LMS_HACFGDIR}"
 path "${LMS_PREFS}"
 path "${LMS_PREFS}/plugin"
@@ -52,7 +82,3 @@ if [ "${LMS_set_permissions:-""}" = "true" ];then
     chmod +x /config "${LMS_CFG}"
 fi
 
-# Copy package file for sensors
-if [ ! -r "${LMS_HACFGDIR}/lms_pkg.yaml" ];then
-   cp /usr/local/lib/lms_pkg.yaml ${LMS_HACFGDIR}/lms_pkg.yaml
-fi

@@ -4,7 +4,7 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:7.7.1
 
 FROM ${BUILD_FROM} AS base
 
-ENV DEBIAN_FRONTEND "noninteractive"
+ENV DEBIAN_FRONTEND="noninteractive"
 
 RUN mv /init /s6init
 
@@ -39,28 +39,29 @@ FROM base
 # Bump cpan build to same version if possible
 #  ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
 # xlatest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
-ARG purl="https://downloads.lms-community.org/LyrionMusicServer_v9.0.1/lyrionmusicserver_9.0.1_all.deb"
+ARG purl="https://downloads.lms-community.org/LyrionMusicServer_v9.0.2/lyrionmusicserver_9.0.2_all.deb"
 ARG debug=true
 ARG target_uid=1000
 ARG BUILD_ARCH
 
-ENV S6_SERVICES_GRACETIME 119000
-ENV DISABLE_HA_AUTHENTICATION true
+ENV S6_SERVICES_GRACETIME=119000
+ENV DISABLE_HA_AUTHENTICATION=true
 
-# Debug?
 # LMS
-ENV LMS_CFG   /config/lms
-ENV LMS_PREFS /config/lms/prefs
-ENV LMS_PLUGS /config/lms/plugins
-ENV LMS_CACHE /config/lms/cache
-ENV LMS_LOGDIR /config/lms/logs
-ENV LMS_HACFGDIR /config/lms/addon
+ENV LMS_ACFG=/config/lms
+ENV LMS_OCFG=/homeassistant/lms
+ENV LMS_CFG=${LMS_ACFG}
+ENV LMS_PREFS=${LMS_CFG}/prefs
+ENV LMS_PLUGS=${LMS_CFG}/plugins
+ENV LMS_CACHE=${LMS_CFG}/cache
+ENV LMS_LOGDIR=${LMS_CFG}/logs
+ENV LMS_HACFGDIR=${LMS_CFG}/addon
 #ENV LMS_LOGFILE stdout
-ENV LMS_OPTIONS " "
-ENV LMS_USER "squeezeboxserver"
-ENV LMS_GROUP "nogroup"
-ENV HA_USER "squeezeboxserver"
-ENV debug ${debug}
+ENV LMS_OPTIONS=" "
+ENV LMS_USER="squeezeboxserver"
+ENV LMS_GROUP="nogroup"
+ENV HA_USER="squeezeboxserver"
+ENV debug=${debug}
 
 COPY rootfs/ /
 
