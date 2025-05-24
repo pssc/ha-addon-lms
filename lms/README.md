@@ -2,6 +2,8 @@
 
 A complete and easy way to run [LMS Lyrion Music Server][LMS], formerly the [Logitech Media Server][sdf].
 
+It is for use with the [Squeezebox (Lyrion Music Server) Intergration](https://www.home-assistant.io/integrations/squeezebox/)
+
 LMS formerly the [Logitech Media Server][sdf] is a cross-platform streaming media server that supports a wide range
  of formats, including AAC, AIFF, FLAC, Ogg Vorbis, MP3, WAV, and WMA.
 
