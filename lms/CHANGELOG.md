@@ -5,6 +5,8 @@
 
 ### Fixes
  - symlink dereferencing on /config/lms for permission fixes
+ - some spellings
+ - addon URL
 
 ## [9.0.2.0] 2025-05-09
 

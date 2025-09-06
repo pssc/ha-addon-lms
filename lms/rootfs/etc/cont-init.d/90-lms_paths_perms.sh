@@ -92,6 +92,7 @@ if [ "${LMS_set_permissions:-""}" = "true" ];then
     chown ${V} "${LMS_USER}" "${LMS_CFG}"
     chown ${V} -R -h "${LMS_USER}" "${LMS_CFG}/"
     chmod +x /config "${LMS_CFG}"
+    ls -lad "${LMS_CFG}"
     ls -la "${LMS_CFG}"
 fi
 
