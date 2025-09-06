@@ -84,6 +84,7 @@ fi
 
 if [ "${LMS_set_permissions:-""}" = "true" ];then
     bashio::log.info "Set perms amd owner ${LMS_USER} on ${LMS_CFG}"
+    id ${LMS_USER}
     V=""
     if bashio::debug; then
       ls -la "${LMS_CFG}"
