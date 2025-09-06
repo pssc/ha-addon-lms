@@ -1,7 +1,7 @@
 # Home Assistant Community Add-on repo: LMS (formerly Logitech Media Server)
 [Home Assistant addon for formerly the Logitech Media Server/Squeezebox Server/Squeeze Centre/UPNP Server](https://github.com/pssc/ha-addon-lms/tree/master/lms)
 
-It is for use with the [Squeezebox (Lyrion Music Server) Intergration](https://www.home-assistant.io/integrations/squeezebox/)
+It is for use with the [Squeezebox (Lyrion Music Server) Integration](https://www.home-assistant.io/integrations/squeezebox/)
 
 This repo can be added directly to the Home Assistant addon repostories for installs of this addon
 

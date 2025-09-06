@@ -1,3 +1,13 @@
+## [9.0.2.1] 2025-09-06
+
+### Added
+ - more debug around ownership and permission fixes
+
+### Fixes
+ - symlink dereferencing on /config/lms for permission fixes
+ - some spellings
+ - addon URL
+
 ## [9.0.2.0] 2025-05-09
 
 ### Changes

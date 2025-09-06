@@ -63,12 +63,18 @@ chown ${LMS_USER} ${LMS_LOGDIR}/"perfmon.log"
 if [ -r "${LMS_HACFGDIR}/restore_perms_fix" ];then
 	if [ -r "${LMS_PREFS}/server.prefs" ];then
 	   if [ ! -r "/data/lms/notbackedup/do_no_restore_perms" ];then
-              bashio::log.info " Restore perms"
+              bashio::log.info "Restore perms and onwership ${LMS_USER} on ${LMS_CFG}"
 	      # we have run howerver we have been restored form backup so own the files
-              chown -Rh "${LMS_USER}" "${LMS_CFG}"
+	      V=""
+	      if bashio::debug; then
+                 V="-v"
+	      fi
+              chown ${V} "${LMS_USER}" "${LMS_CFG}"
+              chown ${V} -R -h "${LMS_USER}" "${LMS_CFG}/"
               path "/data/lms/notbackedup/"
               touch "/data/lms/notbackedup/do_no_restore_perms"
 	   fi
+           bashio::log.debug "Do not restore perms"
 	fi
 else
     touch "${LMS_HACFGDIR}/restore_perms_fix"
@@ -77,8 +83,16 @@ else
 fi
 
 if [ "${LMS_set_permissions:-""}" = "true" ];then
-    bashio::log.info " set perms"
-    chown -Rh "${LMS_USER}" "${LMS_CFG}"
+    bashio::log.info "Set perms amd owner ${LMS_USER} on ${LMS_CFG}"
+    V=""
+    if bashio::debug; then
+      ls -la "${LMS_CFG}"
+       V="-v"
+    fi
+    chown ${V} "${LMS_USER}" "${LMS_CFG}"
+    chown ${V} -R -h "${LMS_USER}" "${LMS_CFG}/"
     chmod +x /config "${LMS_CFG}"
+    ls -lad "${LMS_CFG}"
+    ls -la "${LMS_CFG}"
 fi
 
