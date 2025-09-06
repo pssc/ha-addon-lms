@@ -95,5 +95,6 @@ if [ "${LMS_set_permissions:-""}" = "true" ];then
     chmod +x /config "${LMS_CFG}"
     ls -lad "${LMS_CFG}"
     ls -la "${LMS_CFG}"
+    ls -la "${LMS_CACHE}"
 fi
 
