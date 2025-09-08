@@ -59,18 +59,12 @@ chown ${LMS_USER} ${LMS_LOGDIR}/${LMS_LOGFIlE:-"server.log"}
 : > ${LMS_LOGDIR}/"perfmon.log"
 chown ${LMS_USER} ${LMS_LOGDIR}/"perfmon.log"
 
-
+# autofix for perms post restore
 if [ -r "${LMS_HACFGDIR}/restore_perms_fix" ];then
 	if [ -r "${LMS_PREFS}/server.prefs" ];then
 	   if [ ! -r "/data/lms/notbackedup/do_no_restore_perms" ];then
               bashio::log.info "Restore perms and onwership ${LMS_USER} on ${LMS_CFG}"
-	      # we have run howerver we have been restored form backup so own the files
-	      V=""
-	      if bashio::debug; then
-                 V="-v"
-	      fi
-              chown ${V} "${LMS_USER}" "${LMS_CFG}"
-              chown ${V} -R -h "${LMS_USER}" "${LMS_CFG}/"
+              LMS_set_permissions=true
               path "/data/lms/notbackedup/"
               touch "/data/lms/notbackedup/do_no_restore_perms"
 	   fi
@@ -80,6 +74,16 @@ else
     touch "${LMS_HACFGDIR}/restore_perms_fix"
     path "/data/lms/notbackedup/"
     touch "/data/lms/notbackedup/do_no_restore_perms"
+fi
+
+# Check file see if we need to fix perms automatically is the above needed?
+if [[ -O "${LMS_CACHE}/plugin-data.yaml" ]]; then
+    if [[ ! -r "/data/lms/no_perm_fix" ]];then
+       # owned by root(current euid) so fix,
+       LMS_set_permissions=true
+       bashio::log.info "Auto fix perm and ownership activated"
+    else
+       bashio::log.info "Auto fix prem and ownership triggred but disabled"
 fi
 
 if [ "${LMS_set_permissions:-""}" = "true" ];then

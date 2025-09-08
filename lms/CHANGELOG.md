@@ -1,7 +1,8 @@
-## [9.0.2.2] 2025-09-06
+## [9.0.2.2] 2025-09-08
 
 ### Added
- - Show some file ownership iinb logs post fix so we can confim or not from startup log
+ - Show some file ownership in logs post fix so we can confim or not from startup log
+ - autofix file ownership
 
 ## [9.0.2.1] 2025-09-06
 
