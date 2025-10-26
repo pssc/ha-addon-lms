@@ -1,4 +1,4 @@
-## [9.0.2.2] 2025-09-08
+## [9.0.2.2] 2025-10-26
 
 ### Added
  - Show some file ownership in logs post fix so we can confim or not from startup log
