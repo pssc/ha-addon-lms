@@ -84,6 +84,7 @@ if [[ -O "${LMS_CACHE}/plugin-data.yaml" ]]; then
        bashio::log.info "Auto fix perm and ownership activated"
     else
        bashio::log.info "Auto fix prem and ownership triggred but disabled"
+    fi
 fi
 
 if [ "${LMS_set_permissions:-""}" = "true" ];then
