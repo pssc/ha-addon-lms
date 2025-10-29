@@ -4,7 +4,7 @@
  - Show some file ownership in logs post fix so we can confim or not from startup log
 
 ### Fixes
- - autofix file ownership with disable dor adv users see code
+ - autofix file ownership with disable for advanced users, see code
 
 ## [9.0.2.1] 2025-09-06
 
