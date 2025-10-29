@@ -1,8 +1,10 @@
-## [9.0.2.2] 2025-10-26
+## [9.0.2.2] 2025-10-29
 
 ### Added
  - Show some file ownership in logs post fix so we can confim or not from startup log
- - autofix file ownership
+
+### Fixes
+ - autofix file ownership with disable dor adv users see code
 
 ## [9.0.2.1] 2025-09-06
 
