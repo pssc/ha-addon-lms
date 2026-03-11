@@ -33,16 +33,13 @@ Create an [issue on github][issues], or if its a general query ask on the [home 
 
 The i386 build is becomming increasingly difficult and should be considered at risk.
 
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-beta-yellow.svg
 [release-shield]: https://img.shields.io/badge/version-v9.0.3.0-yellow.svg
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
 
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[i386-shield]: https://img.shields.io/badge/i386-yes-yellow.svg
-[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
-[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 
 [lms]: https://lyrion.org/
