@@ -111,7 +111,7 @@ sub canAutoUpdate {
 	        Slim::Utils::Prefs::preferences('server')  ->set('autoDownloadUpdate', 0);
 		return 0;
 	}
-        $log->warn("Logitech Media Server can't be upgraded automatically in a home assisant addon, update info provided for information only");
+        $log->warn("Logitech Media Server can't be upgraded automatically in a home assisant addon app, update info provided for information only");
 	# make sure auto download is always enabled - we don't really auto-update, but this way we're called when we have update info
 	Slim::Utils::Prefs::preferences('server')  ->set('autoDownloadUpdate', 1);
 	# dirty hack to only return true when called from the update checker...
