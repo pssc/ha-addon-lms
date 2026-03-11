@@ -12,7 +12,7 @@ sub initDetails {
 	my $class = shift;
 
 	$class->{osDetails} = $class->SUPER::initDetails();
-	$class->{osDetails}->{osName} .= " (Docker Home Assistant Addon)";
+	$class->{osDetails}->{osName} .= " (Docker Home Assistant App)";
 
 	return $class->{osDetails};
 }
@@ -31,7 +31,7 @@ sub initPrefs {
 	$prefs->{useLocalImageproxy} = 2;
 	$prefs->{wizardDone} = 1;
 	# no strings so Take Hostname from Env from container setup scripts
-	$prefs->{libraryname} = $ENV{HAA_HOST}." - LMS HA Addon";
+	$prefs->{libraryname} = $ENV{HAA_HOST}." - LMS HA App";
 }
 
 sub dirsFor {
@@ -111,7 +111,7 @@ sub canAutoUpdate {
 	        Slim::Utils::Prefs::preferences('server')  ->set('autoDownloadUpdate', 0);
 		return 0;
 	}
-        $log->warn("Logitech Media Server can't be upgraded automatically in a home assisant addon app, update info provided for information only");
+        $log->warn("Logitech Media Server can't be upgraded automatically in a home assisant app, update info provided for information only");
 	# make sure auto download is always enabled - we don't really auto-update, but this way we're called when we have update info
 	Slim::Utils::Prefs::preferences('server')  ->set('autoDownloadUpdate', 1);
 	# dirty hack to only return true when called from the update checker...
