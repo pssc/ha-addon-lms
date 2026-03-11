@@ -1,3 +1,11 @@
+## [9.1.0.0] 2025-10-29
+
+### Changes
+ - Debian base 9.2.0
+ - LMS 9.1.0
+ - Addon -> App
+ - Arch aarch64 & amd64 only
+
 ## [9.0.3.0] 2025-10-29
 
 ### Changes

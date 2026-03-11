@@ -1,10 +1,10 @@
-# Home Assistant Add-on: Logitech Media Server
+# Home Assistant Add-on App: Logitech Media Server
 
 ## Installation
 
-Follow these steps to get the add-on installed on your system:
+Follow these steps to get the App installed on your system:
 
-1. Navigate in your Home Assistant frontend to **Supervisor** -> **Add-on Store**.
+1. Navigate in your Home Assistant frontend to **Supervisor** -> **Apps**.
 2. Find the "Logitech Media Server" add-on and click it.
 3. Click on the "INSTALL" button.
 
