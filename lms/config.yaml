@@ -56,7 +56,6 @@ ingress_port: 0
 panel_icon: mdi:music-box
 panel_title: LMS
 panel_admin: false
-stage: stable
 options:
   links: []
   mounts: []
