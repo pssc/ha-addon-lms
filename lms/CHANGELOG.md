@@ -1,7 +1,7 @@
 ## [9.1.0.2] 2026-06-01
 
 ### Added
- - local package support manliy to support night builds if needed place in the packages dir in the addon config
+ - local package support mainly to support night builds, if needed place debs in the packages dir in the addon config
 
 ## [9.1.0.1] 2026-04-15
 
