@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:latest
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:9.3.0
 
 # ARGS...
 
