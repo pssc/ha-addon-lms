@@ -1,5 +1,5 @@
 name: LMS Lyrion Music Server(Formerly Logitech Media Server)
-version: 9.1.0.1
+version: 9.1.0.2
 slug: lms
 description: LMS Lyrion Music Server, Formerly the Logitech Media Server & SqueezeBox Server
   Server & UPNP Music Server
@@ -73,6 +73,7 @@ schema:
   logdir: str?
   logfile: str?
   prefs: str?
+  local_packages: bool?
   cache: str?
   plugs: str?
   saved: bool?
