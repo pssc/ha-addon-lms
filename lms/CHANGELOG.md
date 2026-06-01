@@ -1,4 +1,4 @@
-## [9.1.0.2] 2026-05-01
+## [9.1.0.2] 2026-06-01
 
 ### Added
  - local package support manliy to support night builds if needed place in the packages dir in the addon config
