@@ -190,6 +190,10 @@ time for the add-on._
 packages:
   - rsync
 ```
+#### Option: `local_packages` boolean
+
+Allows you to have additional locally installed packages from the package directory in the addon config, such as a nightly stable snapshot update.
+
 #### Option: `init_commands` (required may be empty)
 
 Customize your environment even more with the `init_commands` option.
