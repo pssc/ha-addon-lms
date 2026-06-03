@@ -36,7 +36,7 @@ The i386 build is becomming increasingly difficult and should be considered at r
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
 
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-prod-green.svg
-[release-shield]: https://img.shields.io/badge/version-v9.1.0.2-green.svg
+[release-shield]: https://img.shields.io/badge/version-v9.1.0.4-green.svg
 
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
