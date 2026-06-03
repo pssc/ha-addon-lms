@@ -32,9 +32,11 @@ if bashio::config.has_value 'local_packages'; then
 
    ( cd ${DEB_PKG_DIR}
    for package in *.deb; do
-        bashio::log.info " Installing package ${package}"
-        apt-get install -y --no-install-suggests --no-install-recommends -o Dpkg::Options::="--force-confold"  "./$package" \
+	if [ -r "./${package}" ];then
+           bashio::log.info " Installing package ${package}"
+           apt-get install -y --no-install-suggests --no-install-recommends -o Dpkg::Options::="--force-confold"  "./$package" \
 		|| ( bashio::log.error "Failed installing package ${package}" ;bashio::exit.nok "Failed installing package ${package}" )
+	fi
    done
    )
    bashio::log.info " Installed local packages"
