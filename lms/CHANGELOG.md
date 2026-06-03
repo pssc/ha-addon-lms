@@ -1,11 +1,15 @@
-## [9.1.0.3] 2026-06-01
+## [9.1.0.3] 2026-06-03
 ### Changes
  - update build system
+
+## fix
+ - fix not local packages
+ - build from 9.2 slimserver-vendor@0aa04a0cb3337b832d2fb2b3b821281ecd78de10 to fix perl XS module issues in 9.1
 
 ## [9.1.0.2] 2026-06-01
 
 ### Added
- - local package support mainly to support night builds, if needed place debs in the packages dir in the addon config
+ - local package support mainly to support nightly builds, if needed place debs in the packages dir in the addon config and toggle opt
 
 ## [9.1.0.1] 2026-04-15
 
