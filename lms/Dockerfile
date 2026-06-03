@@ -11,12 +11,16 @@ RUN apt-get update && apt-get dist-upgrade -y -o Dpkg::Options::="--force-confol
 FROM base AS builder
 ARG BUILD_ARCH
 
+# FIXME workround for 9.1 slimserver-vendor module issues as XS module is broken
+# git clone --depth 1 https://github.com/LMS-Community/slimserver-vendor -b public/9.2 && \
 RUN apt-get -qq -y update && \
     apt-get --no-install-recommends --no-install-suggests -qq -y install \
     patch rsync nasm make gcc g++ libc-bin zlib1g-dev libgd-dev libmodule-install-perl bzip2 build-essential pkg-config file libjpeg-dev && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
-    git clone --depth 1 https://github.com/LMS-Community/slimserver-vendor -b public/9.1 && \
+    git clone https://github.com/LMS-Community/slimserver-vendor -b public/9.2 && \
+    cd slimserver-vendor && git checkout 0aa04a0cb3337b832d2fb2b3b821281ecd78de10 \
+    cd /tmp/sources && \
     mkdir -p tmp && \
     cd slimserver-vendor/CPAN && \
     mkdir -p build/include build/lib && \
