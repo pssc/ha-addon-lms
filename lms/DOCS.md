@@ -10,13 +10,14 @@ Follow these steps to get the App installed on your system:
 
 ## Support
 
-I only support the addon with LMS running on 9000 you can run it on other ports its untested and unproven.
+I only support the app with LMS running on 9000 you can run it on other ports its untested and unproven.
+I track the latest stable release not the nigtly, its possible to manually add a nightly but it will slow starup and consume more space, this is mainly mean for testing LMS fixes.
 
 ## Kown Issues
  - Permssions somtimes get nuked and reset to root, known to be an issue with restores from backup, lms doesn't run as root, try toggiling the `'set_permissions` option to correct this.
  - Ingress Plugin art work.
- - Image reszier set to mysqueezebox.com gives inconsistant results for ingress
- - Portainter addon web intewrface running on Port 9000 and alt port then burnt into /config/lms/prefs/server.prefs
+ - Image resizer set to mysqueezebox.com gives inconsistant results for ingress
+ - Portainter app web intewrface running on Port 9000 and alt port then burnt into /config/lms/prefs/server.prefs
 
 ## How to use
 
@@ -25,7 +26,7 @@ LMS doesnt run as root so /config/content/ is provided for your own content that
 
 ### Acesss via ingress
 
-For this the addon rewriting the webinterface and proxying the web interafce on the fly this requires doezens of custom rules and is very much *best efforts* it is very very time consuming to figure out and not all things may be workable/fixable, using an iframe will work locally more reliably but probably will not work with alot of remote access options. Again your milage will vary with addional rewrites for external https acccess via e.g  nginx these may well break some of the rewrites for the ingress interfaces to work.
+For this the app us rewriting the webinterface and proxying the web interafce on the fly this requires doezens of custom rules and is very much *best efforts* it is very very time consuming to figure out and not all things may be workable/fixable, using an iframe will work locally more reliably but probably will not work with alot of remote access options. Again your milage will vary with addional rewrites for external https acccess via e.g  nginx these may well break some of the rewrites for the ingress interfaces to work.
 
 This is why the skin support is limited.
 
@@ -87,7 +88,7 @@ Example basic config:-
 
 ### NAS
 
-NAS mounting in the addon via the settings. So for nfs and cifs/smb3 example:-
+NAS mounting in the app via the settings. So for nfs and cifs/smb3 example:-
 
 ```
 mounts:
@@ -110,7 +111,7 @@ This is all to make sure the mount point exists in an unbacked-up area and the m
 So in my setup I have mounted media in the underlying OS and then substituted a bind mount for the raw nfs and also used links to make it look like my previous Linux install remain the same so all the paths for trackstat remain the same as I migrated that database.
 
 
-## AddonOtpions
+## AppOtpions
 ---
 
 ### Option group `Environment`
@@ -123,14 +124,14 @@ Flexible disk layout options, additional customisation of packages and startup t
 
 Warning make sure you have HA config area backup before proceeding you lms config is at risk.
 
-Migrates config from homeassaint config area /homeassistant/lms to descrete config addon area to /config/lms (/homeassistant/addons_confg/REPOHASH_lms/lms)
+Migrates config from homeassaint config area /homeassistant/lms to descrete config app area to /config/lms (/homeassistant/addons_confg/REPOHASH_lms/lms)
 
-This will mean your addonbackups will now have the LMS state included note this can be several GB.
+This will mean your app backups will now have the LMS state included note this can be several GB.
 
 
 ### Option: `skin` (optional)
 
-Name of skin to use for ingress interface.  In this case the material skin is an extra skin installable through lms.  Please do this before enabling this option and restartig the HA addon.  Each skin requires custom support for ingress, currently only material has been tested over the default.
+Name of skin to use for ingress interface.  In this case the material skin is an extra skin installable through lms.  Please do this before enabling this option and restartig the HA app.  Each skin requires custom support for ingress, currently only material has been tested over the default.
 
 Other skins are currenty untested and unsupported for ingress
 
@@ -153,7 +154,7 @@ These mounted filesystems are only available in there own container lms's one in
 
 You may need to turn protection mode off, for some devie access for example local disks.
 
-Operation is a describled for debian mount command, best try it out in the terminal addon first to see if it works then just remove the mount command prefix and add to the config as above.
+Operation is a describled for debian mount command, best try it out in the terminal app first to see if it works then just remove the mount command prefix and add to the config as above.
 
 ```
 mount [-fnrsvw] [-t vfstype] [-o options] device dir
@@ -192,7 +193,7 @@ packages:
 ```
 #### Option: `local_packages` boolean
 
-Allows you to have additional locally installed packages from the package directory in the addon config, such as a nightly stable snapshot update.
+Allows you to have additional locally installed packages from the package directory in the app config, such as a nightly stable snapshot update.
 
 #### Option: `init_commands` (required may be empty)
 

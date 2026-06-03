@@ -29,7 +29,7 @@ map:
   - media:rw
   - homeassistant_config:rw
   - addon_config:rw
-image: ghcr.io/pssc/ha-addon-lms
+image: ghcr.io/pssc/ha-app-lms
 tmpfs: true
 hassio_api: true
 apparmor: false
