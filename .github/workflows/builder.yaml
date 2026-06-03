@@ -1,7 +1,7 @@
 name: Builder
 
 env:
-  MONITORED_FILES: "config.json config.yaml config.yml Dockerfile rootfs rootfs-ingress"
+  MONITORED_FILES: "config.yaml config.yml Dockerfile rootfs rootfs-ingress"
 
 on:
   pull_request:
@@ -24,7 +24,7 @@ jobs:
       changed_apps: ${{ steps.filter.outputs.changed_apps }}
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
 
       - name: Get changed files
         id: changed_files
