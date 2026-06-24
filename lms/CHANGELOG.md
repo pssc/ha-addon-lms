@@ -1,3 +1,8 @@
+## [9.1.1.0] 2026-06-24
+
+### Changes
+ - LMS 9.1.1
+
 ## [9.1.0.4] 2026-06-03
 ### Changes
  - update image name
