@@ -1,7 +1,7 @@
 name: Builder
 
 env:
-  MONITORED_FILES: "config.yaml config.yml Dockerfile rootfs rootfs-ingress"
+  MONITORED_FILES: "config.yaml config.yml Dockerfile rootfs rootfs-ingress patches"
 
 on:
   pull_request:
