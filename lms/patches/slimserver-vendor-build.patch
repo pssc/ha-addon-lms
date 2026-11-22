@@ -13,3 +13,6 @@
 -    if [ "$MACHINE" = "padre" ]; then
 +    if [ "$OS" = "Linux" -o "$MACHINE" = "padre" ]; then
        MUTEX="--enable-posixmutexes"
+@@ -1519,1 +1521,1 @@
+-        ../dist/configure --prefix=$BUILD $MUTEX \
++        db_cv_mutex=POSIX/pthreads/library/private ../dist/configure --prefix=$BUILD $MUTEX \
