@@ -28,7 +28,7 @@ RUN apt-get -qq -y update && \
     patch -p1 -d /tmp/ffmpeg-patched/ffmpeg-0.8.4 < /tmp/lms-patches/ffmpeg-h264-pointer.patch && \
     tar -cjf ffmpeg-0.8.4.tar.bz2 -C /tmp/ffmpeg-patched ffmpeg-0.8.4 && \
     rm -rf /tmp/ffmpeg-patched && \
-    mkdir -p tmp && \
+    mkdir -p tmp /tmp/sources/tmp && \
     mkdir -p build/include build/lib && \
     if [ "${BUILD_ARCH}" = "i386" ];then \
     ln -s /usr/include/jpeglib.h build/include/jpeglib.h && \
