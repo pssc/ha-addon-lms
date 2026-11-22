@@ -1,20 +1,15 @@
 --- a/buildme.sh
 +++ b/buildme.sh
-@@ -1384,3 +1384,4 @@
+@@ -1384,3 +1384,5 @@
      if [[ "$ARCH" = "x86_64-linux-thread-multi" || "$ARCH" =~ "amd64-freebsd" || "$ARCH" = "i86pc-solaris-thread-multi-64int" ]]; then
 -        FFOPTS="$FFOPTS --disable-mmx"
 +        FFOPTS="$FFOPTS --disable-asm"
      fi
++    FLAGS="$FLAGS -pthread"
 +    FFOPTS="$FFOPTS --extra-cflags=-Wno-error=incompatible-pointer-types"
-@@ -1500,4 +1501,4 @@
+@@ -1500,4 +1502,4 @@
      # --enable-posixmutexes is needed to build on ReadyNAS Sparc.
      MUTEX=""
 -    if [ "$MACHINE" = "padre" ]; then
 +    if [ "$OS" = "Linux" -o "$MACHINE" = "padre" ]; then
        MUTEX="--enable-posixmutexes"
-@@ -1517,3 +1518,3 @@
--    CFLAGS="$FLAGS $OSX_ARCH $OSX_FLAGS -O3" \
--    LDFLAGS="$FLAGS $OSX_ARCH $OSX_FLAGS -O3" \
-+    CFLAGS="$FLAGS $OSX_ARCH $OSX_FLAGS -O3 -pthread" \
-+    LDFLAGS="$FLAGS $OSX_ARCH $OSX_FLAGS -O3 -pthread" \
-         ../dist/configure --prefix=$BUILD $MUTEX \
