@@ -19,7 +19,7 @@ RUN apt-get -qq -y update && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
     git clone https://github.com/LMS-Community/slimserver-vendor -b public/9.2 && \
-    ( cd slimserver-vendor && git checkout 0aa04a0cb3337b832d2fb2b3b821281ecd78de10 ) && \
+    ( cd slimserver-vendor && git checkout e74202f3abfbf655745b2edf3b217c01a8978589 ) && \
     mkdir -p tmp && \
     cd slimserver-vendor/CPAN && \
     mkdir -p build/include build/lib && \
