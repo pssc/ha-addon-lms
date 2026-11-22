@@ -6,3 +6,9 @@
 +        FFOPTS="$FFOPTS --disable-asm"
      fi
 +    FFOPTS="$FFOPTS --extra-cflags=-Wno-error=incompatible-pointer-types"
+@@ -1500,5 +1501,5 @@
+     # --enable-posixmutexes is needed to build on ReadyNAS Sparc.
+     MUTEX=""
+-    if [ "$MACHINE" = "padre" ]; then
++    if [ "$OS" = "Linux" -o "$MACHINE" = "padre" ]; then
+       MUTEX="--enable-posixmutexes"
