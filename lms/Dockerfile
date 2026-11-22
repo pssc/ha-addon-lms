@@ -28,6 +28,11 @@ RUN apt-get -qq -y update && \
     patch -p1 -d /tmp/ffmpeg-patched/ffmpeg-0.8.4 < /tmp/lms-patches/ffmpeg-h264-pointer.patch && \
     tar -cjf ffmpeg-0.8.4.tar.bz2 -C /tmp/ffmpeg-patched ffmpeg-0.8.4 && \
     rm -rf /tmp/ffmpeg-patched && \
+    mkdir -p /tmp/mediascan-patched && \
+    tar -xzf libmediascan-0.1.tar.gz -C /tmp/mediascan-patched && \
+    patch -p1 -d /tmp/mediascan-patched/libmediascan-0.1 < /tmp/lms-patches/libmediascan-pathisdir.patch && \
+    tar -czf libmediascan-0.1.tar.gz -C /tmp/mediascan-patched libmediascan-0.1 && \
+    rm -rf /tmp/mediascan-patched && \
     mkdir -p tmp /tmp/sources/tmp && \
     mkdir -p build/include build/lib && \
     if [ "${BUILD_ARCH}" = "i386" ];then \

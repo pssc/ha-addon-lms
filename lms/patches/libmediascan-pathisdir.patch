@@ -1,0 +1,16 @@
+--- a/src/common.h
++++ b/src/common.h
+@@ -54,1 +54,2 @@
+ int CheckMacAlias(const char *incoming_path, char *out_path);
++int PathIsDirectory(const char *dir);
+--- a/src/mediascan_linux.c
++++ b/src/mediascan_linux.c
+@@ -63,7 +63,8 @@
+   if (S_ISREG(st_buf.st_mode)) {
+     return 0;                   //return false if path is a regular file
+   }
+   if (S_ISDIR(st_buf.st_mode)) {
+     return 1;                   //return true if path is a directory
+   }
++  return 0;
+ }                               /* PathIsDirectory() */
