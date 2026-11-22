@@ -1,3 +1,8 @@
+## [9.1.1.1] 2026-11-22
+
+### Changes
+ - Update the Debian base image from 9.3.0 to 9.5.2
+
 ## [9.1.1.0] 2026-06-24
 
 ### Changes

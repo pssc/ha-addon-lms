@@ -1,0 +1,51 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "enabledManagers": ["custom.regex"],
+  "dependencyDashboard": true,
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/lms\\/Dockerfile$/"],
+      "matchStrings": [
+        "ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+      ],
+      "depNameTemplate": "ghcr.io/hassio-addons/debian-base",
+      "packageNameTemplate": "ghcr.io/hassio-addons/debian-base",
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/lms\\/Dockerfile$/"],
+      "matchStrings": ["ARG LMS_VERSION=(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
+      "depNameTemplate": "LMS-Community/slimserver",
+      "packageNameTemplate": "LMS-Community/slimserver",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver",
+      "extractVersionTemplate": "^v?(?<version>\\d+\\.\\d+\\.\\d+)$"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/lms\\/Dockerfile$/"],
+      "matchStrings": ["git checkout (?<currentDigest>[a-f0-9]{40})"],
+      "currentValueTemplate": "public/9.2",
+      "depNameTemplate": "LMS-Community/slimserver-vendor",
+      "packageNameTemplate": "https://github.com/LMS-Community/slimserver-vendor",
+      "datasourceTemplate": "git-refs",
+      "autoReplaceStringTemplate": "git checkout {{{newDigest}}}"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/lms\\/Dockerfile$/"],
+      "matchStrings": [
+        "-b \"(?<currentValue>\\d+\\.\\d+)\" https://github.com/pssc/squeezy"
+      ],
+      "depNameTemplate": "pssc/squeezy",
+      "packageNameTemplate": "pssc/squeezy",
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "loose",
+      "autoReplaceStringTemplate": "-b \"{{{newValue}}}\" https://github.com/pssc/squeezy"
+    }
+  ]
+}

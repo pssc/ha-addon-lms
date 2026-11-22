@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:9.3.0
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:9.5.2
 FROM ${BUILD_FROM} AS base
 
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -39,7 +39,8 @@ FROM base
 # Bump cpan build to same version if possible
 #  ARG url="http://www.mysqueezebox.com/update/?version=8.0&revision=1&geturl=1&os=deb"
 # xlatest_lms=$(wget -q -O - "${url}" | sed 's/_all\.deb/_'$(arch | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
-ARG purl="https://downloads.lms-community.org/LyrionMusicServer_v9.1.1/lyrionmusicserver_9.1.1_all.deb"
+# renovate: datasource=github-releases depName=LMS-Community/slimserver
+ARG LMS_VERSION=9.1.1
 ARG debug=true
 ARG target_uid=1000
 ARG BUILD_ARCH
@@ -94,7 +95,8 @@ RUN apt-get -qq -y update && \
 # Debug packages
 RUN if [ "${debug}" = "true " ];then touch /debug && apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && apt-get --no-install-recommends --no-install-suggests -qq -y install vim-tiny procps && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*;fi
 
-RUN echo "Download url: ${purl}" && \
+RUN purl="https://downloads.lms-community.org/LyrionMusicServer_v${LMS_VERSION}/lyrionmusicserver_${LMS_VERSION}_all.deb" && \
+    echo "Download url: ${purl}" && \
 	cd /tmp && \
         latest_lms=$(echo "${purl}" | sed 's/_all\.deb/_'$(echo ${BUILD_ARCH} | sed 's/arm.*/arm/' | sed 's/x86_64/amd64/' | sed 's/aarch64/arm/')'\.deb/') && \
 	if [ $latest_lms = $latest_lms ];then  echo $latest_lms != $latest_lms ;sleep 600;fi && \

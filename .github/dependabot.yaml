@@ -3,9 +3,16 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: daily
-      time: "15:05"
+      interval: "weekly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
   - package-ecosystem: "docker"
-    directory: "/"
+    directory: "/lms"
     schedule:
       interval: "weekly"
+    groups:
+      docker:
+        patterns:
+          - "*"

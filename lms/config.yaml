@@ -1,5 +1,5 @@
 name: LMS Lyrion Music Server(Formerly Logitech Media Server)
-version: 9.1.1.0
+version: 9.1.1.1
 slug: lms
 description: LMS Lyrion Music Server, Formerly the Logitech Media Server & SqueezeBox Server
   Server & UPNP Music Server
@@ -23,12 +23,18 @@ ports_description:
   3483/udp: Slimserver Protocol for players
 timeout: 180
 map:
-  - ssl
-  - share:rw
-  - backup:rw
-  - media:rw
-  - homeassistant_config:rw
-  - addon_config:rw
+  - type: ssl
+  - type: share
+    read_only: false
+  - type: backup
+    read_only: false
+  - type: media
+    read_only: false
+  - type: homeassistant_config
+    read_only: false
+  - type: app_config
+    path: /config
+    read_only: false
 image: ghcr.io/pssc/ha-app-lms
 tmpfs: true
 hassio_api: true

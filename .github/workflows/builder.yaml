@@ -6,10 +6,11 @@ env:
 on:
   pull_request:
     branches:
-      - main
+      - master
+      - next
   push:
     branches:
-      - main
+      - master
       - next
 
 permissions:
@@ -24,11 +25,11 @@ jobs:
       changed_apps: ${{ steps.filter.outputs.changed_apps }}
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@v7.0.1
 
       - name: Get changed files
         id: changed_files
-        uses: tj-actions/changed-files@v47
+        uses: tj-actions/changed-files@v47.0.6
 
       - name: Find app directories
         id: apps
@@ -82,4 +83,5 @@ jobs:
     with:
       app: ${{ matrix.app }}
       publish: ${{ github.event_name == 'push' }}
+      publish_latest: ${{ github.ref == 'refs/heads/master' }}
     secrets: inherit
