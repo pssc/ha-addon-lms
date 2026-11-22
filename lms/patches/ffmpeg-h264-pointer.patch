@@ -1,0 +1,11 @@
+--- a/libavcodec/h264.c
++++ b/libavcodec/h264.c
+@@ -3195,1 +3195,1 @@
+-                int (*ref2frm)[64] = h->ref2frm[ h->slice_num&(MAX_SLICES-1) ][0] + (MB_MBAFF ? 20 : 2);
++                int (*ref2frm)[64] = (int (*)[64])(h->ref2frm[ h->slice_num&(MAX_SLICES-1) ][0] + (MB_MBAFF ? 20 : 2));
+@@ -3272,1 +3272,1 @@
+-                int (*ref2frm)[64] = h->ref2frm[ h->slice_table[top_xy]&(MAX_SLICES-1) ][0] + (MB_MBAFF ? 20 : 2);
++                int (*ref2frm)[64] = (int (*)[64])(h->ref2frm[ h->slice_table[top_xy]&(MAX_SLICES-1) ][0] + (MB_MBAFF ? 20 : 2));
+@@ -3287,1 +3287,1 @@
+-                    int (*ref2frm)[64] = h->ref2frm[ h->slice_table[left_xy[0]]&(MAX_SLICES-1) ][0] + (MB_MBAFF ? 20 : 2);
++                    int (*ref2frm)[64] = (int (*)[64])(h->ref2frm[ h->slice_table[left_xy[0]]&(MAX_SLICES-1) ][0] + (MB_MBAFF ? 20 : 2));

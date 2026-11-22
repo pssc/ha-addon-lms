@@ -1,0 +1,5 @@
+--- a/buildme.sh
++++ b/buildme.sh
+@@ -1384,1 +1384,1 @@
+-    if [[ "$ARCH" = "x86_64-linux-thread-multi" || "$ARCH" =~ "amd64-freebsd" || "$ARCH" = "i86pc-solaris-thread-multi-64int" ]]; then
++    if [[ "$ARCH" =~ "x86_64-linux" || "$ARCH" =~ "amd64-freebsd" || "$ARCH" = "i86pc-solaris-thread-multi-64int" ]]; then

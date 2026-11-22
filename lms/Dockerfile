@@ -10,6 +10,7 @@ RUN apt-get update && apt-get dist-upgrade -y -o Dpkg::Options::="--force-confol
 
 FROM base AS builder
 ARG BUILD_ARCH
+COPY patches/ /tmp/lms-patches/
 
 # FIXME workround for 9.1 slimserver-vendor module issues as XS module is broken
 # git clone --depth 1 https://github.com/LMS-Community/slimserver-vendor -b public/9.2 && \
@@ -20,8 +21,14 @@ RUN apt-get -qq -y update && \
     cd /tmp/sources && \
     git clone https://github.com/LMS-Community/slimserver-vendor -b public/9.2 && \
     ( cd slimserver-vendor && git checkout e74202f3abfbf655745b2edf3b217c01a8978589 ) && \
+    cd /tmp/sources/slimserver-vendor/CPAN && \
+    patch -p1 < /tmp/lms-patches/slimserver-vendor-build.patch && \
+    mkdir -p /tmp/ffmpeg-patched && \
+    tar -xjf ffmpeg-0.8.4.tar.bz2 -C /tmp/ffmpeg-patched && \
+    patch -p1 -d /tmp/ffmpeg-patched/ffmpeg-0.8.4 < /tmp/lms-patches/ffmpeg-h264-pointer.patch && \
+    tar -cjf ffmpeg-0.8.4.tar.bz2 -C /tmp/ffmpeg-patched ffmpeg-0.8.4 && \
+    rm -rf /tmp/ffmpeg-patched && \
     mkdir -p tmp && \
-    cd slimserver-vendor/CPAN && \
     mkdir -p build/include build/lib && \
     if [ "${BUILD_ARCH}" = "i386" ];then \
     ln -s /usr/include/jpeglib.h build/include/jpeglib.h && \
