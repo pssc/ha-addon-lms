@@ -5,6 +5,12 @@
 +int PathIsDirectory(const char *dir);
 --- a/src/mediascan_linux.c
 +++ b/src/mediascan_linux.c
+@@ -7,4 +7,5 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <libmediascan.h>
 @@ -63,7 +63,8 @@
    if (S_ISREG(st_buf.st_mode)) {
      return 0;                   //return false if path is a regular file
