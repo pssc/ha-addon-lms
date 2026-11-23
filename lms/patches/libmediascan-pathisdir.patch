@@ -20,3 +20,8 @@
    }
 +  return 0;
  }                               /* PathIsDirectory() */
+--- a/src/video.c
++++ b/src/video.c
+@@ -194,1 +194,1 @@
+-    sws_scale(swsc, frame->data, frame->linesize, 0, i->height, frame_rgb->data, frame_rgb->linesize);
++    sws_scale(swsc, (const uint8_t * const *)frame->data, frame->linesize, 0, i->height, frame_rgb->data, frame_rgb->linesize);
