@@ -20,7 +20,7 @@ RUN apt-get -qq -y update && \
     mkdir -p /tmp/sources && \
     cd /tmp/sources && \
     git clone https://github.com/LMS-Community/slimserver-vendor -b public/9.2 && \
-    ( cd slimserver-vendor && git checkout e74202f3abfbf655745b2edf3b217c01a8978589 ) && \
+    ( cd slimserver-vendor && git checkout ecea95c1520834c63cf667c344649abb7e6d7369 ) && \
     cd /tmp/sources/slimserver-vendor/CPAN && \
     patch -p1 < /tmp/lms-patches/slimserver-vendor-build.patch && \
     mkdir -p /tmp/ffmpeg-patched && \
