@@ -33,7 +33,7 @@ jobs:
 
       - name: Find app directories
         id: apps
-        uses: home-assistant/actions/helpers/find-addons@master
+        uses: home-assistant/actions/helpers/find-addons@2026.11.0
 
       - name: Filter changed apps
         id: filter
